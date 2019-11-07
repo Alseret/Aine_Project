@@ -8,7 +8,9 @@ using MyBox;
 public class Action_Repeated : MonoBehaviour
 {
 
-
+	public bool m_actionRepeat;
+	[SerializeField] private bool m_isInput;
+	private bool m_input;
 	[SerializeField] private float m_defaultTime;
 	[ReadOnly][SerializeField] private float m_time;
 	[ReadOnly][SerializeField] private int m_cnt;
@@ -59,6 +61,12 @@ public class Action_Repeated : MonoBehaviour
 		ChangeTime();
 		ChangeCount(m_cnt = 0);
 	}
+	public void ResetParameter()
+	{
+		m_time = m_defaultTime;
+		m_setEffect = false;
+		m_start = false;
+	}
 
 	// Start is called before the first frame update
 	//private void OnEnable()
@@ -86,9 +94,17 @@ public class Action_Repeated : MonoBehaviour
 	}
 	private bool StartRepeat()
 	{
-		if(!m_start)
+		if (Input.GetKeyDown(KeyCode.F1))
 		{
-			if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 0")) && m_time > 0f && !m_setEffect)
+			m_isInput = !m_isInput;
+		}
+		if (m_isInput)
+		{
+			m_input = (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 0"));
+		}
+		if (!m_start)
+		{	
+			if ((m_input || m_actionRepeat) && m_time > 0f && !m_setEffect)
 			{
 				StartCoroutine(StartEffect());
 				Debug.Log("Start!");
@@ -106,6 +122,7 @@ public class Action_Repeated : MonoBehaviour
 		m_startAnim.SetBool("Start", true);
 		StartCoroutine(DisplayCnt());
 		yield return new WaitForSeconds(m_startWaitTime);
+		m_actionRepeat = false;
 		m_cutAnim.AnimSpeed(0, m_multiply);
 		m_cutin.PlayAnim(true);
 		m_start = true;

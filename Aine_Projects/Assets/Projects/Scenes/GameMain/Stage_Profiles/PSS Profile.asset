@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb84e30e02715445aeb9959894e3b4d, type: 3}
   m_Name: ColorGrading
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1
@@ -24,8 +24,8 @@ MonoBehaviour:
     value: {fileID: 0}
     defaultState: 1
   tonemapper:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 1
   toneCurveToeStrength:
     overrideState: 0
     value: 0
@@ -59,31 +59,31 @@ MonoBehaviour:
     value: 0
   colorFilter:
     overrideState: 0
-    value: {r: 1, g: 1, b: 1, a: 1}
+    value: {r: 1.5399456, g: 1.9204562, b: 2.2515066, a: 1}
   hueShift:
     overrideState: 0
-    value: 0
+    value: -51
   saturation:
     overrideState: 0
-    value: 0
+    value: -3.8
   brightness:
     overrideState: 0
     value: 0
   postExposure:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: -0.56
   contrast:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 15.5
   mixerRedOutRedIn:
     overrideState: 0
     value: 0
   mixerRedOutGreenIn:
     overrideState: 0
-    value: 0
+    value: 68
   mixerRedOutBlueIn:
     overrideState: 0
-    value: 0
+    value: -161
   mixerGreenOutRedIn:
     overrideState: 0
     value: 0
@@ -103,14 +103,14 @@ MonoBehaviour:
     overrideState: 0
     value: 100
   lift:
-    overrideState: 0
-    value: {x: 1, y: 1, z: 1, w: 0}
+    overrideState: 1
+    value: {x: 0.88609815, y: 0.72268915, z: 1, w: -1}
   gamma:
-    overrideState: 0
-    value: {x: 1, y: 1, z: 1, w: 0}
+    overrideState: 1
+    value: {x: 0.92305106, y: 1, z: 0.8960642, w: -0.26164642}
   gain:
-    overrideState: 0
-    value: {x: 1, y: 1, z: 1, w: 0}
+    overrideState: 1
+    value: {x: 0.96836334, y: 1, z: 1, w: 0.9125721}
   masterCurve:
     overrideState: 0
     value:
@@ -1392,13 +1392,13 @@ MonoBehaviour:
     value: 1
   focusDistance:
     overrideState: 1
-    value: 4.49
+    value: 3.5
   aperture:
     overrideState: 1
-    value: 21.8
+    value: 20
   focalLength:
     overrideState: 1
-    value: 130
+    value: 121
   kernelSize:
-    overrideState: 1
+    overrideState: 0
     value: 2

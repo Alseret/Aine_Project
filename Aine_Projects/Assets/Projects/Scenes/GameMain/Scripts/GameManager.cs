@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
 	}
 
 	[SerializeField] public List<_Master> m_master;
+	[SerializeField] private float m_fastTime;
+	[SerializeField] private float m_slowTime;
 	[SerializeField] public	 AudioClip m_clip;
 	[SerializeField] public AudioSource m_audio;
 
@@ -39,6 +41,21 @@ public class GameManager : MonoBehaviour
 	// Update is called once per frame
 	private void Update()
 	{
-
+		GameSpeedController();
+	}
+	private void GameSpeedController()
+	{
+		if (Input.GetKey(KeyCode.T) || Input.GetKey("joystick button 5"))
+		{
+			m_audio.pitch = Time.timeScale = m_fastTime;
+		}
+		else if(Input.GetKey(KeyCode.Y) || Input.GetKey("joystick button 4"))
+		{
+			m_audio.pitch = Time.timeScale = m_slowTime;
+		}
+		else
+		{
+			m_audio.pitch = Time.timeScale = 1f;
+		}
 	}
 }
