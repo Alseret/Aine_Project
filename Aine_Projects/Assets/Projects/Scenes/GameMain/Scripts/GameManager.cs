@@ -26,14 +26,14 @@ public class GameManager : MonoBehaviour
 	}
 
 	[SerializeField] public List<_Master> m_master;
-	[SerializeField] private AudioClip m_clip;
-	[SerializeField] private AudioSource m_audio;
+	[SerializeField] public	 AudioClip m_clip;
+	[SerializeField] public AudioSource m_audio;
 
 	// Start is called before the first frame update
 	private void Start()
 	{
 		m_master = new List<_Master>();
-		m_audio.PlayOneShot(m_clip);
+		//m_audio.PlayOneShot(m_clip);
 	}
 
 	// Update is called once per frame
