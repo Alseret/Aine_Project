@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Wasurero
+  m_Shader: {fileID: 4800000, guid: d8de57db626999746801808d493cd805, type: 3}
+  m_ShaderKeywords: _MOVERANDOM_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: fa729c392538c874197c592029581a0b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WasureroTex:
+        m_Texture: {fileID: 2800000, guid: 3736ee313433ecb418ffdcc935802021, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _node_1690:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _node_5288:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _B_Rotation: 0.6603962
+    - _BlinkOpacity: 0
+    - _CircleClip: 0.5
+    - _CirlceClip: 0.5
+    - _Cutoff: 0.5
+    - _G_Rogation: -0.3541082
+    - _HeightInner: -0.035
+    - _HeightMiddle: -0.013
+    - _HeightOuter: -0.5
+    - _Move: 7.78
+    - _MoveRandom: 1
+    - _Noise: 0
+    - _OffsetScale: 2.9
+    - _Opacity: 1
+    - _OpacityTime: 2.2
+    - _R_Rotation: 0.103163
+    - _RotationInner: 2.46
+    - _RotationMiddle: -0.42
+    - _RotationOuter: 0.25
+    - _Size: 1
+    - _SizeInner: 0.245
+    - _SizeMiddle: 0.45
+    - _SizeOuter: 1
+    - _Speed: 0.3
+    - _Tessellation: 14
+    - _Thickness: 0.104
+    - _TimeNoise: 0.19
+    - _TimeThickness: 0.051
+    - _node_233: 0.8756396
+    - _node_4780: 0
+    - _node_6038: 1
+    - _node_8004: 0.6525331
+    m_Colors:
+    - _CircleColor: {r: 1, g: 1, b: 1, a: 1}
+    - _CircleColor2: {r: 0.07586193, g: 0, b: 1, a: 1}
+    - _Color: {r: 1, g: 0.10196079, b: 0, a: 1}
