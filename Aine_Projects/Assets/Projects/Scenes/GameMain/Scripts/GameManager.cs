@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 	[System.Serializable]
-	public enum _ActionType
+	public enum _ACTION_TYPE
 	{
 		Repeate,
 		AAA,
@@ -15,13 +15,13 @@ public class GameManager : MonoBehaviour
 	{
 		Excellent,
 		Good,
-		Normal,
+		Nice,
 	}
 
 	[System.Serializable]
 	public struct _Master
 	{
-		public _ActionType type;
+		public _ACTION_TYPE type;
 		public _Evaluation eva;
 	}
 
@@ -43,19 +43,14 @@ public class GameManager : MonoBehaviour
 	{
 		GameSpeedController();
 	}
+
 	private void GameSpeedController()
 	{
 		if (Input.GetKey(KeyCode.T) || Input.GetKey("joystick button 5"))
-		{
 			m_audio.pitch = Time.timeScale = m_fastTime;
-		}
 		else if(Input.GetKey(KeyCode.Y) || Input.GetKey("joystick button 4"))
-		{
 			m_audio.pitch = Time.timeScale = m_slowTime;
-		}
 		else
-		{
 			m_audio.pitch = Time.timeScale = 1f;
-		}
 	}
 }

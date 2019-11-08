@@ -34,7 +34,7 @@ public class Action_Repeated : MonoBehaviour
 	[SerializeField] private GameManager._Evaluation m_ev;
 	[SerializeField] private int m_excellent;
 	[SerializeField] public int m_good;
-	[SerializeField] private int m_normal;
+	[SerializeField] private int m_nice;
 	private TextMeshProUGUI m_evaText;
 	private Animator m_evaAnim;
 
@@ -42,13 +42,14 @@ public class Action_Repeated : MonoBehaviour
 	{
 		m_time = m_defaultTime;
 		m_cutin = GameObject.Find("CutIn").GetComponent<CutIN_Manager>();
-		m_cutAnim = GameObject.Find("Mob").GetComponent<Animator_Controller>();
+		m_cutAnim = GameObject.Find("Mob_Unit").GetComponent<Animator_Controller>();
 		m_startAnim = transform.GetChild(0).GetComponent<Animator>();
 		m_actionAnim = transform.GetChild(1).GetComponent<Animator>();
 		m_evaText = transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>();
 		m_evaAnim = transform.GetChild(2).GetComponent<Animator>();
 		ResetValue();
 	}
+
 	public void ResetValue()
 	{
 		m_setEffect = false;
@@ -61,18 +62,13 @@ public class Action_Repeated : MonoBehaviour
 		ChangeTime();
 		ChangeCount(m_cnt = 0);
 	}
+
 	public void ResetParameter()
 	{
 		m_time = m_defaultTime;
 		m_setEffect = false;
 		m_start = false;
 	}
-
-	// Start is called before the first frame update
-	//private void OnEnable()
-	//{
-	//	ResetValue();
-	//}
 
 	// Update is called once per frame
 	private void Update()
@@ -85,8 +81,6 @@ public class Action_Repeated : MonoBehaviour
 			InputRepeat();      // 入力
 			TimeDecrement();    // 時間減らす
 		}
-		//TimeUpdate();       // 時間更新
-
 	}
 	public void SetTime(float time)
 	{
@@ -137,7 +131,7 @@ public class Action_Repeated : MonoBehaviour
 	{
 		if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 0")) && m_time > 0f)
 		{
-			Debug.Log("Increment");
+			//Debug.Log("Increment");
 			ChangeCount(++m_cnt);
 			m_cutAnim.AnimSpeed(m_cnt, m_multiply);
 		}
@@ -165,7 +159,7 @@ public class Action_Repeated : MonoBehaviour
 		yield return new WaitForSeconds(2f);
 		m_actionAnim.SetBool("Start", false);
 		m_evaAnim.SetBool("Start", false);
-		m_cutAnim.AnimSpeed(1, 1);
+		//m_cutAnim.AnimSpeed(1, 1);
 		yield return new WaitForSeconds(1f);
 		ResetValue();
 	}
@@ -196,16 +190,21 @@ public class Action_Repeated : MonoBehaviour
 			m_ev = GameManager._Evaluation.Excellent;
 			m_evaText.text = m_ev.ToString() + "!!";
 		}
-		// excellent
+		// Good
 		else if (m_cnt >= m_good)
 		{
 			m_ev = GameManager._Evaluation.Good;
 			m_evaText.text = m_ev.ToString() + "!";
 		}
-		// excellent
-		else if (m_cnt <= m_normal)
+		else if (m_cnt == 0)
 		{
-			m_ev = GameManager._Evaluation.Normal;
+			m_ev = GameManager._Evaluation.Nice;
+			m_evaText.text = "??(^q^)??";
+		}
+		// Nice
+		else if (m_cnt <= m_nice)
+		{
+			m_ev = GameManager._Evaluation.Nice;
 			m_evaText.text = m_ev.ToString();
 		}
 		m_evaAnim.SetBool("Start", true);

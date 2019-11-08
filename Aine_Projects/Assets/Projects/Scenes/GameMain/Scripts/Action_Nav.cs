@@ -7,14 +7,9 @@ using MyBox;
 public class Action_Nav : MonoBehaviour
 {
 	[System.Serializable]
-	public enum ACTION_TYPE
-	{
-		Repeat,
-	}
-	[System.Serializable]
 	public struct ActionPoint
 	{
-		public ACTION_TYPE m_actionType;
+		public GameManager._ACTION_TYPE m_actionType;
 		public float time;
 		public bool used;
 	}
@@ -51,27 +46,12 @@ public class Action_Nav : MonoBehaviour
 		Action_SliderNav();
 		PlayAction();
 	}
-	//private void FastMusic(bool t)
-	//{
-	//	if(t)
-	//	{
-	//		m_audio.pitch = Time.timeScale = m_timeScale;
-	//	}
-	//	else
-	//	{
-	//		m_audio.pitch = Time.timeScale = 1f;
-	//	}
 
-	//	//m_audio.pitch = m_timeScale *Time.deltaTime;
-	//}
 	private void Action_SliderNav()
 	{
 		m_slider.value = m_playTime;
-		//foreach (ActionPoint action in ml_action)
-		//{
-		//	m_slider.value = action.time / m_SoundTime;
-		//}
 	}
+
 	private void Generate_Nav()
 	{
 		foreach (ActionPoint action in ml_action)
@@ -93,7 +73,7 @@ public class Action_Nav : MonoBehaviour
 				Debug.Log("ACTION");
 				switch(action.m_actionType)
 				{
-					case ACTION_TYPE.Repeat:
+					case GameManager._ACTION_TYPE.Repeate:
 						m_type.repeate.m_actionRepeat = true;
 						break;
 				}
