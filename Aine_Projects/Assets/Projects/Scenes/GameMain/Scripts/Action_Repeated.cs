@@ -7,7 +7,7 @@ using MyBox;
 
 public class Action_Repeated : MonoBehaviour
 {
-
+	private GameManager m_manager;
 	public bool m_actionRepeat;
 	[SerializeField] private bool m_isInput;
 	private bool m_input;
@@ -19,18 +19,21 @@ public class Action_Repeated : MonoBehaviour
 	//[SerializeField] private Text[] m_tCnt;
 	[SerializeField] private TextMeshProUGUI m_timeMesh;
 	[SerializeField] private TextMeshProUGUI m_cntMesh;
-	
+
+	[Separator]
 	[SerializeField] private float m_stopTime;
 	[SerializeField] private float m_multiply;
 	private CutIN_Manager m_cutin;
 	private Animator_Controller m_cutAnim;
 	
+	[Separator]
 	[SerializeField] private float m_startWaitTime;
 	[SerializeField] private float m_displayWaitTime;
 	private Animator m_startAnim;
 	private Animator m_actionAnim;
 	private bool m_setEffect;
-	
+
+	[Separator]
 	[SerializeField] private GameManager._Evaluation m_ev;
 	[SerializeField] private int m_excellent;
 	[SerializeField] public int m_good;
@@ -40,6 +43,7 @@ public class Action_Repeated : MonoBehaviour
 
 	private void Start()
 	{
+		m_manager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		m_time = m_defaultTime;
 		m_cutin = GameObject.Find("CutIn").GetComponent<CutIN_Manager>();
 		m_cutAnim = GameObject.Find("Mob_Unit").GetComponent<Animator_Controller>();
@@ -154,6 +158,8 @@ public class Action_Repeated : MonoBehaviour
 	{
 		yield return new WaitForSeconds(m_stopTime);
 		ChackEvaluation();
+		m_manager.AddMaster(GameManager._ACTION_TYPE.Repeate, m_ev);
+		m_manager.GetComponent<Ghost_Controller>().GenerateGhost(m_ev);
 		m_startAnim.SetBool("Start", false);
 		m_cutin.PlayAnim(false);
 		yield return new WaitForSeconds(2f);

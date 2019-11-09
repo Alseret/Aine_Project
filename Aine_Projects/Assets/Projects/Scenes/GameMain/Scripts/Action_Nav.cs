@@ -23,8 +23,6 @@ public class Action_Nav : MonoBehaviour
 	[SerializeField] private ActionType m_type;
 	[SerializeField] public List<ActionPoint> ml_action;
 	private AudioSource m_audio;
-	[SerializeField] private float m_SoundTime;
-	[SerializeField] [ReadOnly] private float m_playTime;
 	//[SerializeField] private float m_timeScale;
 	[SerializeField] private GameObject m_rectPrefab;
 
@@ -40,16 +38,15 @@ public class Action_Nav : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		m_slider.maxValue = m_SoundTime;
+		m_slider.maxValue = m_manager.m_SoundTime;
 		//FastMusic(Input.GetKey(KeyCode.T));
-		m_playTime = m_audio.time;
 		Action_SliderNav();
 		PlayAction();
 	}
 
 	private void Action_SliderNav()
 	{
-		m_slider.value = m_playTime;
+		m_slider.value = m_manager.m_playTime;
 	}
 
 	private void Generate_Nav()
@@ -58,18 +55,18 @@ public class Action_Nav : MonoBehaviour
 		{
 			GameObject rect;
 			rect = Instantiate(m_rectPrefab, GameObject.Find("Icon").transform);
-			rect.GetComponent<RectTransform>().anchoredPosition = new Vector3((750f / m_SoundTime) * action.time, 15f, 0f);
+			rect.GetComponent<RectTransform>().anchoredPosition = new Vector3((750f / m_manager.m_SoundTime) * action.time, 15f, 0f);
 		}
 	}
 	private void PlayAction()
 	{
 		foreach (ActionPoint action in ml_action)
 		{
-			if(((int)m_playTime == (int)action.time) && (action.used == false))
+			if(((int)m_manager.m_playTime == (int)action.time) && (action.used == false))
 			{
-				ActionPoint work = ml_action.Find(n => (int)n.time == (int)m_playTime);
+				ActionPoint work = ml_action.Find(n => (int)n.time == (int)m_manager.m_playTime);
 				work.used = true;
-				ml_action[ml_action.FindIndex(n => (int)n.time == (int)m_playTime)] = work;
+				ml_action[ml_action.FindIndex(n => (int)n.time == (int)m_manager.m_playTime)] = work;
 				Debug.Log("ACTION");
 				switch(action.m_actionType)
 				{
