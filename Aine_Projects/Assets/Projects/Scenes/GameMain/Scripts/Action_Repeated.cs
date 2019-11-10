@@ -12,9 +12,9 @@ public class Action_Repeated : MonoBehaviour
 	[SerializeField] private bool m_isInput;
 	private bool m_input;
 	[SerializeField] private float m_defaultTime;
-	[ReadOnly][SerializeField] private float m_time;
-	[ReadOnly][SerializeField] private int m_cnt;
-	[ReadOnly][SerializeField] private bool m_start;
+	[ReadOnly] [SerializeField] private float m_time;
+	[ReadOnly] [SerializeField] private int m_cnt;
+	[ReadOnly] [SerializeField] private bool m_start;
 	//[SerializeField] private Text[] m_tTime;
 	//[SerializeField] private Text[] m_tCnt;
 	[SerializeField] private TextMeshProUGUI m_timeMesh;
@@ -25,7 +25,7 @@ public class Action_Repeated : MonoBehaviour
 	[SerializeField] private float m_multiply;
 	private CutIN_Manager m_cutin;
 	private Animator_Controller m_cutAnim;
-	
+
 	[Separator]
 	[SerializeField] private float m_startWaitTime;
 	[SerializeField] private float m_displayWaitTime;
@@ -80,7 +80,7 @@ public class Action_Repeated : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.R))
 			ResetValue();
 		if (StartRepeat()) return;
-		if(TimeCheck())
+		if (TimeCheck())
 		{
 			InputRepeat();      // 入力
 			TimeDecrement();    // 時間減らす
@@ -101,7 +101,7 @@ public class Action_Repeated : MonoBehaviour
 			m_input = (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 0"));
 		}
 		if (!m_start)
-		{	
+		{
 			if ((m_input || m_actionRepeat) && m_time > 0f && !m_setEffect)
 			{
 				StartCoroutine(StartEffect());
@@ -143,7 +143,7 @@ public class Action_Repeated : MonoBehaviour
 
 	private bool TimeCheck()
 	{
-		if(m_time <= 0f)
+		if (m_time <= 0f)
 		{
 			m_start = false;
 			m_time = 0f;
@@ -158,7 +158,7 @@ public class Action_Repeated : MonoBehaviour
 	{
 		yield return new WaitForSeconds(m_stopTime);
 		ChackEvaluation();
-		m_manager.AddMaster(GameManager._ACTION_TYPE.Repeate, m_ev);
+		m_manager.AddMaster(GameManager._ACTION_TYPE.Repeate, m_cnt, m_ev);
 		m_manager.GetComponent<Ghost_Controller>().GenerateGhost(m_ev);
 		m_startAnim.SetBool("Start", false);
 		m_cutin.PlayAnim(false);
