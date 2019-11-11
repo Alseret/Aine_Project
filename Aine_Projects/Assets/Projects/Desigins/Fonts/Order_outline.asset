@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Order_outline
   m_EditorClassIdentifier: 
-  hashCode: 703751193
+  hashCode: -1127352495
   material: {fileID: 2976469661571425601}
   materialHashCode: 2117662239
   m_Version: 1.1.0

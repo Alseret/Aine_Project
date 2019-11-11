@@ -10,7 +10,7 @@ public class Debug_ : MonoBehaviour
 	[ReadOnly][SerializeField] private Action_Nav m_nav;
 	[SerializeField] private List<TextMeshProUGUI> m_debugText;
 
-	private bool isDebug = true;
+	[SerializeField] private bool isDebug = false;
 	private GameManager._ControllType m_controller;
 	public bool m_action;
 	private GameManager._ACTION_TYPE m_actionType;

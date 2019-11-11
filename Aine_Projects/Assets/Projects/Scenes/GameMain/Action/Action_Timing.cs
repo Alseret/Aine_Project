@@ -12,6 +12,7 @@ public class Action_Timing : Action_Mono
 	[SerializeField] private float m_maxSize;
 	[SerializeField] private float m_minSize;
 	[SerializeField] private float m_lerpTime;
+	[SerializeField] private float m_multy;
 
 	// Start is called before the first frame update
 	private void Start()
@@ -19,16 +20,31 @@ public class Action_Timing : Action_Mono
 		Setup();
 		m_type = GameManager._ACTION_TYPE.Timing;
 		ResetValue();
-		enabled = false;
+		m_lerpTime = 1f;
+		//enabled = false;
 	}
 	private void OnDisable()
 	{
-
+		m_lerpTime = 1f;
 	}
 
 	// Update is called once per frame
 	private void Update()
 	{
+		if (Input.GetKeyDown(KeyCode.R))
+		{
+			m_lerpTime = 1f;
+		}
+		if (Input.GetMouseButton(0))
+		{
+			m_lerpTime += Time.deltaTime * m_multy;
+		}
+		if(Input.GetMouseButtonUp(0))
+		{
+			Debug.Log(m_lerpTime);
+		}
+		if (m_lerpTime <= 0f) m_lerpTime = 0f;
+		else if (m_lerpTime >= 1f) m_lerpTime = 1f;
 		LerpSize();
 
 	}
