@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Cam_FreeLook : MonoBehaviour
 {
-	[System.Serializable] 
+	[System.Serializable]
 	public enum InputType
 	{
 		Mouse,
@@ -38,7 +38,7 @@ public class Cam_FreeLook : MonoBehaviour
 		//if (Input.GetKey(KeyCode.UpArrow)) m_zoom = 1;
 		//else if (Input.GetKey(KeyCode.UpArrow)) m_zoom = -1;
 		m_free.m_Lens.FieldOfView += -m_zoom * m_speed;
-		if(m_free.m_Lens.FieldOfView < m_minFov) m_free.m_Lens.FieldOfView = m_minFov;
-		if(m_free.m_Lens.FieldOfView > m_maxFov) m_free.m_Lens.FieldOfView = m_maxFov;
+		if (m_free.m_Lens.FieldOfView < m_minFov) m_free.m_Lens.FieldOfView = m_minFov;
+		if (m_free.m_Lens.FieldOfView > m_maxFov) m_free.m_Lens.FieldOfView = m_maxFov;
 	}
 }

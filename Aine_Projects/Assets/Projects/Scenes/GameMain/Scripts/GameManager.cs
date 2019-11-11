@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 	{
 		Repeate,
 		Order,
+		Timing,
 		MAX__,
 	}
 	[System.Serializable]

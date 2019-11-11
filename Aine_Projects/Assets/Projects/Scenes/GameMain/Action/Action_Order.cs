@@ -23,7 +23,7 @@ public class Action_Order : Action_Mono
 	[Header ("[Child...]")]
 	[SerializeField] private TextMeshProUGUI m_order;
 	[SerializeField] private List<PadButton> ml_pad;
-	[SerializeField] private List<PadButton> ml_key;
+	[SerializeField] private List<KeyButton> ml_key;
 
 	// Start is called before the first frame update
 	private void Start()

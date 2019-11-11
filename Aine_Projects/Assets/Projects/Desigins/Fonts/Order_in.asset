@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!28 &-4435805057077428516
+--- !u!28 &-7102770126345077809
 Texture2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: JKG-M_Pro_0 Atlas
+  m_Name: JKG-M_Pro_1 Atlas
   m_ImageContentsHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
@@ -50,9 +50,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: JKG-M_Pro_0
+  m_Name: Order_in
   m_EditorClassIdentifier: 
-  hashCode: 703751195
+  hashCode: -698165546
   material: {fileID: 2976469661571425601}
   materialHashCode: 2117662239
   m_Version: 1.1.0
@@ -3089,7 +3089,7 @@ MonoBehaviour:
     m_GlyphIndex: 13765
     m_Scale: 1
   m_AtlasTextures:
-  - {fileID: -4435805057077428516}
+  - {fileID: -7102770126345077809}
   m_AtlasTextureIndex: 0
   m_UsedGlyphRects:
   - m_X: 0
@@ -4284,7 +4284,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: -4435805057077428516}
+        m_Texture: {fileID: -7102770126345077809}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OutlineTex:
@@ -4302,26 +4302,26 @@ Material:
     - _BumpOutline: 0
     - _ColorMask: 15
     - _Diffuse: 0.5
-    - _FaceDilate: 0.06
+    - _FaceDilate: -0.13
     - _FaceUVSpeedX: 0
     - _FaceUVSpeedY: 0
-    - _GlowInner: 1
-    - _GlowOffset: 1
-    - _GlowOuter: 1
-    - _GlowPower: 1
+    - _GlowInner: 0.56
+    - _GlowOffset: 0.26
+    - _GlowOuter: 0.201
+    - _GlowPower: 0.116
     - _GradientScale: 6
     - _LightAngle: 3.1416
     - _MaskSoftnessX: 0
     - _MaskSoftnessY: 0
-    - _OutlineSoftness: 0.396
+    - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0.238
+    - _OutlineWidth: 0.01
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.8333333
-    - _ScaleRatioB: 0.31354168
-    - _ScaleRatioC: 0.62708336
+    - _ScaleRatioB: 0.78541666
+    - _ScaleRatioC: 0.78541666
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
@@ -4346,9 +4346,9 @@ Material:
     - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
     - _EnvMatrixRotation: {r: 0, g: 0, b: 0, a: 0}
     - _FaceColor: {r: 1, g: 1, b: 1, a: 1}
-    - _GlowColor: {r: 1, g: 0.07060624, b: 0, a: 0.5}
+    - _GlowColor: {r: 1, g: 0, b: 0, a: 0.5}
     - _MaskCoord: {r: 0, g: 0, b: 32767, a: 32767}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OutlineColor: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 1}
     - _ReflectFaceColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectOutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
