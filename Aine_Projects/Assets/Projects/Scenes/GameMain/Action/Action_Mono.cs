@@ -41,10 +41,10 @@ public class Action_Mono : MonoBehaviour
 	[SerializeField] private float m_stopTime;
 
 	[Separator]     // 評価
-	[SerializeField] private GameManager._Evaluation m_ev;
-	[SerializeField] private int m_excellent;
-	[SerializeField] private int m_good;
-	[SerializeField] private int m_nice;
+	[SerializeField] protected GameManager._Evaluation m_ev;
+	[SerializeField] protected float m_excellent;
+	[SerializeField] protected float m_good;
+	[SerializeField] protected float m_nice;
 
 	protected void Setup()
 	{
