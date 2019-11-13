@@ -6,102 +6,135 @@ using MyBox;
 
 public class Action_Timing : Action_Mono
 {
+	public enum PadButton
+	{
+		A,
+		B,
+		X,
+		Y,
+	}
 	[Header("[Child...]")]
 	[SerializeField] private TextMeshProUGUI m_timingOut;
 	[SerializeField] private TextMeshProUGUI m_timingIn;
-	[SerializeField] private TextMeshProUGUI m_EvText;
 	[SerializeField] private float m_maxSize;
 	[SerializeField] private float m_minSize;
-	[SerializeField] private float m_exBad;
-	[SerializeField][Range(0f, 1f)] private float m_lerpTime;
+	[SerializeField] private PadButton m_pad;
+	[SerializeField] [Range(0f, 1f)] private float m_lerpTime;
+	private bool m_click;
 	[SerializeField] private float m_multy;
 	[SerializeField] private bool m_down;
 	[SerializeField] private bool m_up;
-	[SerializeField] private float m_sizeUp;
-	// Start is called before the first frame update
+
+
 	private void Start()
 	{
 		Setup();
 		m_type = GameManager._ACTION_TYPE.Timing;
+		ml_displayAnim.Add(transform.GetChild(2).GetComponent<Animator>());
+		m_click = false;
+		m_down = m_up = false;
 		ResetValue();
-		m_lerpTime = 0f;
-		m_down = false; m_up = false;
-		//enabled = false;
+		enabled = false;
 	}
 	private void OnDisable()
 	{
+		//ResetValue();
+		m_click = false;
 		m_lerpTime = 0f;
+		LerpSize();
+		m_down = m_up = false;
+		m_time = m_defTime;
+		m_pad = (PadButton)Random.Range(0, 3);
 	}
-
-	// Update is called once per frame
 	private void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.R))
+			OnDisable();
+		if (StartAction()) return;
+
+		if (!m_click && TimeisCheck())
+			TimeDecrement();
+
+		if ((Input.GetMouseButton(0) || Input.GetKey("joystick button " + (int)m_pad)) && !m_up)
 		{
-			m_lerpTime = 0f;
-		}
-		if (Input.GetMouseButton(0) && m_up == false)
-		{
-			m_lerpTime -= Time.deltaTime * m_multy;
+			m_click = true;
 			m_down = true;
+			m_lerpTime -= Time.deltaTime * m_multy;
+			if (m_lerpTime <= 0f) m_lerpTime = 0f;
+			else if (m_lerpTime >= 1f) m_lerpTime = 1f;
+			m_timeAnim.SetBool("Start", false);
 		}
-		if(Input.GetMouseButtonUp(0))
+		if (Input.GetMouseButtonUp(0) || Input.GetKeyUp("joystick button " + (int)m_pad))
 		{
 			m_up = true;
-			CheckEvalution();
 		}
-
-		//if(Input.GetMouseButtonUp(0))
-		//{
-		//	CheckEvalution();
-		//}
-		if (m_lerpTime <= 0f) m_lerpTime = 0f;
-		else if (m_lerpTime >= 1f) m_lerpTime = 1f;
-
-		if (m_down == true && m_up == false)
+		if (m_down && !m_up)
 			LerpSize();
-		if (m_down == true && m_up == true)
+		else if (m_down && m_up)
 		{
-			if (m_timingOut.fontSize >= 600f)
-			{
-				m_up = m_down = false;
-				m_lerpTime = 0f;
-				LerpSize(0f);
-			}
-			m_timingOut.fontSize += Time.deltaTime * m_sizeUp;
+			CheckEvalution();
+			StartCoroutine(StopInertiaA());
 		}
 
-
+	}
+	private bool TimeisCheck()
+	{
+		if (m_time <= 0f)
+		{
+			m_start = false;
+			m_time = 0f;
+			ChangeTime();
+			StartCoroutine(StopInertiaA());
+			Debug.Log("入力してください!");
+			return false;
+		}
+		return true;
 	}
 	private void LerpSize()
 	{
 		m_timingOut.fontSize = Mathf.Lerp(m_maxSize, m_minSize, m_lerpTime);
 	}
-	private void LerpSize(float time)
+	private IEnumerator StopInertiaA()
 	{
-		m_timingOut.fontSize = Mathf.Lerp(m_maxSize, m_minSize, time);
+		yield return new WaitForSeconds(m_stopTime);
+		m_manager.AddMaster(m_type, m_cnt, m_ev);
+		//m_manager.GetComponent<Ghost_Controller>().GenerateGhost(m_ev);
+		m_startAnim.SetBool("Start", false);
+		m_cutin.PlayAnim(false);
+		yield return new WaitForSeconds(1f);
+		AnimSet(false);
+		m_evaAnim.SetBool("Start", false);
+		yield return new WaitForSeconds(1f);
+		ResetValue();
+		m_start = false;
+		enabled = false;
 	}
 	private void CheckEvalution()
 	{
 		if (m_lerpTime < m_nice)
 		{
 			m_ev = GameManager._Evaluation.Nice;
-			m_EvText.text = m_ev.ToString();
+			m_evaText.text = m_ev.ToString();
+			//m_EvText.text = m_ev.ToString();
 		}
 		else if (m_lerpTime < m_good)
 		{
 			m_ev = GameManager._Evaluation.Good;
-			m_EvText.text = m_ev.ToString();
-		}
-		else if (m_lerpTime > m_exBad)
-		{
-			m_ev = GameManager._Evaluation.Nice;
-			m_EvText.text = m_ev.ToString();
+			m_evaText.text = m_ev.ToString() + "!";
+			//m_EvText.text = m_ev.ToString();
 		}
 		else if (m_lerpTime < m_excellent)
 		{
 			m_ev = GameManager._Evaluation.Excellent;
-			m_EvText.text = m_ev.ToString();
+			m_evaText.text = m_ev.ToString() + "!!";
+			//m_EvText.text = m_ev.ToString();
 		}
+		else if(m_lerpTime <= 1f)
+		{
+			m_ev = GameManager._Evaluation.Nice;
+			m_evaText.text = m_ev.ToString();
+			//m_EvText.text = m_ev.ToString();
+		}
+		m_evaAnim.SetBool("Start", true);
 	}
 }

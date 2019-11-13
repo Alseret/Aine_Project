@@ -46,7 +46,9 @@ public class Action_Order : Action_Mono
 	// Update is called once per frame
 	private void Update()
 	{
-		if (StartRepeat()) return;
+		if (StartAction()) return;
+		Debug.Log("ORDER");
+
 		if (TimeCheck())
 		{
 			RandomButton();

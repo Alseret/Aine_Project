@@ -10,20 +10,20 @@ public class Action_Mono : MonoBehaviour
 	// Global
 	[ReadOnly] [SerializeField] protected GameManager m_manager;
 	[SerializeField] protected GameManager._ACTION_TYPE m_type; 
-	[SerializeField] public bool m_actRepeat;				// 演出中
+	[SerializeField] public bool m_actDir;				// 演出中
 	[ReadOnly] [SerializeField] private bool m_isInput;   // Debug
-	[ReadOnly] [SerializeField] private bool m_start;
+	[ReadOnly] [SerializeField] protected bool m_start;
 	private bool m_input;
 	[SerializeField] protected float m_defTime;				// アクション時間
 	[ReadOnly] [SerializeField] protected float m_time;     // 経過時間
 	[ReadOnly] [SerializeField] protected int m_cnt;
 	private bool m_setEffect;                           // 演出中
 
-	[SerializeField] private Transform m_common;
-	[SerializeField] private Animator m_startAnim;
-	[SerializeField] private Animator m_cntAnim;
-	[SerializeField] private Animator m_timeAnim;
-	[SerializeField] private Animator m_evaAnim;
+	[SerializeField] protected Transform m_common;
+	[SerializeField] protected Animator m_startAnim;
+	[SerializeField] protected Animator m_cntAnim;
+	[SerializeField] protected Animator m_timeAnim;
+	[SerializeField] protected Animator m_evaAnim;
 	[SerializeField] protected List<Animator> ml_displayAnim;
 
 	[Separator]     // Text
@@ -32,13 +32,13 @@ public class Action_Mono : MonoBehaviour
 	[SerializeField] protected TextMeshProUGUI m_evaText;
 	// CutIn
 	[SerializeField] protected float m_multiply;
-	private CutIN_Manager m_cutin;
+	protected CutIN_Manager m_cutin;
 	protected Animator_Controller m_cutAnim;
 
 	[Separator]
 	[SerializeField] private float m_startWaitTime;     // カウント開始待ち
 	[SerializeField] private float m_displayWaitTime;   // UI消去開始待ち
-	[SerializeField] private float m_stopTime;
+	[SerializeField] protected float m_stopTime;
 
 	[Separator]     // 評価
 	[SerializeField] protected GameManager._Evaluation m_ev;
@@ -85,7 +85,7 @@ public class Action_Mono : MonoBehaviour
 		//ChangeCount(m_cnt = 0);
 	}
 	// 初回起動
-	protected bool StartRepeat()
+	protected bool StartAction()
 	{
 		if (Input.GetKeyDown(KeyCode.F1))
 			m_isInput = !m_isInput;
@@ -94,8 +94,9 @@ public class Action_Mono : MonoBehaviour
 
 		if (!m_start)
 		{
-			if ((m_input || m_actRepeat) && m_time > 0f && !m_setEffect)
+			if ((m_input || m_actDir) && m_time > 0f && !m_setEffect)
 			{
+				Debug.Log("StartEffect!");
 				StartCoroutine(StartEffect());
 				//Debug.Log("Start!");
 			}
@@ -124,7 +125,7 @@ public class Action_Mono : MonoBehaviour
 		m_startAnim.SetBool("Start", true);
 		StartCoroutine(DisplayCnt());
 		yield return new WaitForSeconds(m_startWaitTime);
-		m_actRepeat = false;
+		m_actDir = false;
 		m_cutAnim.AnimSpeed(0, m_multiply);
 		m_cutin.PlayAnim(true);
 		m_start = true;
@@ -136,7 +137,7 @@ public class Action_Mono : MonoBehaviour
 		//m_cntAnim.SetBool("Start", true);
 		AnimSet(true);
 	}
-	private IEnumerator StopInertia()
+	protected IEnumerator StopInertia()
 	{
 		yield return new WaitForSeconds(m_stopTime);
 		ChackEvaluation(m_cnt);
@@ -154,7 +155,7 @@ public class Action_Mono : MonoBehaviour
 		ResetValue();
 		enabled = false;
 	}
-	private void AnimSet(bool isBool)
+	protected void AnimSet(bool isBool)
 	{
 		foreach(Animator anim in ml_displayAnim)
 		{

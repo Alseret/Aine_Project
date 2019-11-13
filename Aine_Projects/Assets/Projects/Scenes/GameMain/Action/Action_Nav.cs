@@ -18,6 +18,7 @@ public class Action_Nav : MonoBehaviour
 	{
 		public Action_Repeat repeate;
 		public Action_Order order;
+		public Action_Timing timing;
 	}
 	[SerializeField] private Slider m_slider;
 	private GameManager m_manager;
@@ -76,11 +77,15 @@ public class Action_Nav : MonoBehaviour
 				{
 					case GameManager._ACTION_TYPE.Repeate:
 						m_type.repeate.enabled = true;
-						m_type.repeate.m_actRepeat = true;
+						m_type.repeate.m_actDir = true;
 						break;
 					case GameManager._ACTION_TYPE.Order:
 						m_type.order.enabled = true;
-						m_type.order.m_actRepeat = true;
+						m_type.order.m_actDir = true;
+						break;
+					case GameManager._ACTION_TYPE.Timing:
+						m_type.timing.enabled = true;
+						m_type.timing.m_actDir = true;
 						break;
 				}
 				break;

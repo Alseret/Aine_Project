@@ -88,7 +88,7 @@ namespace Sample
 		// Update is called once per frame
 		private void Update()
 		{
-			if (StartRepeat()) return;
+			if (StartAction()) return;
 			if (TimeCheck())
 			{
 				InputRepeat();

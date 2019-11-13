@@ -50,7 +50,8 @@ public class GameManager : MonoBehaviour
 	{
 		ChangeControll();
 		ml_master = new List<_Master>();
-
+		m_audio.clip = m_clip;
+		m_audio.Play();
 		m_SoundTime = m_audio.clip.length;
 	}
 
