@@ -27,8 +27,9 @@ public class Debug_ : MonoBehaviour
 		m_debugText.Add(vertical_Panel.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>());
 		m_debugText.Add(vertical_Panel.GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>());
 		m_controller = m_manager.m_controll;
-		m_action = true;
+		//m_action = true;
 		m_actionType = GameManager._ACTION_TYPE.Repeate;
+		m_debugText[0].text = "F1 : Mouse_<color=yellow>GamePad</color>";
 	}
 
 	// Update is called once per frame
