@@ -64,14 +64,17 @@ public class Action_Timing : Action_Mono
 			else if (m_lerpTime >= 1f) m_lerpTime = 1f;
 			m_timeAnim.SetBool("Start", false);
 		}
-		if (Input.GetMouseButtonUp(0) || Input.GetKeyUp("joystick button " + (int)m_pad))
+		if ((Input.GetMouseButtonUp(0) || Input.GetKeyUp("joystick button " + (int)m_pad)) && !m_up)
 		{
 			m_up = true;
+			m_down = false;
 		}
+
 		if (m_down && !m_up)
 			LerpSize();
-		else if (m_down && m_up)
+		else if ((!m_down && m_up) && m_start)
 		{
+			
 			CheckEvalution();
 			StartCoroutine(StopInertiaA());
 		}
