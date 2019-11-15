@@ -139,6 +139,7 @@ public class Action_Mono : MonoBehaviour
 	}
 	protected IEnumerator StopInertia()
 	{
+		enabled = false;
 		yield return new WaitForSeconds(m_stopTime);
 		ChackEvaluation(m_cnt);
 		m_manager.AddMaster(m_type, m_cnt, m_ev);
@@ -153,7 +154,6 @@ public class Action_Mono : MonoBehaviour
 		//m_cutAnim.AnimSpeed(1, 1);
 		yield return new WaitForSeconds(1f);
 		ResetValue();
-		enabled = false;
 	}
 	protected void AnimSet(bool isBool)
 	{

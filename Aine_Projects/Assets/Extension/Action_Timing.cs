@@ -99,6 +99,7 @@ public class Action_Timing : Action_Mono
 	}
 	private IEnumerator StopInertiaA()
 	{
+		enabled = false;
 		yield return new WaitForSeconds(m_stopTime);
 		m_manager.AddMaster(m_type, m_cnt, m_ev);
 		//m_manager.GetComponent<Ghost_Controller>().GenerateGhost(m_ev);
@@ -110,7 +111,6 @@ public class Action_Timing : Action_Mono
 		yield return new WaitForSeconds(1f);
 		ResetValue();
 		m_start = false;
-		enabled = false;
 	}
 	private void CheckEvalution()
 	{
