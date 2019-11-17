@@ -37,7 +37,7 @@ public class Action_Order : Action_Mono
 		ResetValue();
 		enabled = false;
 	}
-	private void OnDisable()
+	protected override void ResetText()
 	{
 		string str = "      <size=80>" + (0) + "</size>\n    連打!!";
 		ChangeCount(str);

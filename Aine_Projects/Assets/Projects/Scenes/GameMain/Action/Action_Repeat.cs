@@ -6,15 +6,17 @@ using MyBox;
 
 public class Action_Repeat : Action_Mono
 {
+	[SerializeField] private Animator m_buttonAnim;
 	// Start is called before the first frame update
 	private void Start()
 	{
 		Setup();
 		m_type = GameManager._ACTION_TYPE.Repeate;
+		ml_displayAnim.Add(transform.GetChild(2).GetComponent<Animator>());
 		ResetValue();
 		enabled = false;
 	}
-	private void OnDisable()
+	protected override void ResetText()
 	{
 		string str = "      <size=80>" + (0) + "</size>\n    連打!!";
 		ChangeCount(str);
@@ -38,7 +40,12 @@ public class Action_Repeat : Action_Mono
 		{
 			string str = "      <size=80>" + (++m_cnt) + "</size>\n    連打!!";
 			ChangeCount(str);
+			m_buttonAnim.Play("Button");
 			m_cutAnim.AnimSpeed(m_cnt, m_multiply);
+		}
+		if ((Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp("joystick button 0")))
+		{
+			m_buttonAnim.Play("Button_Up");
 		}
 	}
 }

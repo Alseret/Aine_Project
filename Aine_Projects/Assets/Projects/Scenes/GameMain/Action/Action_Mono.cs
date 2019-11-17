@@ -154,6 +154,11 @@ public class Action_Mono : MonoBehaviour
 		//m_cutAnim.AnimSpeed(1, 1);
 		yield return new WaitForSeconds(1f);
 		ResetValue();
+		ResetText();
+	}
+	protected virtual void ResetText()
+	{
+		Debug.Log("NoneReset");
 	}
 	protected void AnimSet(bool isBool)
 	{
