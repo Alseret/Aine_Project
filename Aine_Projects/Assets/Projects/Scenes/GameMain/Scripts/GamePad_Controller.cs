@@ -36,7 +36,33 @@ public class GamePad_Controller : MonoBehaviour
 		{
 			m_target.eulerAngles = new Vector3(0f, m_angle, 0f);
 		}
-
-
+	}
+	public bool GetPad_VectorRight()
+	{
+		// 0
+		if ((320 <= m_angle) || (m_angle <= 40f))
+			return true;
+		return false;
+	}
+	public bool GetPad_VectorUp()
+	{
+		// 90
+		if ((50f <= m_angle) && (m_angle <= 130f))
+			return true;
+		return false;
+	}
+	public bool GetPad_VectorLeft()
+	{
+		// 180
+		if ((140 <= m_angle) && (m_angle <= 220f))
+			return true;
+		return false;
+	}
+	public bool GetPad_VectorDown()
+	{
+		// 270
+		if ((230f <= m_angle) && (m_angle <= 310f))
+			return true;
+		return false;
 	}
 }

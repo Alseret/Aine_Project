@@ -18,6 +18,6 @@ public class RandomRot : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		//m_rect.Rotate(Vector3.up * m_speed * Time.deltaTime);
+		m_rect.Rotate(Vector3.up * m_speed * Time.deltaTime);
 	}
 }
