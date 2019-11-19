@@ -77,26 +77,26 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
-    - _ConeWidth: 0
+    - _ConeWidth: 0.1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _Divide: 0
-    - _DividePower: 0
-    - _DivideScroll: 0
+    - _Divide: 4.5
+    - _DividePower: 0.065
+    - _DivideScroll: 3.2
     - _DstBlend: 0
     - _Flat: 0.565
     - _Frat: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _GradHeight: 0
-    - _GradPower: 0.316
+    - _GradHeight: -40
+    - _GradPower: 0.779
     - _LightIndex: 0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RimPower: 2.14
+    - _RimPower: 9.23
     - _Rotate: 0
     - _SliderOn: 0
     - _SmoothnessTextureChannel: 0
@@ -106,6 +106,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.7280116, g: 0.9339623, b: 0, a: 1}
+    - _Color: {r: 0.14568901, g: 0.18867922, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _LightColor: {r: 0.034482475, g: 0, b: 1, a: 1}
