@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using MyBox;
 
 public class GameManager : MonoBehaviour
@@ -46,6 +47,10 @@ public class GameManager : MonoBehaviour
 	[SerializeField] public AudioSource m_audio;
 
 	// Start is called before the first frame update
+	private void Awake()
+	{
+		SceneManager.LoadScene("CutIn", LoadSceneMode.Additive);
+	}
 	private void Start()
 	{
 		ChangeControll();
@@ -60,6 +65,8 @@ public class GameManager : MonoBehaviour
 	{
 		m_playTime = m_audio.time;
 		GameSpeedController();
+		if(Input.GetKeyDown(KeyCode.Return))
+			SceneManager.LoadScene("Result", LoadSceneMode.Additive);
 	}
 	public void ChangeControll()
 	{

@@ -6,8 +6,8 @@ using MyBox;
 
 public class Debug_ : MonoBehaviour
 {
-	[ReadOnly][SerializeField] private GameManager m_manager;
-	[ReadOnly][SerializeField] private Action_Nav m_nav;
+	[ReadOnly] [SerializeField] private GameManager m_manager;
+	[ReadOnly] [SerializeField] private Action_Nav m_nav;
 	[SerializeField] private List<TextMeshProUGUI> m_debugText;
 
 	[SerializeField] private bool isDebug = false;
@@ -30,6 +30,15 @@ public class Debug_ : MonoBehaviour
 		//m_action = true;
 		m_actionType = GameManager._ACTION_TYPE.Repeate;
 		m_debugText[0].text = "F1 : Mouse_<color=yellow>GamePad</color>";
+		switch (m_action)
+		{
+			case true:
+				m_debugText[1].text = "F2 : None_<color=yellow>Action</color>";
+				break;
+			case false:
+				m_debugText[1].text = "F2 : <color=yellow>None</color>_Action";
+				break;
+		}
 	}
 
 	// Update is called once per frame
@@ -51,7 +60,7 @@ public class Debug_ : MonoBehaviour
 	// 入力切替
 	private void Debug_Controller()
 	{
-		if(Input.GetKeyDown(KeyCode.F1))
+		if (Input.GetKeyDown(KeyCode.F1))
 		{
 			m_controller++;
 			m_controller = (GameManager._ControllType)((int)m_controller % 2);

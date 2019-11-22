@@ -33,7 +33,7 @@ public class Action_Mono : MonoBehaviour
 	// CutIn
 	[SerializeField] protected float m_multiply;
 	protected CutIN_Manager m_cutin;
-	protected Animator_Controller m_cutAnim;
+	[SerializeField] protected Animator_Controller m_cutAnim;
 
 	[Separator]
 	[SerializeField] private float m_startWaitTime;     // カウント開始待ち
