@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using MyBox;
 
@@ -13,17 +14,18 @@ public class Action_Nav : MonoBehaviour
 		public float time;
 		public bool used;
 	}
-	[System.Serializable]
-	public struct ActionType
-	{
-		public Action_Repeat repeate;
-		public Action_Order order;
-		public Action_Timing timing;
-	}
+	//[System.Serializable]
+	//public struct ActionType
+	//{
+	//	public Action_Repeat repeate;
+	//	public Action_Order order;
+	//	public Action_Timing timing;
+	//}
+	[SerializeField] private Sprite[] m_icons;
 	[SerializeField] private Slider m_slider;
 	private GameManager m_manager;
 	private Debug_ m_debug;
-	[SerializeField] public ActionType m_type;
+	//[SerializeField] public ActionType m_type;
 	[SerializeField] public List<ActionPoint> ml_action;
 	private AudioSource m_audio;
 	//[SerializeField] private float m_timeScale;
@@ -45,7 +47,7 @@ public class Action_Nav : MonoBehaviour
 		m_slider.maxValue = m_manager.m_SoundTime;
 		//FastMusic(Input.GetKey(KeyCode.T));
 		Action_SliderNav();
-		if(m_debug.m_action)
+		if (m_debug.m_action)
 			PlayAction();
 	}
 
@@ -60,6 +62,9 @@ public class Action_Nav : MonoBehaviour
 		{
 			GameObject rect;
 			rect = Instantiate(m_rectPrefab, GameObject.Find("Icon").transform);
+			rect.GetComponent<Image>().sprite = m_icons[(int)action.m_actionType];
+			rect.GetComponent<RectTransform>().sizeDelta = new Vector2(m_icons[(int)action.m_actionType].texture.width, m_icons[(int)action.m_actionType].texture.height);
+			rect.transform.localScale = Vector3.one * .3f;
 			rect.GetComponent<RectTransform>().anchoredPosition = new Vector3((750f / m_manager.m_SoundTime) * action.time, 15f, 0f);
 		}
 	}
@@ -76,16 +81,20 @@ public class Action_Nav : MonoBehaviour
 				switch (action.m_actionType)
 				{
 					case GameManager._ACTION_TYPE.Repeate:
-						m_type.repeate.enabled = true;
-						m_type.repeate.m_actDir = true;
+						//m_type.repeate.enabled = true;
+						//m_type.repeate.m_actDir = true;
+						SceneManager.LoadScene("Action_Repeate", LoadSceneMode.Additive);
+
 						break;
 					case GameManager._ACTION_TYPE.Order:
-						m_type.order.enabled = true;
-						m_type.order.m_actDir = true;
+						SceneManager.LoadScene("Action_Order", LoadSceneMode.Additive);
+						//m_type.order.enabled = true;
+						//m_type.order.m_actDir = true;
 						break;
 					case GameManager._ACTION_TYPE.Timing:
-						m_type.timing.enabled = true;
-						m_type.timing.m_actDir = true;
+						SceneManager.LoadScene("Action_Timing", LoadSceneMode.Additive);
+						//m_type.timing.enabled = true;
+						//m_type.timing.m_actDir = true;
 						break;
 				}
 				break;

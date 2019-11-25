@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 using MyBox;
 
@@ -115,16 +116,19 @@ public class Debug_ : MonoBehaviour
 			switch (m_actionType)
 			{
 				case GameManager._ACTION_TYPE.Repeate:
-					m_nav.m_type.repeate.enabled = true;
-					m_nav.m_type.repeate.m_actDir = true;
+					SceneManager.LoadScene("Action_Repeate", LoadSceneMode.Additive);
+					//m_nav.m_type.repeate.enabled = true;
+					//m_nav.m_type.repeate.m_actDir = true;
 					break;
 				case GameManager._ACTION_TYPE.Order:
-					m_nav.m_type.order.enabled = true;
-					m_nav.m_type.order.m_actDir = true;
+					SceneManager.LoadScene("Action_Order", LoadSceneMode.Additive);
+					//m_nav.m_type.order.enabled = true;
+					//m_nav.m_type.order.m_actDir = true;
 					break;
 				case GameManager._ACTION_TYPE.Timing:
-					m_nav.m_type.timing.enabled = true;
-					m_nav.m_type.timing.m_actDir = true;
+					SceneManager.LoadScene("Action_Timing", LoadSceneMode.Additive);
+					//m_nav.m_type.timing.enabled = true;
+					//m_nav.m_type.timing.m_actDir = true;
 					break;
 			}
 		}

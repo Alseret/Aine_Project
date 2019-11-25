@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
 		Repeate,
 		Order,
 		Timing,
+		Spin,
 		MAX__,
 	}
 	[System.Serializable]
