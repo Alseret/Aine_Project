@@ -65,8 +65,12 @@ public class GameManager : MonoBehaviour
 	{
 		m_playTime = m_audio.time;
 		GameSpeedController();
-		if(Input.GetKeyDown(KeyCode.Return))
+		EndMusic();
+		if (Input.GetKeyDown(KeyCode.Return))
+		{
+			enabled = false;
 			SceneManager.LoadScene("Result", LoadSceneMode.Additive);
+		}
 	}
 	public void ChangeControll()
 	{
@@ -113,5 +117,11 @@ public class GameManager : MonoBehaviour
 		if (Input.GetKey(KeyCode.Y) || Input.GetKey("joystick button 4"))
 			return true;
 		return false;
+	}
+	private void EndMusic()
+	{
+		if (!(m_audio.time == 0f && !m_audio.isPlaying)) return;
+		enabled = false;
+		SceneManager.LoadScene("Result", LoadSceneMode.Additive);
 	}
 }
