@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
 	[SerializeField] [ReadOnly] public float m_playTime;
 	[SerializeField] private float m_fastTime;
 	[SerializeField] private float m_slowTime;
+	[SerializeField] private bool m_fastBool;
+	[SerializeField] private bool m_slowBool;
 	[SerializeField] public AudioClip m_clip;
 	[SerializeField] public AudioSource m_audio;
 
@@ -98,6 +100,16 @@ public class GameManager : MonoBehaviour
 
 	private void GameSpeedController()
 	{
+		if (m_fastBool)
+		{
+			m_audio.pitch = Time.timeScale = m_fastTime;
+			return;
+		}
+		else if (m_slowBool)
+		{
+			m_audio.pitch = Time.timeScale = m_slowTime;
+			return;
+		}
 		if (!FastSpeed() && !SlowSpeed())
 			m_audio.pitch = Time.timeScale = 1f;
 		else if (FastSpeed() && SlowSpeed())
