@@ -7,6 +7,8 @@ using MyBox;
 public class Action_Repeat : Action_Mono
 {
 	[SerializeField] private Animator m_buttonAnim;
+	[SerializeField] public bool m_action;
+
 	// Start is called before the first frame update
 	private void Start()
 	{
@@ -37,16 +39,26 @@ public class Action_Repeat : Action_Mono
 	// 連打
 	private void InputRepeat()
 	{
-		if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 0")) && m_time > 0f)
+		m_action = InputButtonDown();
+		if (InputButtonDown() && m_time > 0f)
 		{
 			string str = "      <size=80>" + (++m_cnt) + "</size>\n    連打!!";
 			ChangeCount(str);
-			m_buttonAnim.Play("Button");
+			//m_buttonAnim.Play("Button");
 			m_cutAnim.AnimSpeed(m_cnt, m_multiply);
 		}
-		if ((Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp("joystick button 0")))
+		if (!InputButtonUp())
 		{
-			m_buttonAnim.Play("Button_Up");
+			//m_buttonAnim.Play("Button_Up");
 		}
+	}
+
+	private bool InputButtonDown()
+	{
+		return (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 0"));
+	}
+	private bool InputButtonUp()
+	{
+		return (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 0"));
 	}
 }
