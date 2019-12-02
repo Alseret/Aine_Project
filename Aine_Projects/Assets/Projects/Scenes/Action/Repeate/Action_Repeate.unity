@@ -646,7 +646,7 @@ MonoBehaviour:
   m_actDir: 0
   m_isInput: 0
   m_start: 0
-  m_defTime: 50
+  m_defTime: 7
   m_time: 0
   m_cnt: 0
   m_common: {fileID: 0}

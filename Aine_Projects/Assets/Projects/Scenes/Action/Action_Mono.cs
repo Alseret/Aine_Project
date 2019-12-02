@@ -46,6 +46,7 @@ public class Action_Mono : MonoBehaviour
 	[SerializeField] protected float m_excellent;
 	[SerializeField] protected float m_good;
 	[SerializeField] protected float m_nice;
+	private ScreenShot m_scr;
 
 	protected void Setup()
 	{
@@ -68,6 +69,8 @@ public class Action_Mono : MonoBehaviour
 		// Cutin
 		m_cutAnim = GameObject.Find("Mob_Unit").GetComponent<Animator_Controller>();
 		m_cutin = GameObject.Find("CutIn").GetComponent<CutIN_Manager>();
+
+		m_scr = GameObject.Find("Cam").GetComponent<ScreenShot>();
 	}
 
 	// リセット
@@ -155,6 +158,7 @@ public class Action_Mono : MonoBehaviour
 		yield return new WaitForSeconds(1f);
 		ResetValue();
 		ResetText();
+		StartCoroutine(m_scr.imageShot());
 		SceneManager.UnloadSceneAsync(name);
 	}
 	protected virtual void ResetText()

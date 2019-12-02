@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using MyBox;
+using UnityEngine.SceneManagement;
 
 public class Action_Timing : Action_Mono
 {
@@ -24,6 +25,7 @@ public class Action_Timing : Action_Mono
 	[SerializeField] private float m_multy;
 	[SerializeField] private bool m_down;
 	[SerializeField] private bool m_up;
+	private ScreenShot m_scr;
 
 
 	private void Start()
@@ -35,6 +37,7 @@ public class Action_Timing : Action_Mono
 		m_down = m_up = false;
 		m_actDir = true;
 		ResetValue();
+		m_scr = GameObject.Find("Cam").GetComponent<ScreenShot>();
 		//enabled = false;
 	}
 	private void OnDisable()
@@ -111,7 +114,9 @@ public class Action_Timing : Action_Mono
 		m_evaAnim.SetBool("Start", false);
 		yield return new WaitForSeconds(1f);
 		ResetValue();
+		StartCoroutine(m_scr.imageShot());
 		m_start = false;
+		SceneManager.UnloadSceneAsync("Action_Timing");
 	}
 	private void CheckEvalution()
 	{
