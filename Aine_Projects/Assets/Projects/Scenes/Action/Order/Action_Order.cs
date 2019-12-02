@@ -48,7 +48,7 @@ public class Action_Order : Action_Mono
 	private void Update()
 	{
 		if (StartAction()) return;
-		Debug.Log("ORDER");
+		//Debug.Log("ORDER");
 
 		if (TimeCheck("Action_Order"))
 		{

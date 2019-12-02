@@ -34,7 +34,7 @@ public class Result_Controller : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if(Input.GetKeyDown(KeyCode.Return) && (m_scrShot.m_sprite.Count > m_picCnt))
+		if (Input.GetKeyDown(KeyCode.Return) && (m_scrShot.m_sprite.Count > m_picCnt))
 		{
 			Debug.Log("Sprite : " + m_scrShot.m_sprite.Count);
 			Debug.Log("Cnt : " + m_picCnt);
@@ -58,7 +58,7 @@ public class Result_Controller : MonoBehaviour
 			//transform.GetChild(0).GetChild(0).GetComponent<Image>().enabled = true;
 			//transform.GetChild(1).GetComponent<TextMeshProUGUI>().enabled = true;
 		}
-		if(Input.GetKey(KeyCode.P))
+		if (Input.GetKey(KeyCode.P))
 		{
 			Instantiate(m_effects[Random.Range(0, m_effects.Length)],
 						new Vector2(Random.Range(m_target.position.x - 170f, m_target.position.x + 170f),
