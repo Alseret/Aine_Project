@@ -21,6 +21,7 @@ public class Action_Order : Action_Mono
 		D,
 	}
 	[Header ("[Child...]")]
+	[SerializeField] private Action_Effect m_effect;
 	[SerializeField] private TextMeshProUGUI m_order;
 	[SerializeField] private List<PadButton> ml_pad;
 	[SerializeField] private List<KeyButton> ml_key;
@@ -31,12 +32,10 @@ public class Action_Order : Action_Mono
 		Setup();
 		m_type = GameManager._ACTION_TYPE.Order;
 		ml_displayAnim.Add(transform.GetChild(2).GetComponent<Animator>());
-		m_order = transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>();
+		m_order = transform.GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>();
 		ml_pad = new List<PadButton>();
 		RandomButton();
-		m_actDir = true;
 		ResetValue();
-		//enabled = false;
 	}
 	protected override void ResetText()
 	{
@@ -48,7 +47,6 @@ public class Action_Order : Action_Mono
 	private void Update()
 	{
 		if (StartAction()) return;
-		//Debug.Log("ORDER");
 
 		if (TimeCheck("Action_Order"))
 		{
@@ -88,9 +86,10 @@ public class Action_Order : Action_Mono
 	}
 	private bool InputButton()
 	{
-		if (Input.GetKeyDown("joystick button " + (int)ml_pad[0]))
+		if (Input.GetKeyDown("joystick button " + (int)ml_pad[0]) || Input.GetKeyDown(KeyCode.Space))
 		{
 			ml_pad.RemoveAt(0);
+			m_effect.GenerateEffects();
 			return true;
 		}
 		return false;

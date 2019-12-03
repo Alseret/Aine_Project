@@ -6,7 +6,7 @@ using MyBox;
 
 public class Action_Repeat : Action_Mono
 {
-	[SerializeField] private Animator m_buttonAnim;
+	[SerializeField] private Action_Effect m_effect;
 	[SerializeField] public bool m_action;
 
 	// Start is called before the first frame update
@@ -16,7 +16,6 @@ public class Action_Repeat : Action_Mono
 		Setup();
 		m_type = GameManager._ACTION_TYPE.Repeate;
 		ml_displayAnim.Add(transform.GetChild(2).GetComponent<Animator>());
-		m_actDir = true;
 		ResetValue();
 	}
 	protected override void ResetText()
@@ -44,12 +43,11 @@ public class Action_Repeat : Action_Mono
 		{
 			string str = "      <size=80>" + (++m_cnt) + "</size>\n    連打!!";
 			ChangeCount(str);
-			//m_buttonAnim.Play("Button");
 			m_cutAnim.AnimSpeed(m_cnt, m_multiply);
+			m_effect.GenerateEffects();
 		}
 		if (!InputButtonUp())
 		{
-			//m_buttonAnim.Play("Button_Up");
 		}
 	}
 

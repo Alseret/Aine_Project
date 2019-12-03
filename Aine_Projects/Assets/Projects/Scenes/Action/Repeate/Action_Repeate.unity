@@ -368,7 +368,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6a7042bca0975e48969d17ee6aa4e66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_master: {fileID: 1414674764}
   m_sprites:
   - {fileID: 3485617015119929759, guid: 0de88ba0628d9304499a12673596244f, type: 3}
   - {fileID: 2851200995901579617, guid: ace9b2f3919fd5d419645e280a78f238, type: 3}
@@ -407,7 +406,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 936971331}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -200}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 1733555160}
@@ -577,7 +576,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327574266}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -200}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1432221346}
@@ -643,8 +642,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_manager: {fileID: 0}
   m_type: 0
-  m_actDir: 0
-  m_isInput: 0
   m_start: 0
   m_defTime: 7
   m_time: 0
@@ -667,7 +664,7 @@ MonoBehaviour:
   m_excellent: 35
   m_good: 21
   m_nice: 20
-  m_buttonAnim: {fileID: 1734869209}
+  m_effect: {fileID: 876759401}
   m_action: 0
 --- !u!1 &1432221345
 GameObject:
@@ -1078,7 +1075,6 @@ GameObject:
   - component: {fileID: 1734869208}
   - component: {fileID: 1734869211}
   - component: {fileID: 1734869210}
-  - component: {fileID: 1734869209}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -1094,7 +1090,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1734869207}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -200}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 1733555160}
@@ -1105,25 +1101,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 457, y: 471}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &1734869209
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1734869207}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3a463ea1864b66d47a701289a6785ee5, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1734869210
 MonoBehaviour:
   m_ObjectHideFlags: 0

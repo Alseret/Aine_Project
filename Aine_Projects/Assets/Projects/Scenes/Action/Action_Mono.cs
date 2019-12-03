@@ -11,8 +11,6 @@ public class Action_Mono : MonoBehaviour
 	// Global
 	[ReadOnly] [SerializeField] protected GameManager m_manager;
 	[SerializeField] protected GameManager._ACTION_TYPE m_type;
-	[SerializeField] public bool m_actDir;              // 演出中
-	[ReadOnly] [SerializeField] private bool m_isInput;   // Debug
 	[ReadOnly] [SerializeField] protected bool m_start;
 	private bool m_input;
 	[SerializeField] protected float m_defTime;             // アクション時間
@@ -91,17 +89,11 @@ public class Action_Mono : MonoBehaviour
 	// 初回起動
 	protected bool StartAction()
 	{
-		if (Input.GetKeyDown(KeyCode.F1))
-			m_isInput = !m_isInput;
-		if (m_isInput)
-			m_input = (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 0"));
-
 		if (!m_start)
 		{
-			if ((m_input || m_actDir) && m_time > 0f && !m_setEffect)
+			if (m_time > 0f && !m_setEffect)
 			{
 				StartCoroutine(StartEffect());
-				//Debug.Log("Start!");
 			}
 			return true;
 		}
@@ -128,7 +120,6 @@ public class Action_Mono : MonoBehaviour
 		m_startAnim.SetBool("Start", true);
 		StartCoroutine(DisplayCnt());
 		yield return new WaitForSeconds(m_startWaitTime);
-		m_actDir = false;
 		m_cutAnim.AnimSpeed(0, m_multiply);
 		m_cutin.PlayAnim(true);
 		m_start = true;
@@ -136,8 +127,6 @@ public class Action_Mono : MonoBehaviour
 	private IEnumerator DisplayCnt()
 	{
 		yield return new WaitForSeconds(m_displayWaitTime);
-		//m_timeAnim.SetBool("Start", true);
-		//m_cntAnim.SetBool("Start", true);
 		AnimSet(true);
 	}
 	protected IEnumerator StopInertia(string name)
@@ -150,11 +139,8 @@ public class Action_Mono : MonoBehaviour
 		m_startAnim.SetBool("Start", false);
 		m_cutin.PlayAnim(false);
 		yield return new WaitForSeconds(2f);
-		//m_timeAnim.SetBool("Start", false);
-		//m_cntAnim.SetBool("Start", false);
 		AnimSet(false);
 		m_evaAnim.SetBool("Start", false);
-		//m_cutAnim.AnimSpeed(1, 1);
 		yield return new WaitForSeconds(1f);
 		ResetValue();
 		ResetText();
