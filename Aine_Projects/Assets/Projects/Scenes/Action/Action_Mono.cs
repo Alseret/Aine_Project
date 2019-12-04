@@ -44,7 +44,7 @@ public class Action_Mono : MonoBehaviour
 	[SerializeField] protected float m_excellent;
 	[SerializeField] protected float m_good;
 	[SerializeField] protected float m_nice;
-	private ScreenShot m_scr;
+	protected ScreenShot m_scr;
 
 	protected void Setup()
 	{

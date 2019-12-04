@@ -20,7 +20,7 @@ public class Action_Order : Action_Mono
 		S,
 		D,
 	}
-	[Header ("[Child...]")]
+	[Header("[Child...]")]
 	[SerializeField] private Action_Effect m_effect;
 	[SerializeField] private TextMeshProUGUI m_order;
 	[SerializeField] private List<PadButton> ml_pad;
@@ -78,8 +78,8 @@ public class Action_Order : Action_Mono
 	// 順番
 	private void InputOrder()
 	{
-		if(InputButton())
-		{      
+		if (InputButton())
+		{
 			string str = "      <size=80>" + (++m_cnt) + "</size>\n    連打!!";
 			ChangeCount(str);
 		}

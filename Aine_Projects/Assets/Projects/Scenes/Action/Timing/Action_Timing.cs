@@ -26,7 +26,6 @@ public class Action_Timing : Action_Mono
 	[Header ("Click!")]
 	[SerializeField] private bool m_down;
 	[SerializeField] private bool m_up;
-	private ScreenShot m_scr;
 
 
 	private void Start()
@@ -38,7 +37,6 @@ public class Action_Timing : Action_Mono
 		m_down = m_up = false;
 		m_lerpTime = 0f;
 		ResetValue();
-		m_scr = GameObject.Find("Cam").GetComponent<ScreenShot>();
 	}
 	private void OnDisable()
 	{
