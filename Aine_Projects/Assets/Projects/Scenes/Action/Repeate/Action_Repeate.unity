@@ -640,9 +640,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20ba2cae031a651459147c9effe9238d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_manager: {fileID: 0}
   m_type: 0
-  m_start: 0
+  m_bEffect: 0
   m_defTime: 7
   m_time: 0
   m_cnt: 0

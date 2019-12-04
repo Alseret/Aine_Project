@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField] public _ControllType m_controll;
 	[SerializeField] private GameObject[] m_contObj;
 	[SerializeField] public List<_Master> ml_master;
+	[SerializeField] public int m_noteCnt;
 	[Separator]
 	[SerializeField] public float m_SoundTime;
 	[SerializeField] [ReadOnly] public float m_playTime;
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private float m_slowTime;
 	[SerializeField] private bool m_fastBool;
 	[SerializeField] private bool m_slowBool;
+	[Separator]
 	[SerializeField] public AudioClip m_clip;
 	[SerializeField] public AudioSource m_audio;
 

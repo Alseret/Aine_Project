@@ -4,19 +4,22 @@ using UnityEngine;
 using TMPro;
 using MyBox;
 
-public class Action_Repeat : Action_Mono
+public class Action_Repeat : Action_MonoSamp
 {
 	[SerializeField] private Action_Effect m_effect;
-	[SerializeField] public bool m_action;
+	[ReadOnly] [SerializeField] public bool m_action;
 
 	// Start is called before the first frame update
 	private void Start()
 	{
 		Debug.Log("Action_Repeate");
-		Setup();
+		Setup();	// Component
 		m_type = GameManager._ACTION_TYPE.Repeate;
 		ml_displayAnim.Add(transform.GetChild(2).GetComponent<Animator>());
 		ResetValue();
+
+		// 演出開始
+		StartCoroutine(StartEffect());
 	}
 	protected override void ResetText()
 	{
@@ -27,7 +30,8 @@ public class Action_Repeat : Action_Mono
 	// Update is called once per frame
 	private void Update()
 	{
-		if (StartAction()) return;
+		if (m_bEffect) return;
+		//Debug.Log("REPEAT");
 		if (TimeCheck("Action_Repeate"))
 		{
 			InputRepeat();

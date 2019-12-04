@@ -16,7 +16,7 @@ public class Action_Mono : MonoBehaviour
 	[SerializeField] protected float m_defTime;             // アクション時間
 	[ReadOnly] [SerializeField] protected float m_time;     // 経過時間
 	[ReadOnly] [SerializeField] protected int m_cnt;
-	private bool m_setEffect;                           // 演出中
+	protected bool m_setEffect;                           // 演出中
 
 	[SerializeField] protected Transform m_common;
 	[SerializeField] protected Animator m_startAnim;
@@ -85,6 +85,16 @@ public class Action_Mono : MonoBehaviour
 		ChangeTime();
 		m_cnt = 0;
 		//ChangeCount(m_cnt = 0);
+	}
+	protected IEnumerator StartActionEffect()
+	{
+		yield return null;
+		m_startAnim.SetBool("Start", true);
+		StartCoroutine(DisplayCnt());
+		yield return new WaitForSeconds(m_startWaitTime);
+		m_cutAnim.AnimSpeed(0, m_multiply);
+		m_cutin.PlayAnim(true);
+		m_setEffect = true;
 	}
 	// 初回起動
 	protected bool StartAction()

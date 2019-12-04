@@ -5,7 +5,7 @@ using TMPro;
 using MyBox;
 using UnityEngine.SceneManagement;
 
-public class Action_Timing : Action_Mono
+public class Action_Timing : Action_MonoSamp
 {
 	public enum PadButton
 	{
@@ -30,6 +30,7 @@ public class Action_Timing : Action_Mono
 
 	private void Start()
 	{
+		Debug.Log("Action_Timing");
 		Setup();
 		m_type = GameManager._ACTION_TYPE.Timing;
 		ml_displayAnim.Add(transform.GetChild(2).GetComponent<Animator>());
@@ -37,6 +38,9 @@ public class Action_Timing : Action_Mono
 		m_down = m_up = false;
 		m_lerpTime = 0f;
 		ResetValue();
+
+		// 演出開始
+		StartCoroutine(StartEffect());
 	}
 	private void OnDisable()
 	{
@@ -52,7 +56,7 @@ public class Action_Timing : Action_Mono
 	{
 		if (Input.GetKeyDown(KeyCode.R))
 			OnDisable();
-		if (StartAction()) return;
+		if (m_bEffect) return;
 
 		if (!m_click && TimeisCheck())
 			TimeDecrement();
@@ -75,11 +79,11 @@ public class Action_Timing : Action_Mono
 
 		if (m_down && !m_up)
 			LerpSize();
-		else if ((!m_down && m_up) && m_start)
+		else if ((!m_down && m_up))
 		{
 
 			CheckEvalution();
-			StartCoroutine(StopInertiaA());
+			StartCoroutine(EndEffect("Action_Timing"));
 		}
 
 	}
@@ -87,10 +91,9 @@ public class Action_Timing : Action_Mono
 	{
 		if (m_time <= 0f)
 		{
-			m_start = false;
 			m_time = 0f;
 			ChangeTime();
-			StartCoroutine(StopInertiaA());
+			StartCoroutine(EndEffect("Action_Timing"));
 			Debug.Log("入力してください!");
 			return false;
 		}
@@ -102,7 +105,7 @@ public class Action_Timing : Action_Mono
 		m_effect.GenerateEffects(1);
 		m_timingOut.fontSize = Mathf.Lerp(m_maxSize, m_minSize, m_lerpTime);
 	}
-	private IEnumerator StopInertiaA()
+	protected override IEnumerator EndEffect(string name)
 	{
 		enabled = false;
 		yield return new WaitForSeconds(m_stopTime);
@@ -115,7 +118,6 @@ public class Action_Timing : Action_Mono
 		yield return new WaitForSeconds(1f);
 		ResetValue();
 		StartCoroutine(m_scr.imageShot());
-		m_start = false;
 		//SceneManager.UnloadSceneAsync("Action_Timing");
 	}
 	private void CheckEvalution()

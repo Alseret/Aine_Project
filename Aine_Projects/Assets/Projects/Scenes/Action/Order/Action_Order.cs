@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using MyBox;
 
-public class Action_Order : Action_Mono
+public class Action_Order : Action_MonoSamp
 {
 	public enum PadButton
 	{
@@ -29,6 +29,7 @@ public class Action_Order : Action_Mono
 	// Start is called before the first frame update
 	private void Start()
 	{
+		Debug.Log("Action_Order");
 		Setup();
 		m_type = GameManager._ACTION_TYPE.Order;
 		ml_displayAnim.Add(transform.GetChild(2).GetComponent<Animator>());
@@ -36,6 +37,9 @@ public class Action_Order : Action_Mono
 		ml_pad = new List<PadButton>();
 		RandomButton();
 		ResetValue();
+
+		// 演出開始
+		StartCoroutine(StartEffect());
 	}
 	protected override void ResetText()
 	{
@@ -46,7 +50,7 @@ public class Action_Order : Action_Mono
 	// Update is called once per frame
 	private void Update()
 	{
-		if (StartAction()) return;
+		if (m_bEffect) return;
 
 		if (TimeCheck("Action_Order"))
 		{

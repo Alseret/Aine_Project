@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Action_Effect : MonoBehaviour
 {
+	private GameManager m_manager;
 	[SerializeField] private GameObject[] m_sprites;
 	[SerializeField] public int m_cnt;
 	[SerializeField] private float m_minForce;
@@ -15,6 +16,7 @@ public class Action_Effect : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		m_manager = GameObject.Find("GameManager").GetComponent<GameManager>();
 	}
 
 	// Update is called once per frame
@@ -34,6 +36,7 @@ public class Action_Effect : MonoBehaviour
 			work.GetComponent<Rigidbody2D>().AddForce(work.transform.up * m_maxForce, ForceMode2D.Impulse);
 			Destroy(work, 1f);
 			m_popEffe++;
+			m_manager.m_noteCnt++;
 			Debug.Log(m_popEffe);
 		}
 	}
@@ -48,6 +51,7 @@ public class Action_Effect : MonoBehaviour
 			work.GetComponent<Rigidbody2D>().AddForce(work.transform.up * m_maxForce, ForceMode2D.Impulse);
 			Destroy(work, 1f);
 			m_popEffe++;
+			m_manager.m_noteCnt++;
 			Debug.Log(m_popEffe);
 		}
 	}

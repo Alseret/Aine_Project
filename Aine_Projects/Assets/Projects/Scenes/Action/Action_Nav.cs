@@ -14,21 +14,12 @@ public class Action_Nav : MonoBehaviour
 		public float time;
 		public bool used;
 	}
-	//[System.Serializable]
-	//public struct ActionType
-	//{
-	//	public Action_Repeat repeate;
-	//	public Action_Order order;
-	//	public Action_Timing timing;
-	//}
 	[SerializeField] private Sprite[] m_icons;
 	[SerializeField] private Slider m_slider;
 	private GameManager m_manager;
 	private Debug_ m_debug;
-	//[SerializeField] public ActionType m_type;
 	[SerializeField] public List<ActionPoint> ml_action;
 	private AudioSource m_audio;
-	//[SerializeField] private float m_timeScale;
 	[SerializeField] private GameObject m_rectPrefab;
 
 	// Start is called before the first frame update
@@ -37,7 +28,7 @@ public class Action_Nav : MonoBehaviour
 		m_manager = GetComponent<GameManager>();
 		m_debug = GameObject.Find("Debug__").GetComponent<Debug_>();
 		m_audio = GetComponent<AudioSource>();
-		// 180 + 55 235
+
 		Generate_Nav();
 	}
 
@@ -45,7 +36,6 @@ public class Action_Nav : MonoBehaviour
 	private void Update()
 	{
 		m_slider.maxValue = m_manager.m_SoundTime;
-		//FastMusic(Input.GetKey(KeyCode.T));
 		Action_SliderNav();
 		if (m_debug.m_action)
 			PlayAction();
@@ -81,20 +71,16 @@ public class Action_Nav : MonoBehaviour
 				switch (action.m_actionType)
 				{
 					case GameManager._ACTION_TYPE.Repeate:
-						//m_type.repeate.enabled = true;
-						//m_type.repeate.m_actDir = true;
 						SceneManager.LoadScene("Action_Repeate", LoadSceneMode.Additive);
-
 						break;
 					case GameManager._ACTION_TYPE.Order:
 						SceneManager.LoadScene("Action_Order", LoadSceneMode.Additive);
-						//m_type.order.enabled = true;
-						//m_type.order.m_actDir = true;
 						break;
 					case GameManager._ACTION_TYPE.Timing:
 						SceneManager.LoadScene("Action_Timing", LoadSceneMode.Additive);
-						//m_type.timing.enabled = true;
-						//m_type.timing.m_actDir = true;
+						break;
+					case GameManager._ACTION_TYPE.Roll:
+						SceneManager.LoadScene("Action_Roll", LoadSceneMode.Additive);
 						break;
 				}
 				break;
