@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[DefaultExecutionOrder(1)]
 public class DynamicBone_Up : MonoBehaviour
 {
 	[SerializeField] private List<DynamicBone> ml_bone;
@@ -71,21 +72,21 @@ public class DynamicBone_Up : MonoBehaviour
 	{
 		if (m_oldElasticity == value) return;
 		foreach (DynamicBone obj in ml_bone)
-			obj.m_Damping = value;
+			obj.m_Elasticity = value;
 		m_oldElasticity = value;
 	}
 	private void StiffnessValue(float value)
 	{
 		if (m_oldStiffness == value) return;
 		foreach (DynamicBone obj in ml_bone)
-			obj.m_Damping = value;
+			obj.m_Stiffness = value;
 		m_oldStiffness = value;
 	}
 	private void InertValue(float value)
 	{
 		if (m_oldInert == value) return;
 		foreach (DynamicBone obj in ml_bone)
-			obj.m_Damping = value;
+			obj.m_Inert = value;
 		m_oldInert = value;
 	}
 

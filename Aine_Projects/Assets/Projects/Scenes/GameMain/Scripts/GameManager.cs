@@ -62,7 +62,8 @@ public class GameManager : MonoBehaviour
 		ml_master = new List<_Master>();
 		m_audio.clip = m_clip;
 		m_audio.Play();
-		m_SoundTime = m_audio.clip.length;
+		if (m_SoundTime == 0f)
+			m_SoundTime = m_audio.clip.length;
 	}
 
 	// Update is called once per frame
