@@ -116,7 +116,7 @@ public class Debug_ : MonoBehaviour
 			switch (m_actionType)
 			{
 				case GameManager._ACTION_TYPE.Repeate:
-					SceneManager.LoadScene("Action_Repeate", LoadSceneMode.Additive);
+					SceneManager.LoadScene("Action_Repeat", LoadSceneMode.Additive);
 					//m_nav.m_type.repeate.enabled = true;
 					//m_nav.m_type.repeate.m_actDir = true;
 					break;

@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using MyBox;
+using UnityEngine.SceneManagement;
 
 public class Action_Repeat : Action_MonoSamp
 {
 	[SerializeField] private Action_Effect m_effect;
 	[ReadOnly] [SerializeField] public bool m_action;
+	[SerializeField] private Animator m_buttonAnim;
+	[SerializeField] private Animator m_countAnim;
 
 	// Start is called before the first frame update
 	private void Start()
@@ -15,7 +18,7 @@ public class Action_Repeat : Action_MonoSamp
 		Debug.Log("Action_Repeate");
 		Setup();	// Component
 		m_type = GameManager._ACTION_TYPE.Repeate;
-		ml_displayAnim.Add(transform.GetChild(2).GetComponent<Animator>());
+		ml_displayAnim.Add(transform.GetChild(0).GetComponent<Animator>());
 		ResetValue();
 
 		// 演出開始
@@ -23,16 +26,29 @@ public class Action_Repeat : Action_MonoSamp
 	}
 	protected override void ResetText()
 	{
-		string str = "      <size=80>" + (0) + "</size>\n    連打!!";
+		string str = "<size=80>0</size> コンボ";
 		ChangeCount(str);
+	}
+	// Reset
+	protected override void ResetValue()
+	{
+		//m_startAnim.SetBool("Start", false);
+		//m_cntAnim.SetBool("Start", false);
+		//m_timeAnim.SetBool("Start", false);
+		//m_evaAnim.SetBool("Start", false);
+		//m_cntAnim.SetBool("Start", false);
+		//AnimSet(false);
+		m_time = m_defTime;
+		ChangeTime();
+		m_cnt = 0;
+		m_bEffect = true;
 	}
 
 	// Update is called once per frame
 	private void Update()
 	{
 		if (m_bEffect) return;
-		//Debug.Log("REPEAT");
-		if (TimeCheck("Action_Repeate"))
+		if (TimeCheck("Action_Repeat"))
 		{
 			InputRepeat();
 			TimeDecrement();
@@ -45,7 +61,7 @@ public class Action_Repeat : Action_MonoSamp
 		m_action = InputButtonDown();
 		if (InputButtonDown() && m_time > 0f)
 		{
-			string str = "      <size=80>" + (++m_cnt) + "</size>\n    連打!!";
+			string str = "<size=80>" + (++m_cnt) + "</size> コンボ";
 			ChangeCount(str);
 			m_cutAnim.AnimSpeed(m_cnt, m_multiply);
 			m_effect.GenerateEffects();
@@ -62,5 +78,57 @@ public class Action_Repeat : Action_MonoSamp
 	private bool InputButtonUp()
 	{
 		return (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 0"));
+	}
+
+
+	// 時間チェック
+	protected override bool TimeCheck(string name)
+	{
+		if (m_time <= 0f)
+		{
+			m_time = 0f;
+			ChangeTime();
+			StartCoroutine(EndEffect(name));
+			return false;
+		}
+		return true;
+	}
+
+	// 開始演出
+	protected override IEnumerator StartEffect()
+	{
+		yield return null;
+		m_startAnim.Play("StartText");
+		m_buttonAnim.Play("StartButton");
+		m_countAnim.Play("StartCount");
+		m_timeAnim.SetBool("Start", true);
+		yield return new WaitForSeconds(m_startWaitTime);
+		m_cutAnim.AnimSpeed(0, m_multiply);
+		m_cutin.PlayAnim(true);
+		m_bEffect = false;
+	}
+
+	// 終了演出
+	protected override IEnumerator EndEffect(string name)
+	{
+		Debug.Log("END");
+		enabled = false;
+		yield return new WaitForSeconds(m_stopTime);
+		ChackEvaluation(m_cnt);
+		m_manager.AddMaster(m_type, m_cnt, m_ev);
+		m_startAnim.Play("EndText");
+		m_buttonAnim.Play("EndButton");
+		m_countAnim.Play("EndCount");
+		m_timeAnim.SetBool("Start", false);
+		m_cutin.PlayAnim(false);
+		yield return new WaitForSeconds(2f);
+		//AnimSet(false);
+		m_evaAnim.SetBool("Start", false);
+		yield return new WaitForSeconds(1f);
+		ResetValue();
+		ResetText();
+		StartCoroutine(m_scr.imageShot());
+		// アンロード
+		SceneManager.UnloadSceneAsync(name);
 	}
 }

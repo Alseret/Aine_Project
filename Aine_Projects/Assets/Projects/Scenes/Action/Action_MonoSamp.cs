@@ -37,7 +37,7 @@ public class Action_MonoSamp : MonoBehaviour
 	[SerializeField] protected Animator_Controller m_cutAnim;
 
 	[Separator]
-	[SerializeField] private float m_startWaitTime;     // カウント開始待ち
+	[SerializeField] protected float m_startWaitTime;     // カウント開始待ち
 	[SerializeField] private float m_displayWaitTime;   // UI消去開始待ち
 	[SerializeField] protected float m_stopTime;
 
@@ -57,7 +57,7 @@ public class Action_MonoSamp : MonoBehaviour
 
 		// Animator
 		m_common = GameObject.Find("Action/Common").GetComponent<Transform>();
-		m_startAnim = transform.GetChild(0).GetComponent<Animator>();
+		m_startAnim = transform.GetComponent<Animator>();
 		m_cntAnim = transform.GetChild(1).GetComponent<Animator>();
 		m_timeAnim = m_common.GetChild(0).GetComponent<Animator>();
 		m_evaAnim = m_common.GetChild(1).GetComponent<Animator>();
@@ -68,7 +68,7 @@ public class Action_MonoSamp : MonoBehaviour
 		// Text
 		m_timeText = m_common.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
 		m_evaText = m_common.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>();
-		m_cntText = transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>();
+		m_cntText = transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>();
 
 		// Cutin
 		m_cutAnim = GameObject.Find("Mob_Unit").GetComponent<Animator_Controller>();
@@ -78,7 +78,7 @@ public class Action_MonoSamp : MonoBehaviour
 	}
 
 	// Reset
-	protected void ResetValue()
+	protected virtual void ResetValue()
 	{
 		m_startAnim.SetBool("Start", false);
 		m_cntAnim.SetBool("Start", false);
@@ -93,7 +93,7 @@ public class Action_MonoSamp : MonoBehaviour
 	}
 
 	// 開始演出
-	protected IEnumerator StartEffect()
+	protected virtual IEnumerator StartEffect()
 	{
 		yield return null;
 		m_startAnim.SetBool("Start", true);
@@ -111,7 +111,7 @@ public class Action_MonoSamp : MonoBehaviour
 	}
 
 	// 時間チェック
-	protected bool TimeCheck(string name)
+	protected virtual bool TimeCheck(string name)
 	{
 		if(m_time <= 0f)
 		{
@@ -152,7 +152,7 @@ public class Action_MonoSamp : MonoBehaviour
 	}
 
 	// 判定
-	private void ChackEvaluation(int num)
+	protected void ChackEvaluation(int num)
 	{
 		// excellent
 		if (num >= m_excellent)

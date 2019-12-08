@@ -17,6 +17,7 @@ public class Result_Controller : MonoBehaviour
 	//[SerializeField] private Image m_capture;
 	[SerializeField] private ScreenShot m_scrShot;
 	[SerializeField] private Transform m_target;
+	[SerializeField] private GameObject m_system;
 	[SerializeField] private GameObject[] m_effects;
 	[SerializeField] private TextMeshProUGUI m_text;
 	[SerializeField] private int m_cnt;
@@ -26,9 +27,10 @@ public class Result_Controller : MonoBehaviour
 	void Start()
 	{
 		m_scrShot = GameObject.Find("Cam").GetComponent<ScreenShot>();
+		GameObject.Find("System").SetActive(false);
 		m_cnt = 0;
 		m_picCnt = 0;
-		StartCoroutine(GenePicture());
+		StartCoroutine(StartPicture());
 	}
 
 	// Update is called once per frame
@@ -39,7 +41,7 @@ public class Result_Controller : MonoBehaviour
 			Debug.Log("Sprite : " + m_scrShot.m_sprite.Count);
 			Debug.Log("Cnt : " + m_picCnt);
 			GameObject work;
-			work = Instantiate(m_picPrefab, transform);
+			work = Instantiate(m_picPrefab, transform.GetChild(2));
 			work.transform.GetChild(0).GetComponent<Image>().sprite = m_scrShot.m_sprite[m_picCnt];
 			if (m_scrShot.m_sprite.Count - 1 == m_picCnt)
 			{
@@ -68,12 +70,18 @@ public class Result_Controller : MonoBehaviour
 		}
 	}
 
+	private IEnumerator StartPicture()
+	{
+		yield return new WaitForSeconds(2f);
+		StartCoroutine(GenePicture());
+	}
 	private IEnumerator GenePicture()
 	{
 		yield return new WaitForSeconds(.7f);
 		GameObject work;
-		work = Instantiate(m_picPrefab, transform);
+		work = Instantiate(m_picPrefab, transform);//.Find("Pictures"));
 		work.transform.GetChild(0).GetComponent<Image>().sprite = m_scrShot.m_sprite[m_picCnt];
+		work.transform.parent = transform.Find("Pictures");
 		if (m_scrShot.m_sprite.Count - 1 == m_picCnt)
 		{
 			work.GetComponent<RectTransform>().localPosition = new Vector2(m_pic[m_pic.Count - 1].pos.x, m_pic[m_pic.Count - 1].pos.y);

@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Projects/Scenes/Action/Order/Action_Order.unity
     guid: bda31d3831adfdb4eb08a145814a1b6b
   - enabled: 1
-    path: Assets/Projects/Scenes/Action/Repeate/Action_Repeate.unity
+    path: Assets/Projects/Scenes/Action/Repeate/Action_Repeat.unity
     guid: 3e21656b0550dfc4aa05c198768e591e
   - enabled: 1
     path: Assets/Projects/Scenes/Action/Timing/Action_Timing.unity
