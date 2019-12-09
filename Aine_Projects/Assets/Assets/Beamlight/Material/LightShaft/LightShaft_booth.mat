@@ -77,11 +77,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
-    - _ConeWidth: 0.1
+    - _ConeWidth: 0.478
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _Divide: 4.5
-    - _DividePower: 0.065
+    - _Divide: 9.1
+    - _DividePower: 0.144
     - _DivideScroll: 3.2
     - _DstBlend: 0
     - _Flat: 0.565
@@ -89,7 +89,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _GradHeight: -40
+    - _GradHeight: -13
     - _GradPower: 0.779
     - _LightIndex: 0
     - _Metallic: 0

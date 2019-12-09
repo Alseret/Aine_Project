@@ -1772,6 +1772,7 @@ MonoBehaviour:
   m_picCnt: 0
   m_scrShot: {fileID: 0}
   m_target: {fileID: 1313252610}
+  m_system: {fileID: 0}
   m_effects:
   - {fileID: 5168976858292090438, guid: c8bd1deb9a095564880e01408be2e0ba, type: 3}
   - {fileID: 1012780881273545050, guid: 9a6b02af530f6cd48bbf687fb0646ca9, type: 3}

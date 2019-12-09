@@ -433,7 +433,7 @@ GameObject:
   - component: {fileID: 262575789}
   - component: {fileID: 262575788}
   m_Layer: 5
-  m_Name: TMP SubMeshUI [JKG-M_Pro Material + LiberationSans SDF Atlas]
+  m_Name: TMP SubMeshUI [Action_StartText Material + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -977,7 +977,7 @@ RectTransform:
   m_GameObject: {fileID: 854329879}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.68654054, y: 0.68654054, z: 0.68654054}
   m_Children:
   - {fileID: 1716394337}
   m_Father: {fileID: 1414674763}
@@ -985,7 +985,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -154, y: -140}
+  m_AnchoredPosition: {x: -167.1, y: -152.2}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &854329881
@@ -2054,10 +2054,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<size=80>0</size> \u30B3\u30F3\u30DC"
+  m_text: <size=80>0</size> Combo
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f3450312338f1fc4e81d20ae09233ddb, type: 2}
-  m_sharedMaterial: {fileID: 2976469661571425601, guid: f3450312338f1fc4e81d20ae09233ddb,
+  m_fontAsset: {fileID: 11400000, guid: 5c56f84b02f0d8741ba5f4e7479b6c15, type: 2}
+  m_sharedMaterial: {fileID: -3536098291698850546, guid: 5c56f84b02f0d8741ba5f4e7479b6c15,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2124,7 +2124,7 @@ MonoBehaviour:
   m_margin: {x: -50.754784, y: -39.502003, z: -47.158943, w: -24.39174}
   m_textInfo:
     textComponent: {fileID: 1716394338}
-    characterCount: 5
+    characterCount: 7
     spriteCount: 0
     spaceCount: 1
     wordCount: 2
@@ -2339,7 +2339,7 @@ RectTransform:
   m_GameObject: {fileID: 1733555159}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.3}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 1327574267}
   - {fileID: 1734869208}
@@ -2349,7 +2349,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -200, y: -58}
+  m_AnchoredPosition: {x: -200, y: -77.6}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1733555161

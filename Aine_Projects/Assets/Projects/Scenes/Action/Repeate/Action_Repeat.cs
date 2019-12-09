@@ -13,20 +13,22 @@ public class Action_Repeat : Action_MonoSamp
 	[SerializeField] private Animator m_countAnim;
 
 	// Start is called before the first frame update
-	private void Start()
+	private void Awake()
 	{
-		Debug.Log("Action_Repeate");
 		Setup();	// Component
 		m_type = GameManager._ACTION_TYPE.Repeate;
 		ml_displayAnim.Add(transform.GetChild(0).GetComponent<Animator>());
+	}
+	private void Start()
+	{
+		Debug.Log("Action_Repeate");
 		ResetValue();
-
 		// 演出開始
 		StartCoroutine(StartEffect());
 	}
 	protected override void ResetText()
 	{
-		string str = "<size=80>0</size> コンボ";
+		string str = "<size=80>0</size> Combo";
 		ChangeCount(str);
 	}
 	// Reset
@@ -61,7 +63,7 @@ public class Action_Repeat : Action_MonoSamp
 		m_action = InputButtonDown();
 		if (InputButtonDown() && m_time > 0f)
 		{
-			string str = "<size=80>" + (++m_cnt) + "</size> コンボ";
+			string str = "<size=80>" + (++m_cnt) + "</size> Combo";
 			ChangeCount(str);
 			m_cutAnim.AnimSpeed(m_cnt, m_multiply);
 			m_effect.GenerateEffects();
@@ -97,7 +99,7 @@ public class Action_Repeat : Action_MonoSamp
 	// 開始演出
 	protected override IEnumerator StartEffect()
 	{
-		yield return null;
+		//yield return null;
 		m_startAnim.Play("StartText");
 		m_buttonAnim.Play("StartButton");
 		m_countAnim.Play("StartCount");
