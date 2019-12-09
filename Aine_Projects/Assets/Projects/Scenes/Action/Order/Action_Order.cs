@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using MyBox;
 
+[DefaultExecutionOrder (1)]
 public class Action_Order : Action_MonoSamp
 {
 	public enum PadButton
@@ -23,23 +24,38 @@ public class Action_Order : Action_MonoSamp
 	[Header("[Child...]")]
 	[SerializeField] private Action_Effect m_effect;
 	[SerializeField] private TextMeshProUGUI m_order;
+	[SerializeField] private Action_Order_Data m_data;
 	[SerializeField] private List<PadButton> ml_pad;
 	[SerializeField] private List<KeyButton> ml_key;
+	private Transform m_circle;
 
+	private void Awake()
+	{
+	}
 	// Start is called before the first frame update
 	private void Start()
 	{
-		Debug.Log("Action_Order");
 		Setup();
 		m_type = GameManager._ACTION_TYPE.Order;
 		ml_displayAnim.Add(transform.GetChild(2).GetComponent<Animator>());
 		m_order = transform.GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>();
+		m_circle = transform.GetChild(2).GetChild(2);
+		Debug.Log("Action_Order");
 		ml_pad = new List<PadButton>();
 		RandomButton();
-		ResetValue();
+		//ResetValue();
+		m_circle.GetChild(2).GetComponent<TextMeshProUGUI>().text =
+					m_data.m_list[0].text[m_data.m_list[0].num[0]] +
+					m_data.m_list[0].text[m_data.m_list[0].num[1]] + 
+					m_data.m_list[0].text[m_data.m_list[0].num[2]] + 
+					m_data.m_list[0].text[m_data.m_list[0].num[3]];
+		m_circle.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = m_data.m_list[0].text[0];
+		m_circle.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().text = m_data.m_list[0].text[1];
+		m_circle.GetChild(1).GetChild(2).GetComponent<TextMeshProUGUI>().text = m_data.m_list[0].text[2];
+		m_circle.GetChild(1).GetChild(3).GetComponent<TextMeshProUGUI>().text = m_data.m_list[0].text[3];
 
 		// 演出開始
-		StartCoroutine(StartEffect());
+		//StartCoroutine(StartEffect());
 	}
 	protected override void ResetText()
 	{
@@ -50,14 +66,14 @@ public class Action_Order : Action_MonoSamp
 	// Update is called once per frame
 	private void Update()
 	{
-		if (m_bEffect) return;
+		//if (m_bEffect) return;
 
-		if (TimeCheck("Action_Order"))
-		{
-			RandomButton();
-			InputOrder();
-			TimeDecrement();
-		}
+		//if (TimeCheck("Action_Order"))
+		//{
+		//	RandomButton();
+		//	InputOrder();
+		//	TimeDecrement();
+		//}
 	}
 
 	private void RandomButton()
