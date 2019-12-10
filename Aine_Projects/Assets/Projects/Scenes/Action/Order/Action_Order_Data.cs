@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class Action_Order_Data : MonoBehaviour
 {
-	[SerializeField] public List<Action_Order_ComentData.Param> m_list;
+	[SerializeField] public List<Param> m_list;
+	[SerializeField] public List<Param> m_listCopy;
 
-	private void Start()
+	[System.SerializableAttribute]
+	public struct Param
 	{
-		
+		public string text;
+		public List<Char> Moji;
 	}
-	private void Update()
-	{
 
+	[System.SerializableAttribute]
+	public struct Char
+	{
+		public int num;
+		public string text;
 	}
 }

@@ -417,7 +417,7 @@ GameObject:
   - component: {fileID: 157353975}
   - component: {fileID: 157353974}
   m_Layer: 5
-  m_Name: TMP SubMeshUI [JKG-M_Pro Material + LiberationSans SDF Atlas]
+  m_Name: TMP SubMeshUI [Order_Comment Material + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -465,7 +465,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 8.5625
+  m_padding: 5.739875
   m_canvasRenderer: {fileID: 157353975}
   m_TextComponent: {fileID: 1944375614}
   m_materialReferenceIndex: 1
@@ -853,16 +853,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u30B3\u30E1\u30F3\u30C83"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b6ceabca47c0467459ede66104e69660, type: 2}
-  m_sharedMaterial: {fileID: 2976469661571425601, guid: b6ceabca47c0467459ede66104e69660,
+  m_fontAsset: {fileID: 11400000, guid: cd49988a3b0b20d42a953b04b79e89dd, type: 2}
+  m_sharedMaterial: {fileID: 8845832642314892460, guid: cd49988a3b0b20d42a953b04b79e89dd,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4294918144
+  m_fontColor: {r: 0, g: 0.25325942, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1114,14 +1114,172 @@ RectTransform:
   - {fileID: 185599732}
   - {fileID: 1660408476}
   - {fileID: 1944375613}
+  - {fileID: 524674114}
   m_Father: {fileID: 1846667392}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.93413, y: -18.601}
+  m_AnchoredPosition: {x: -0.93413, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &524674113
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 524674114}
+  - component: {fileID: 524674116}
+  - component: {fileID: 524674115}
+  m_Layer: 5
+  m_Name: Sample
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &524674114
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524674113}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 719941971}
+  m_Father: {fileID: 439112508}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.000061035156, y: -166}
+  m_SizeDelta: {x: 600, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &524674115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524674113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Sample Text
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: cd49988a3b0b20d42a953b04b79e89dd, type: 2}
+  m_sharedMaterial: {fileID: 8845832642314892460, guid: cd49988a3b0b20d42a953b04b79e89dd,
+    type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294926148
+  m_fontColor: {r: 0.2688679, g: 0.37420046, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_outlineColor:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_textAlignment: 8194
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_firstOverflowCharacterIndex: -1
+  m_linkedTextComponent: {fileID: 0}
+  m_isLinkedTextComponent: 0
+  m_isTextTruncated: 0
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_ignoreRectMaskCulling: 0
+  m_ignoreCulling: 1
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_firstVisibleCharacter: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_textInfo:
+    textComponent: {fileID: 524674115}
+    characterCount: 11
+    spriteCount: 0
+    spaceCount: 1
+    wordCount: 2
+    linkCount: 0
+    lineCount: 1
+    pageCount: 1
+    materialCount: 2
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_spriteAnimator: {fileID: 0}
+  m_hasFontAssetChanged: 0
+  m_subTextObjects:
+  - {fileID: 0}
+  - {fileID: 719941972}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &524674116
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524674113}
+  m_CullTransparentMesh: 0
 --- !u!1 &554602786
 GameObject:
   m_ObjectHideFlags: 0
@@ -1134,7 +1292,7 @@ GameObject:
   - component: {fileID: 554602789}
   - component: {fileID: 554602788}
   m_Layer: 5
-  m_Name: TMP SubMeshUI [JKG-M_Pro Material + LiberationSans SDF Atlas]
+  m_Name: TMP SubMeshUI [Order_Comment Material + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1182,7 +1340,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 8.5625
+  m_padding: 5.739875
   m_canvasRenderer: {fileID: 554602789}
   m_TextComponent: {fileID: 920701850}
   m_materialReferenceIndex: 1
@@ -1265,6 +1423,78 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 563469176}
+  m_CullTransparentMesh: 0
+--- !u!1 &719941970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 719941971}
+  - component: {fileID: 719941973}
+  - component: {fileID: 719941972}
+  m_Layer: 5
+  m_Name: TMP SubMeshUI [Order_Comment Material + LiberationSans SDF Atlas]
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &719941971
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719941970}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 524674114}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &719941972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719941970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_spriteAsset: {fileID: 0}
+  m_material: {fileID: 0}
+  m_sharedMaterial: {fileID: 0}
+  m_isDefaultMaterial: 0
+  m_padding: 5.739875
+  m_canvasRenderer: {fileID: 719941973}
+  m_TextComponent: {fileID: 524674115}
+  m_materialReferenceIndex: 1
+--- !u!222 &719941973
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719941970}
   m_CullTransparentMesh: 0
 --- !u!1 &849972859
 GameObject:
@@ -1380,16 +1610,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u30B3\u30E1\u30F3\u30C81"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b6ceabca47c0467459ede66104e69660, type: 2}
-  m_sharedMaterial: {fileID: 2976469661571425601, guid: b6ceabca47c0467459ede66104e69660,
+  m_fontAsset: {fileID: 11400000, guid: cd49988a3b0b20d42a953b04b79e89dd, type: 2}
+  m_sharedMaterial: {fileID: 8845832642314892460, guid: cd49988a3b0b20d42a953b04b79e89dd,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4282841653
+  m_fontColor: {r: 0.2082592, g: 0.9811321, b: 0.27743185, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1878,7 +2108,7 @@ GameObject:
   - component: {fileID: 1074961614}
   - component: {fileID: 1074961613}
   m_Layer: 5
-  m_Name: TMP SubMeshUI [JKG-M_Pro Material + LiberationSans SDF Atlas]
+  m_Name: TMP SubMeshUI [Order_Comment Material + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1926,7 +2156,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 8.5625
+  m_padding: 5.739875
   m_canvasRenderer: {fileID: 1074961614}
   m_TextComponent: {fileID: 1409382932}
   m_materialReferenceIndex: 1
@@ -2297,16 +2527,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u30B3\u30E1\u30F3\u30C84"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b6ceabca47c0467459ede66104e69660, type: 2}
-  m_sharedMaterial: {fileID: 2976469661571425601, guid: b6ceabca47c0467459ede66104e69660,
+  m_fontAsset: {fileID: 11400000, guid: cd49988a3b0b20d42a953b04b79e89dd, type: 2}
+  m_sharedMaterial: {fileID: 8845832642314892460, guid: cd49988a3b0b20d42a953b04b79e89dd,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278255605
+  m_fontColor: {r: 0.96098113, g: 1, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2408,7 +2638,7 @@ GameObject:
   - component: {fileID: 1509288675}
   - component: {fileID: 1509288674}
   m_Layer: 5
-  m_Name: TMP SubMeshUI [JKG-M_Pro Material + LiberationSans SDF Atlas]
+  m_Name: TMP SubMeshUI [Order_Comment Material + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2456,7 +2686,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 8.5625
+  m_padding: 5.739875
   m_canvasRenderer: {fileID: 1509288675}
   m_TextComponent: {fileID: 2002368235}
   m_materialReferenceIndex: 1
@@ -2878,7 +3108,7 @@ GameObject:
   - component: {fileID: 1944375615}
   - component: {fileID: 1944375614}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Comp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2924,8 +3154,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Complete Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b6ceabca47c0467459ede66104e69660, type: 2}
-  m_sharedMaterial: {fileID: 2976469661571425601, guid: b6ceabca47c0467459ede66104e69660,
+  m_fontAsset: {fileID: 11400000, guid: cd49988a3b0b20d42a953b04b79e89dd, type: 2}
+  m_sharedMaterial: {fileID: 8845832642314892460, guid: cd49988a3b0b20d42a953b04b79e89dd,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3103,6 +3333,7 @@ MonoBehaviour:
   m_data: {fileID: 1945641143}
   ml_pad: 
   ml_key: 
+  m_selectComment: 0
 --- !u!114 &1945641143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3116,12 +3347,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_list:
-  - num: 00000000020000000100000003000000
-    text:
-    - Aine
-    - "\u30DE\u30B8"
-    - "\u3061\u3083\u3093"
-    - "\u304B\u308F\u3044\u3044"
+  - Moji:
+    - num: 0
+      text: Aine
+    - num: 1
+      text: "\u3061\u3083\u3093"
+    - num: 2
+      text: "\u307E\u3058"
+    - num: 3
+      text: "\u5929\u4F7F"
+  - Moji:
+    - num: 0
+      text: "\u3066\u3093\u3050"
+    - num: 1
+      text: "\u307E\u3093\u3058"
+    - num: 2
+      text: "\u304B\u307F\u306A\u308A"
+    - num: 3
+      text: "\u3053\u3076\u3057"
 --- !u!1 &1977541837
 GameObject:
   m_ObjectHideFlags: 0
@@ -3279,16 +3522,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u30B3\u30E1\u30F3\u30C82"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b6ceabca47c0467459ede66104e69660, type: 2}
-  m_sharedMaterial: {fileID: 2976469661571425601, guid: b6ceabca47c0467459ede66104e69660,
+  m_fontAsset: {fileID: 11400000, guid: cd49988a3b0b20d42a953b04b79e89dd, type: 2}
+  m_sharedMaterial: {fileID: 8845832642314892460, guid: cd49988a3b0b20d42a953b04b79e89dd,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190335
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3692,7 +3935,7 @@ GameObject:
   - component: {fileID: 2131214986}
   - component: {fileID: 2131214985}
   m_Layer: 5
-  m_Name: TMP SubMeshUI [JKG-M_Pro Material + LiberationSans SDF Atlas]
+  m_Name: TMP SubMeshUI [Order_Comment Material + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3740,7 +3983,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 8.5625
+  m_padding: 5.739875
   m_canvasRenderer: {fileID: 2131214986}
   m_TextComponent: {fileID: 212537081}
   m_materialReferenceIndex: 1
