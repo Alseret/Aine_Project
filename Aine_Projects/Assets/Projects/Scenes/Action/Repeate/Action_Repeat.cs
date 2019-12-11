@@ -130,6 +130,8 @@ public class Action_Repeat : Action_MonoSamp
 		ResetValue();
 		ResetText();
 		StartCoroutine(m_scr.imageShot());
+		m_manager.m_controll = m_oldCtrl;
+		m_manager.ChangeControll();
 		// アンロード
 		SceneManager.UnloadSceneAsync(name);
 	}

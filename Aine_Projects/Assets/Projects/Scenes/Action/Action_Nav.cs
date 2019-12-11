@@ -71,7 +71,7 @@ public class Action_Nav : MonoBehaviour
 				switch (action.m_actionType)
 				{
 					case GameManager._ACTION_TYPE.Repeate:
-						SceneManager.LoadScene("Action_Repeate", LoadSceneMode.Additive);
+						SceneManager.LoadScene("Action_Repeat", LoadSceneMode.Additive);
 						break;
 					case GameManager._ACTION_TYPE.Order:
 						SceneManager.LoadScene("Action_Order", LoadSceneMode.Additive);

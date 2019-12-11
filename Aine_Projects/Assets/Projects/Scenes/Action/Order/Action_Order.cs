@@ -5,6 +5,7 @@ using UnityEngine;
 using TMPro;
 using System.Linq;
 using MyBox;
+using UnityEngine.SceneManagement;
 
 [DefaultExecutionOrder (1)]
 public class Action_Order : Action_MonoSamp
@@ -32,6 +33,7 @@ public class Action_Order : Action_MonoSamp
 	private Transform m_circle;
 	private TextMeshProUGUI m_sampleText;
 	[SerializeField] private int m_selectComment;
+	[SerializeField] private int m_commnetCnt;
 
 	private void Awake()
 	{
@@ -44,11 +46,11 @@ public class Action_Order : Action_MonoSamp
 		ml_displayAnim.Add(transform.GetChild(2).GetComponent<Animator>());
 		m_order = transform.GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>();
 		m_circle = transform.GetChild(2).GetChild(2);
-		m_sampleText = m_circle.GetChild(3).GetComponent<TextMeshProUGUI>();
+		m_sampleText = m_circle.GetChild(4).GetComponent<TextMeshProUGUI>();
 		m_sampleText.text = "";
 		Debug.Log("Action_Order");
 		ml_pad = new List<PadButton>();
-
+		m_commnetCnt = 0;
 		SaveValue(ref m_data.m_list, ref m_data.m_listCopy);
 		RandomButton();
 		RandomText();
@@ -69,13 +71,16 @@ public class Action_Order : Action_MonoSamp
 		if (Input.GetKeyDown(KeyCode.R))
 			RandomText();
 		
-		InputOrderText();
+		//if(m_commnetCnt < 4)
+		//	InputOrderText();
 		//if (TimeCheck("Action_Order"))
-		//{
-		//	RandomButton();
-		//	InputOrder();
-		//	TimeDecrement();
-		//}
+		{
+			//	RandomButton();
+			//	InputOrder();
+			if (m_commnetCnt < 4)
+				InputOrderText();
+			//TimeDecrement();
+		}
 	}
 	private void SaveValue(ref List<Action_Order_Data.Param> source, ref List<Action_Order_Data.Param> copy)
 	{
@@ -99,57 +104,165 @@ public class Action_Order : Action_MonoSamp
 	}
 	private void RandomText()
 	{
+		m_commnetCnt = 0;
 		SaveValue(ref m_data.m_list, ref m_data.m_listCopy);
 		m_selectComment = UnityEngine.Random.Range(0, m_data.m_listCopy.Count);
 		m_sampleText.text = "";
-		m_circle.GetChild(2).GetComponent<TextMeshProUGUI>().text =
-					m_data.m_listCopy[m_selectComment].Moji[0].text +
-					m_data.m_listCopy[m_selectComment].Moji[1].text +
-					m_data.m_listCopy[m_selectComment].Moji[2].text +
-					m_data.m_listCopy[m_selectComment].Moji[3].text;
+		m_circle.GetChild(3).GetComponent<TextMeshProUGUI>().text =
+					m_data.m_listCopy[m_selectComment].text;
 		List<Action_Order_Data.Char> work = m_data.m_listCopy[m_selectComment].Moji;
 		work = work.OrderBy(o => Guid.NewGuid()).ToList();
 		for(int i = 0; i < 4; i++)
 			m_data.m_listCopy[m_selectComment].Moji[i] = work[i];
 		for (int i = 0; i < 4; i++)
 			m_circle.GetChild(1).GetChild(i).GetComponent<TextMeshProUGUI>().text = m_data.m_listCopy[m_selectComment].Moji[i].text;
-
-		//m_circle.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = m_data.m_list[m_selectComment].text[0];
-		//m_circle.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().text = m_data.m_list[m_selectComment].text[1];
-		//m_circle.GetChild(1).GetChild(2).GetComponent<TextMeshProUGUI>().text = m_data.m_list[m_selectComment].text[2];
-		//m_circle.GetChild(1).GetChild(3).GetComponent<TextMeshProUGUI>().text = m_data.m_list[m_selectComment].text[3];
-
 	}
-
+	/*
+	 //*  1. 失敗時コメント削除、次のコメに移行
+	 //*  2. 初期案　　コメントごとにポイント打ったら絶対完成
+	 *  3. 間違えたコメントを流す or 失敗用コメント
+	 *  4. 間違えた場合の判定なくす　Delayをつける
+	 */
+	private void InputMissComment()
+	{
+		//	W
+		if (Input.GetKeyDown(KeyCode.W))
+		{
+			if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[3].num)
+			{
+				m_commnetCnt++;
+				m_sampleText.text += m_data.m_listCopy[m_selectComment].Moji[3].text;
+				Debug.Log("Succes");
+			}
+			else
+			{
+				StartCoroutine(NextText());
+				Debug.Log("false");
+			}
+		}
+		//	A
+		if (Input.GetKeyDown(KeyCode.A))
+		{
+			if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[2].num)
+			{
+				m_commnetCnt++;
+				m_sampleText.text += m_data.m_listCopy[m_selectComment].Moji[2].text;
+				Debug.Log("Succes");
+			}
+			else
+			{
+				StartCoroutine(NextText());
+				Debug.Log("false");
+			}
+		}
+		//	S
+		if (Input.GetKeyDown(KeyCode.S))
+		{
+			if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[0].num)
+			{
+				m_commnetCnt++;
+				m_sampleText.text += m_data.m_listCopy[m_selectComment].Moji[0].text;
+				Debug.Log("Succes");
+			}
+			else
+			{
+				StartCoroutine(NextText());
+				Debug.Log("false");
+			}
+		}
+		//	D
+		if (Input.GetKeyDown(KeyCode.D))
+		{
+			if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[1].num)
+			{
+				m_commnetCnt++;
+				m_sampleText.text += m_data.m_listCopy[m_selectComment].Moji[1].text;
+				Debug.Log("Succes");
+			}
+			else
+			{
+				StartCoroutine(NextText());
+				Debug.Log("false");
+			}
+		}
+	}
 	private void InputOrderText()
 	{
-		//switch (m_manager.m_controll)
-		//{
-		//	case GameManager._ControllType.Mouse:
-		//		//	W
-		//		if (Input.GetKeyDown(KeyCode.W))
-		//		{
-		//			m_sampleText.text += m_data.m_list[m_selectComment].text[0];
-		//		}
-		//		//	A
-		//		if (Input.GetKeyDown(KeyCode.A))
-		//		{
-		//			m_sampleText.text += m_data.m_list[m_selectComment].text[1]; ;
-		//		}
-		//		//	S
-		//		if (Input.GetKeyDown(KeyCode.S))
-		//		{
-		//			m_sampleText.text += m_data.m_list[m_selectComment].text[2]; ;
-		//		}
-		//		//	D
-		//		if (Input.GetKeyDown(KeyCode.D))
-		//		{
-		//			m_sampleText.text += m_data.m_list[m_selectComment].text[3]; ;
-		//		}
-		//		break;
-		//	case GameManager._ControllType.GamePad:
-		//		break;
-		//}
+		switch (m_manager.m_controll)
+		{
+			case GameManager._ControllType.Auto:
+				//	W
+				if (Input.GetKeyDown(KeyCode.W))
+				{
+					if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[3].num)
+					{
+						m_commnetCnt++;
+						m_sampleText.text += "<color=#000000>" + m_data.m_listCopy[m_selectComment].Moji[3].text + "</color>";
+						Debug.Log("Succes");
+					}
+					else
+					{
+						StartCoroutine(NextText());
+						Debug.Log("false");
+					}
+				}
+				//	A
+				if (Input.GetKeyDown(KeyCode.A))
+				{
+					if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[2].num)
+					{
+						m_commnetCnt++;
+						m_sampleText.text += "<color=#000000>" + m_data.m_listCopy[m_selectComment].Moji[2].text + "</color>";
+						Debug.Log("Succes");
+					}
+					else
+					{
+						StartCoroutine(NextText());
+						Debug.Log("false");
+					}
+				}
+				//	S
+				if (Input.GetKeyDown(KeyCode.S))
+				{
+					if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[0].num)
+					{
+						m_commnetCnt++;
+						m_sampleText.text += "<color=#000000>" + m_data.m_listCopy[m_selectComment].Moji[0].text + "</color>";
+						Debug.Log("Succes");
+					}
+					else
+					{
+						StartCoroutine(NextText());
+						Debug.Log("false");
+					}
+				}
+				//	D
+				if (Input.GetKeyDown(KeyCode.D))
+				{
+					if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[1].num)
+					{
+						m_commnetCnt++;
+						m_sampleText.text += "<color=#000000>" + m_data.m_listCopy[m_selectComment].Moji[1].text + "</color>";
+						Debug.Log("Succes");
+					}
+					else
+					{
+						StartCoroutine(NextText());
+						Debug.Log("false");
+					}
+				}
+				break;
+			case GameManager._ControllType.GamePad:
+				break;
+		}
+		if (m_commnetCnt >= 4)
+			StartCoroutine(NextText());
+	}
+	//private IEnumerator 
+	private IEnumerator NextText()
+	{
+		yield return new WaitForSeconds(1f);
+		RandomText();
 	}
 
 	private void RandomButton()
@@ -189,5 +302,58 @@ public class Action_Order : Action_MonoSamp
 			return true;
 		}
 		return false;
+	}
+
+	// 時間チェック
+	protected override bool TimeCheck(string name)
+	{
+		if (m_time <= 0f)
+		{
+			m_time = 0f;
+			ChangeTime();
+			StartCoroutine(EndEffect(name));
+			return false;
+		}
+		return true;
+	}
+
+	// 開始演出
+	protected override IEnumerator StartEffect()
+	{
+		//yield return null;
+		m_startAnim.Play("StartText");
+		//m_buttonAnim.Play("StartButton");
+		//m_countAnim.Play("StartCount");
+		m_timeAnim.SetBool("Start", true);
+		yield return new WaitForSeconds(m_startWaitTime);
+		m_cutAnim.AnimSpeed(0, m_multiply);
+		m_cutin.PlayAnim(true);
+		m_bEffect = false;
+	}
+
+	// 終了演出
+	protected override IEnumerator EndEffect(string name)
+	{
+		Debug.Log("END");
+		enabled = false;
+		yield return new WaitForSeconds(m_stopTime);
+		ChackEvaluation(m_cnt);
+		m_manager.AddMaster(m_type, m_cnt, m_ev);
+		m_startAnim.Play("EndText");
+		//m_buttonAnim.Play("EndButton");
+		//m_countAnim.Play("EndCount");
+		m_timeAnim.SetBool("Start", false);
+		m_cutin.PlayAnim(false);
+		yield return new WaitForSeconds(2f);
+		//AnimSet(false);
+		m_evaAnim.SetBool("Start", false);
+		yield return new WaitForSeconds(1f);
+		ResetValue();
+		ResetText();
+		StartCoroutine(m_scr.imageShot());
+		m_manager.m_controll = m_oldCtrl;
+		m_manager.ChangeControll();
+		// アンロード
+		SceneManager.UnloadSceneAsync(name);
 	}
 }

@@ -48,6 +48,7 @@ public class Action_MonoSamp : MonoBehaviour
 	[SerializeField] protected float m_nice;
 
 	protected ScreenShot m_scr;
+	[SerializeField] protected GameManager._ControllType m_oldCtrl;
 
 	// Component
 	protected void Setup()
@@ -75,6 +76,10 @@ public class Action_MonoSamp : MonoBehaviour
 		m_cutin = GameObject.Find("CutIn").GetComponent<CutIN_Manager>();
 
 		m_scr = GameObject.Find("Cam").GetComponent<ScreenShot>();
+		m_oldCtrl = m_manager.m_controll;
+
+		m_manager.m_controll = GameManager._ControllType.Auto;
+		m_manager.ChangeControll();
 	}
 
 	// Reset

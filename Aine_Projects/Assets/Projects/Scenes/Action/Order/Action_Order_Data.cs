@@ -20,4 +20,16 @@ public class Action_Order_Data : MonoBehaviour
 		public int num;
 		public string text;
 	}
+	private void Start()
+	{
+		for (int i = 0; i < m_list.Count; i++)
+		{
+			Param work = m_list[i];
+			work.text = m_list[i].Moji[0].text + " " +
+						m_list[i].Moji[1].text + " " +
+						m_list[i].Moji[2].text + " " +
+						m_list[i].Moji[3].text;
+			m_list[i] = work;
+		}
+	}
 }

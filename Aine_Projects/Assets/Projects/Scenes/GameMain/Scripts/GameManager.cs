@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour
 	public enum _ControllType
 	{
 		Mouse,
-		GamePad
+		GamePad,
+		Auto,
 	}
 	[System.Serializable]
 	public enum _ACTION_TYPE
@@ -83,12 +84,19 @@ public class GameManager : MonoBehaviour
 		switch (m_controll)
 		{
 			case _ControllType.Mouse:
+				Debug.Log("Mouse");
 				m_contObj[0].SetActive(true);
 				m_contObj[1].SetActive(false);
 				break;
 			case _ControllType.GamePad:
+				Debug.Log("GamePad");
 				m_contObj[0].SetActive(false);
 				m_contObj[1].SetActive(true);
+				break;
+			case _ControllType.Auto:
+				Debug.Log("Auto");
+				m_contObj[0].SetActive(false);
+				m_contObj[1].SetActive(false);
 				break;
 		}
 	}
