@@ -58,7 +58,7 @@ public class Action_MonoSamp : MonoBehaviour
 
 		// Animator
 		m_common = GameObject.Find("Action/Common").GetComponent<Transform>();
-		m_startAnim = transform.GetComponent<Animator>();
+		m_startAnim = transform.GetChild(0).GetComponent<Animator>();
 		m_cntAnim = transform.GetChild(1).GetComponent<Animator>();
 		m_timeAnim = m_common.GetChild(0).GetComponent<Animator>();
 		m_evaAnim = m_common.GetChild(1).GetComponent<Animator>();

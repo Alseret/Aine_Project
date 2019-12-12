@@ -64,7 +64,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Aine\u3061\u3083\u3093\u30DE\u30B8\u5929\u4F7F"
+  m_text: "Ai\u30C1\u30E3\u30F3\u30CD\u30EB\u306E\u30D1\u30AF\u30EA?"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd49988a3b0b20d42a953b04b79e89dd, type: 2}
   m_sharedMaterial: {fileID: 8845832642314892460, guid: cd49988a3b0b20d42a953b04b79e89dd,
@@ -93,8 +93,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 0.55
-  m_fontSizeBase: 0.55
+  m_fontSize: 0.45
+  m_fontSizeBase: 0.45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 4246603847218856198}
-    characterCount: 11
+    characterCount: 12
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -339,7 +339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9289566, g: 1, b: 0.4764151, a: 1}
+  m_Color: {r: 0.9289566, g: 1, b: 0.4764151, a: 0.76862746}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

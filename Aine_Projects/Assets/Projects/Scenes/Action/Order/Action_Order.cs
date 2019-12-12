@@ -34,6 +34,10 @@ public class Action_Order : Action_MonoSamp
 	private TextMeshProUGUI m_sampleText;
 	[SerializeField] private int m_selectComment;
 	[SerializeField] private int m_commnetCnt;
+	private Transform m_cmtCanvas;
+	[SerializeField] private GameObject m_newComment;
+	private bool[] m_inputFlag = new bool[4];
+	[SerializeField] private Animator m_orderAnim;
 
 	private void Awake()
 	{
@@ -48,38 +52,56 @@ public class Action_Order : Action_MonoSamp
 		m_circle = transform.GetChild(2).GetChild(2);
 		m_sampleText = m_circle.GetChild(4).GetComponent<TextMeshProUGUI>();
 		m_sampleText.text = "";
+		m_cmtCanvas = GameObject.Find("Comment Canvas").GetComponent<Transform>();
 		Debug.Log("Action_Order");
 		ml_pad = new List<PadButton>();
 		m_commnetCnt = 0;
+		for (int i = 0; i < 4; i++)	
+			m_inputFlag[i] = false;
 		SaveValue(ref m_data.m_list, ref m_data.m_listCopy);
-		RandomButton();
+		//RandomButton();
 		RandomText();
+		ResetValue();
 		//ResetValue();
 		// 演出開始
-		//StartCoroutine(StartEffect());
+		StartCoroutine(StartEffect());
 	}
-	protected override void ResetText()
+	// Reset
+	protected override void ResetValue()
 	{
-		string str = "      <size=80>" + (0) + "</size>\n    連打!!";
-		ChangeCount(str);
+		//m_startAnim.SetBool("Start", false);
+		//m_cntAnim.SetBool("Start", false);
+		//m_timeAnim.SetBool("Start", false);
+		//m_evaAnim.SetBool("Start", false);
+		//m_cntAnim.SetBool("Start", false);
+		//AnimSet(false);
+		m_time = m_defTime;
+		ChangeTime();
+		m_cnt = 0;
+		m_bEffect = true;
 	}
+	//protected override void ResetText()
+	//{
+	//	string str = "      <size=80>" + (0) + "</size>\n    連打!!";
+	//	ChangeCount(str);
+	//}
 
 	// Update is called once per frame
 	private void Update()
 	{
-		//if (m_bEffect) return;
+		if (m_bEffect) return;
 		if (Input.GetKeyDown(KeyCode.R))
 			RandomText();
 		
 		//if(m_commnetCnt < 4)
 		//	InputOrderText();
-		//if (TimeCheck("Action_Order"))
+		if (TimeCheck("Action_Order"))
 		{
 			//	RandomButton();
 			//	InputOrder();
 			if (m_commnetCnt < 4)
 				InputOrderText();
-			//TimeDecrement();
+			TimeDecrement();
 		}
 	}
 	private void SaveValue(ref List<Action_Order_Data.Param> source, ref List<Action_Order_Data.Param> copy)
@@ -123,7 +145,7 @@ public class Action_Order : Action_MonoSamp
 	 *  3. 間違えたコメントを流す or 失敗用コメント
 	 *  4. 間違えた場合の判定なくす　Delayをつける
 	 */
-	private void InputMissComment()
+	private void InputDelayComment()
 	{
 		//	W
 		if (Input.GetKeyDown(KeyCode.W))
@@ -192,62 +214,82 @@ public class Action_Order : Action_MonoSamp
 		{
 			case GameManager._ControllType.Auto:
 				//	W
-				if (Input.GetKeyDown(KeyCode.W))
+				if (Input.GetKeyDown(KeyCode.W) &&	!m_inputFlag[0])
 				{
 					if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[3].num)
 					{
+						m_inputFlag[0] = true;
 						m_commnetCnt++;
 						m_sampleText.text += "<color=#000000>" + m_data.m_listCopy[m_selectComment].Moji[3].text + "</color>";
 						Debug.Log("Succes");
 					}
 					else
 					{
-						StartCoroutine(NextText());
+						m_inputFlag[0] = true;
+						m_commnetCnt++;
+						m_sampleText.text += "<color=#000000>" + m_data.m_listCopy[m_selectComment].Moji[3].text + "</color>";
+						//StartCoroutine(InstanceComment(m_sampleText.text));
+						//StartCoroutine(NextText());
 						Debug.Log("false");
 					}
 				}
 				//	A
-				if (Input.GetKeyDown(KeyCode.A))
+				if (Input.GetKeyDown(KeyCode.A) && !m_inputFlag[1])
 				{
 					if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[2].num)
 					{
+						m_inputFlag[1] = true;
 						m_commnetCnt++;
 						m_sampleText.text += "<color=#000000>" + m_data.m_listCopy[m_selectComment].Moji[2].text + "</color>";
 						Debug.Log("Succes");
 					}
 					else
 					{
-						StartCoroutine(NextText());
+						m_inputFlag[1] = true;
+						m_commnetCnt++;
+						m_sampleText.text += "<color=#000000>" + m_data.m_listCopy[m_selectComment].Moji[2].text + "</color>";
+						//StartCoroutine(InstanceComment(m_sampleText.text));
+						//StartCoroutine(NextText());
 						Debug.Log("false");
 					}
 				}
 				//	S
-				if (Input.GetKeyDown(KeyCode.S))
+				if (Input.GetKeyDown(KeyCode.S) && !m_inputFlag[2])
 				{
 					if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[0].num)
 					{
+						m_inputFlag[2] = true;
 						m_commnetCnt++;
 						m_sampleText.text += "<color=#000000>" + m_data.m_listCopy[m_selectComment].Moji[0].text + "</color>";
 						Debug.Log("Succes");
 					}
 					else
 					{
-						StartCoroutine(NextText());
+						m_inputFlag[2] = true;
+						m_commnetCnt++;
+						m_sampleText.text += "<color=#000000>" + m_data.m_listCopy[m_selectComment].Moji[0].text + "</color>";
+						//StartCoroutine(InstanceComment(m_sampleText.text));
+						//StartCoroutine(NextText());
 						Debug.Log("false");
 					}
 				}
 				//	D
-				if (Input.GetKeyDown(KeyCode.D))
+				if (Input.GetKeyDown(KeyCode.D) && !m_inputFlag[3])
 				{
 					if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[1].num)
 					{
+						m_inputFlag[3] = true;
 						m_commnetCnt++;
 						m_sampleText.text += "<color=#000000>" + m_data.m_listCopy[m_selectComment].Moji[1].text + "</color>";
 						Debug.Log("Succes");
 					}
 					else
 					{
-						StartCoroutine(NextText());
+						m_inputFlag[3] = true;
+						m_commnetCnt++;
+						m_sampleText.text += "<color=#000000>" + m_data.m_listCopy[m_selectComment].Moji[1].text + "</color>";
+						//StartCoroutine(InstanceComment(m_sampleText.text));
+						//StartCoroutine(NextText());
 						Debug.Log("false");
 					}
 				}
@@ -256,13 +298,25 @@ public class Action_Order : Action_MonoSamp
 				break;
 		}
 		if (m_commnetCnt >= 4)
+		{
+			StartCoroutine(InstanceComment(m_sampleText.text));
 			StartCoroutine(NextText());
+		}
+	}
+
+	private IEnumerator InstanceComment(string text)
+	{
+		yield return new WaitForSeconds(1f);
+		GameObject work = Instantiate(m_newComment, m_cmtCanvas);
+		work.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = text;
 	}
 	//private IEnumerator 
 	private IEnumerator NextText()
 	{
 		yield return new WaitForSeconds(1f);
 		RandomText();
+		for (int i = 0; i < 4; i++)
+			m_inputFlag[i] = false;
 	}
 
 	private void RandomButton()
@@ -285,14 +339,14 @@ public class Action_Order : Action_MonoSamp
 	}
 
 	// 順番
-	private void InputOrder()
-	{
-		if (InputButton())
-		{
-			string str = "      <size=80>" + (++m_cnt) + "</size>\n    連打!!";
-			ChangeCount(str);
-		}
-	}
+	//private void InputOrder()
+	//{
+	//	if (InputButton())
+	//	{
+	//		string str = "      <size=80>" + (++m_cnt) + "</size>\n    連打!!";
+	//		ChangeCount(str);
+	//	}
+	//}
 	private bool InputButton()
 	{
 		if (Input.GetKeyDown("joystick button " + (int)ml_pad[0]) || Input.GetKeyDown(KeyCode.Space))
@@ -322,9 +376,9 @@ public class Action_Order : Action_MonoSamp
 	{
 		//yield return null;
 		m_startAnim.Play("StartText");
-		//m_buttonAnim.Play("StartButton");
+		m_orderAnim.Play("StartButton");
 		//m_countAnim.Play("StartCount");
-		m_timeAnim.SetBool("Start", true);
+		m_timeAnim.Play("Order_Start");
 		yield return new WaitForSeconds(m_startWaitTime);
 		m_cutAnim.AnimSpeed(0, m_multiply);
 		m_cutin.PlayAnim(true);
@@ -340,9 +394,10 @@ public class Action_Order : Action_MonoSamp
 		ChackEvaluation(m_cnt);
 		m_manager.AddMaster(m_type, m_cnt, m_ev);
 		m_startAnim.Play("EndText");
+		m_orderAnim.Play("EndButton");
 		//m_buttonAnim.Play("EndButton");
 		//m_countAnim.Play("EndCount");
-		m_timeAnim.SetBool("Start", false);
+		m_timeAnim.Play("Time_End");
 		m_cutin.PlayAnim(false);
 		yield return new WaitForSeconds(2f);
 		//AnimSet(false);

@@ -15,12 +15,12 @@ public class Action_Repeat : Action_MonoSamp
 	// Start is called before the first frame update
 	private void Awake()
 	{
-		Setup();	// Component
-		m_type = GameManager._ACTION_TYPE.Repeate;
-		ml_displayAnim.Add(transform.GetChild(0).GetComponent<Animator>());
 	}
 	private void Start()
 	{
+		Setup();    // Component
+		m_type = GameManager._ACTION_TYPE.Repeate;
+		ml_displayAnim.Add(transform.GetChild(0).GetComponent<Animator>());
 		Debug.Log("Action_Repeate");
 		ResetValue();
 		// 演出開始
@@ -103,7 +103,7 @@ public class Action_Repeat : Action_MonoSamp
 		m_startAnim.Play("StartText");
 		m_buttonAnim.Play("StartButton");
 		m_countAnim.Play("StartCount");
-		m_timeAnim.SetBool("Start", true);
+		m_timeAnim.Play("Repeat_Start");
 		yield return new WaitForSeconds(m_startWaitTime);
 		m_cutAnim.AnimSpeed(0, m_multiply);
 		m_cutin.PlayAnim(true);
@@ -121,7 +121,7 @@ public class Action_Repeat : Action_MonoSamp
 		m_startAnim.Play("EndText");
 		m_buttonAnim.Play("EndButton");
 		m_countAnim.Play("EndCount");
-		m_timeAnim.SetBool("Start", false);
+		m_timeAnim.Play("Time_End");
 		m_cutin.PlayAnim(false);
 		yield return new WaitForSeconds(2f);
 		//AnimSet(false);
