@@ -6,13 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Projects/Scenes/Title/Title.unity
+    guid: e07542af2dccb204580f21c4f7336cd3
+  - enabled: 1
     path: Assets/Projects/Scenes/GameMain/Stage.unity
     guid: a338f459f80347442bee93be8405a66c
   - enabled: 1
     path: Assets/Projects/Scenes/GameMain/CutIn.unity
     guid: 9cde3071c9e0c754785e3998bac103d6
   - enabled: 1
-    path: Assets/Projects/Scenes/GameMain/Result.unity
+    path: Assets/Projects/Scenes/Result/Result.unity
     guid: e372ab4e61ce3e2428bbe92e40883cac
   - enabled: 1
     path: Assets/Projects/Scenes/Action/Order/Action_Order.unity
@@ -23,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Projects/Scenes/Action/Timing/Action_Timing.unity
     guid: 2a7bc7a85c209ac4f83dd59f846559f1
+  - enabled: 1
+    path: Assets/Projects/Scenes/Action/Roll/Action_Roll.unity
+    guid: baa8d8a16b4859a41a136db01fda6886
   m_configObjects: {}

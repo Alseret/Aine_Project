@@ -49,6 +49,7 @@ public class Action_MonoSamp : MonoBehaviour
 
 	protected ScreenShot m_scr;
 	[SerializeField] protected GameManager._ControllType m_oldCtrl;
+	protected Ghost_Controller m_ghost;
 
 	// Component
 	protected void Setup()
@@ -80,6 +81,8 @@ public class Action_MonoSamp : MonoBehaviour
 
 		m_manager.m_controll = GameManager._ControllType.Auto;
 		m_manager.ChangeControll();
+
+		m_ghost = m_manager.GetComponent<Ghost_Controller>();
 	}
 
 	// Reset

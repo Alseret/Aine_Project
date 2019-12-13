@@ -214,7 +214,7 @@ public class Action_Order : Action_MonoSamp
 		{
 			case GameManager._ControllType.Auto:
 				//	W
-				if (Input.GetKeyDown(KeyCode.W) &&	!m_inputFlag[0])
+				if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown("joystick button 3")) &&	!m_inputFlag[0])
 				{
 					if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[3].num)
 					{
@@ -234,7 +234,7 @@ public class Action_Order : Action_MonoSamp
 					}
 				}
 				//	A
-				if (Input.GetKeyDown(KeyCode.A) && !m_inputFlag[1])
+				if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown("joystick button 2")) && !m_inputFlag[1])
 				{
 					if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[2].num)
 					{
@@ -254,7 +254,7 @@ public class Action_Order : Action_MonoSamp
 					}
 				}
 				//	S
-				if (Input.GetKeyDown(KeyCode.S) && !m_inputFlag[2])
+				if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown("joystick button 0")) && !m_inputFlag[2])
 				{
 					if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[0].num)
 					{
@@ -274,7 +274,7 @@ public class Action_Order : Action_MonoSamp
 					}
 				}
 				//	D
-				if (Input.GetKeyDown(KeyCode.D) && !m_inputFlag[3])
+				if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown("joystick button 1")) && !m_inputFlag[3])
 				{
 					if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[1].num)
 					{

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
@@ -24,7 +25,7 @@ public class Result_Controller : MonoBehaviour
 	[SerializeField] private List<PICTURE_POS> m_pic;
 
 	// Start is called before the first frame update
-	void Start()
+	private void Start()
 	{
 		m_scrShot = GameObject.Find("Cam").GetComponent<ScreenShot>();
 		GameObject.Find("System").SetActive(false);
@@ -34,8 +35,10 @@ public class Result_Controller : MonoBehaviour
 	}
 
 	// Update is called once per frame
-	void Update()
+	private void Update()
 	{
+		if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 0"))
+			SceneManager.LoadScene("Title");
 		if (Input.GetKeyDown(KeyCode.Return) && (m_scrShot.m_sprite.Count > m_picCnt))
 		{
 			Debug.Log("Sprite : " + m_scrShot.m_sprite.Count);
@@ -81,7 +84,7 @@ public class Result_Controller : MonoBehaviour
 		GameObject work;
 		work = Instantiate(m_picPrefab, transform);//.Find("Pictures"));
 		work.transform.GetChild(0).GetComponent<Image>().sprite = m_scrShot.m_sprite[m_picCnt];
-		work.transform.parent = transform.Find("Pictures");
+		work.transform.parent = transform.GetChild(1).Find("Pictures");
 		if (m_scrShot.m_sprite.Count - 1 == m_picCnt)
 		{
 			work.GetComponent<RectTransform>().localPosition = new Vector2(m_pic[m_pic.Count - 1].pos.x, m_pic[m_pic.Count - 1].pos.y);

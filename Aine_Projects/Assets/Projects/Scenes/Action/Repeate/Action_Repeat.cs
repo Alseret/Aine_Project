@@ -117,6 +117,7 @@ public class Action_Repeat : Action_MonoSamp
 		enabled = false;
 		yield return new WaitForSeconds(m_stopTime);
 		ChackEvaluation(m_cnt);
+		m_ghost.GenerateGhost(m_ev);
 		m_manager.AddMaster(m_type, m_cnt, m_ev);
 		m_startAnim.Play("EndText");
 		m_buttonAnim.Play("EndButton");

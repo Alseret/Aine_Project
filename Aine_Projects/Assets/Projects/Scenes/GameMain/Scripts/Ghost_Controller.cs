@@ -8,6 +8,7 @@ public class Ghost_Controller : MonoBehaviour
 	[SerializeField] private GameObject m_ghostPrefab;
 	[SerializeField] private float m_destroyTime;
 	[SerializeField] float time;
+	[SerializeField] private Animation[] m_animCtrl;
 
 	// Start is called before the first frame update
 	private void Start()
@@ -26,19 +27,19 @@ public class Ghost_Controller : MonoBehaviour
 		switch (eva)
 		{
 			case GameManager._Evaluation.Excellent:
-				name = "SAK_Final";
+				name = "Dance1";
 				break;
 			case GameManager._Evaluation.Good:
-				name = "SIM_Final";
+				name = "Dance2";
 				break;
 			case GameManager._Evaluation.Nice:
-				name = "NOT_Final";
+				name = "Dance3";
 				break;
 		}
 
 		GameObject work;
 		work = Instantiate(m_ghostPrefab, new Vector3(-1.2f, 0f, 1.2f), Quaternion.Euler(Vector3.up * 180f), GameObject.Find("Unit").transform);
-		work.GetComponent<Animator>().Play(name, 0, m_idol.GetCurrentAnimatorStateInfo(0).normalizedTime);
+		work.GetComponent<Animator>().Play(name/* , 0, m_idol.GetCurrentAnimatorStateInfo(0).normalizedTime*/);
 		Destroy(work, m_destroyTime);
 	}
 }

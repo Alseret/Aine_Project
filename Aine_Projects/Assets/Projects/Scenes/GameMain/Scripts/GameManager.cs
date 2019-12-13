@@ -145,6 +145,7 @@ public class GameManager : MonoBehaviour
 	private void EndMusic()
 	{
 		if (!(m_audio.time == 0f && !m_audio.isPlaying)) return;
+		StartCoroutine(GameObject.Find("Cam").GetComponent<ScreenShot>().imageShot());
 		enabled = false;
 		SceneManager.LoadScene("Result", LoadSceneMode.Additive);
 	}
