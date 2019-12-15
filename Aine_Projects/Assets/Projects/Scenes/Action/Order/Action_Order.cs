@@ -32,6 +32,7 @@ public class Action_Order : Action_MonoSamp
 	[SerializeField] private List<KeyButton> ml_key;
 	private Transform m_circle;
 	private TextMeshProUGUI m_sampleText;
+	private TextMeshProUGUI m_compSampText;
 	[SerializeField] private int m_selectComment;
 	[SerializeField] private int m_commnetCnt;
 	private Transform m_cmtCanvas;
@@ -52,6 +53,8 @@ public class Action_Order : Action_MonoSamp
 		m_circle = transform.GetChild(2).GetChild(2);
 		m_sampleText = m_circle.GetChild(4).GetComponent<TextMeshProUGUI>();
 		m_sampleText.text = "";
+		m_compSampText = m_circle.GetChild(5).GetComponent<TextMeshProUGUI>();
+		m_compSampText.text = "";
 		m_cmtCanvas = GameObject.Find("Comment Canvas").GetComponent<Transform>();
 		Debug.Log("Action_Order");
 		ml_pad = new List<PadButton>();
@@ -100,7 +103,8 @@ public class Action_Order : Action_MonoSamp
 			//	RandomButton();
 			//	InputOrder();
 			if (m_commnetCnt < 4)
-				InputOrderText();
+				InputDelayComment();
+				//InputOrderText();
 			TimeDecrement();
 		}
 	}
@@ -130,6 +134,9 @@ public class Action_Order : Action_MonoSamp
 		SaveValue(ref m_data.m_list, ref m_data.m_listCopy);
 		m_selectComment = UnityEngine.Random.Range(0, m_data.m_listCopy.Count);
 		m_sampleText.text = "";
+		m_compSampText.text = "";
+		m_enterText = 0;
+		m_delay = false;
 		m_circle.GetChild(3).GetComponent<TextMeshProUGUI>().text =
 					m_data.m_listCopy[m_selectComment].text;
 		List<Action_Order_Data.Char> work = m_data.m_listCopy[m_selectComment].Moji;
@@ -145,22 +152,30 @@ public class Action_Order : Action_MonoSamp
 	 *  3. 間違えたコメントを流す or 失敗用コメント
 	 *  4. 間違えた場合の判定なくす　Delayをつける
 	 */
+	private int m_enterText;
+	private bool m_delay;
+	[SerializeField] private float m_delayTime;
+	private IEnumerator Delay()
+	{
+		m_delay = true;
+		yield return new WaitForSeconds(m_delayTime);
+		m_delay = false;
+	}
 	private void InputDelayComment()
 	{
+		if (m_delay) return;
 		//	W
 		if (Input.GetKeyDown(KeyCode.W))
 		{
 			if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[3].num)
 			{
 				m_commnetCnt++;
-				m_sampleText.text += m_data.m_listCopy[m_selectComment].Moji[3].text;
+				m_enterText = m_commnetCnt;
+				//m_compSampText.text += "<color=#000000>" + m_data.m_listCopy[m_selectComment].Moji[3].text + "</color>";
 				Debug.Log("Succes");
 			}
 			else
-			{
-				StartCoroutine(NextText());
-				Debug.Log("false");
-			}
+				StartCoroutine(Delay());
 		}
 		//	A
 		if (Input.GetKeyDown(KeyCode.A))
@@ -168,14 +183,12 @@ public class Action_Order : Action_MonoSamp
 			if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[2].num)
 			{
 				m_commnetCnt++;
-				m_sampleText.text += m_data.m_listCopy[m_selectComment].Moji[2].text;
+				m_enterText = m_commnetCnt;
+				//m_compSampText.text += "<color=#000000>" + m_data.m_listCopy[m_selectComment].Moji[2].text + "</color>";
 				Debug.Log("Succes");
 			}
 			else
-			{
-				StartCoroutine(NextText());
-				Debug.Log("false");
-			}
+				StartCoroutine(Delay());
 		}
 		//	S
 		if (Input.GetKeyDown(KeyCode.S))
@@ -183,14 +196,12 @@ public class Action_Order : Action_MonoSamp
 			if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[0].num)
 			{
 				m_commnetCnt++;
-				m_sampleText.text += m_data.m_listCopy[m_selectComment].Moji[0].text;
+				m_enterText = m_commnetCnt;
+				//m_compSampText.text += "<color=#000000>" + m_data.m_listCopy[m_selectComment].Moji[0].text + "</color>";
 				Debug.Log("Succes");
 			}
 			else
-			{
-				StartCoroutine(NextText());
-				Debug.Log("false");
-			}
+				StartCoroutine(Delay());
 		}
 		//	D
 		if (Input.GetKeyDown(KeyCode.D))
@@ -198,14 +209,111 @@ public class Action_Order : Action_MonoSamp
 			if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[1].num)
 			{
 				m_commnetCnt++;
-				m_sampleText.text += m_data.m_listCopy[m_selectComment].Moji[1].text;
+				m_enterText = m_commnetCnt;
+				//m_compSampText.text += "<color=#000000>" + m_data.m_listCopy[m_selectComment].Moji[1].text + "</color>";
 				Debug.Log("Succes");
 			}
 			else
-			{
-				StartCoroutine(NextText());
-				Debug.Log("false");
-			}
+				StartCoroutine(Delay());
+		}
+		switch (m_enterText)
+		{
+			case 0:
+				m_compSampText.text = m_data.m_list[m_selectComment].Moji[0].text +
+															m_data.m_list[m_selectComment].Moji[1].text +
+															m_data.m_list[m_selectComment].Moji[2].text +
+															m_data.m_list[m_selectComment].Moji[3].text;
+				break;
+			case 1:
+				m_compSampText.text = "<color=#000000>" + m_data.m_list[m_selectComment].Moji[0].text + "</color>" +
+															m_data.m_list[m_selectComment].Moji[1].text +
+															m_data.m_list[m_selectComment].Moji[2].text +
+															m_data.m_list[m_selectComment].Moji[3].text;
+				break;
+			case 2:
+				m_compSampText.text = "<color=#000000>" + m_data.m_list[m_selectComment].Moji[0].text +
+															m_data.m_list[m_selectComment].Moji[1].text + "</color>" +
+															m_data.m_list[m_selectComment].Moji[2].text +
+															m_data.m_list[m_selectComment].Moji[3].text;
+				break;
+			case 3:
+				m_compSampText.text = "<color=#000000>" + m_data.m_list[m_selectComment].Moji[0].text +
+															m_data.m_list[m_selectComment].Moji[1].text +
+															m_data.m_list[m_selectComment].Moji[2].text + "</color>" +
+															m_data.m_list[m_selectComment].Moji[3].text;
+				break;
+			case 4:
+				m_compSampText.text = "<color=#000000>" + m_data.m_list[m_selectComment].Moji[0].text +
+															m_data.m_list[m_selectComment].Moji[1].text +
+															m_data.m_list[m_selectComment].Moji[2].text +
+															m_data.m_list[m_selectComment].Moji[3].text + "</color>";
+				break;
+		}
+
+		////	W
+		//if (Input.GetKeyDown(KeyCode.W))
+		//{
+		//	if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[3].num)
+		//	{
+		//		m_commnetCnt++;
+		//		m_compSampText.text += "<color=#000000>" + m_data.m_listCopy[m_selectComment].Moji[3].text + "</color>";
+		//		Debug.Log("Succes");
+		//	}
+		//	else
+		//	{
+		//		//StartCoroutine(NextText());
+		//		Debug.Log("false");
+		//	}
+		//}
+		////	A
+		//if (Input.GetKeyDown(KeyCode.A))
+		//{
+		//	if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[2].num)
+		//	{
+		//		m_commnetCnt++;
+		//		m_compSampText.text += "<color=#000000>" + m_data.m_listCopy[m_selectComment].Moji[2].text + "</color>";
+		//		Debug.Log("Succes");
+		//	}
+		//	else
+		//	{
+		//		//StartCoroutine(NextText());
+		//		Debug.Log("false");
+		//	}
+		//}
+		////	S
+		//if (Input.GetKeyDown(KeyCode.S))
+		//{
+		//	if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[0].num)
+		//	{
+		//		m_commnetCnt++;
+		//		m_compSampText.text += "<color=#000000>" + m_data.m_listCopy[m_selectComment].Moji[0].text + "</color>";
+		//		Debug.Log("Succes");
+		//	}
+		//	else
+		//	{
+		//		//StartCoroutine(NextText());
+		//		Debug.Log("false");
+		//	}
+		//}
+		////	D
+		//if (Input.GetKeyDown(KeyCode.D))
+		//{
+		//	if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[1].num)
+		//	{
+		//		m_commnetCnt++;
+		//		m_compSampText.text += "<color=#000000>" + m_data.m_listCopy[m_selectComment].Moji[1].text + "</color>";
+		//		Debug.Log("Succes");
+		//	}
+		//	else
+		//	{
+		//		//StartCoroutine(NextText());
+		//		Debug.Log("false");
+		//	}
+		//}
+		if (m_commnetCnt >= 4)
+		{
+			StartCoroutine(InstanceComment(m_compSampText.text));
+			StartCoroutine(NextText());
 		}
 	}
 	private void InputOrderText()
