@@ -417,7 +417,7 @@ GameObject:
   - component: {fileID: 157353975}
   - component: {fileID: 157353974}
   m_Layer: 5
-  m_Name: TMP SubMeshUI [Order_Comment Material + LiberationSans SDF Atlas]
+  m_Name: TMP SubMeshUI [Order_Comment_Comp + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -465,7 +465,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 6.9244995
+  m_padding: 2.33
   m_canvasRenderer: {fileID: 157353975}
   m_TextComponent: {fileID: 1944375614}
   m_materialReferenceIndex: 1
@@ -854,15 +854,14 @@ MonoBehaviour:
   m_text: "\u30B3\u30E1\u30F3\u30C83"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd49988a3b0b20d42a953b04b79e89dd, type: 2}
-  m_sharedMaterial: {fileID: 8845832642314892460, guid: cd49988a3b0b20d42a953b04b79e89dd,
-    type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 0febe11426519d347b0750ebb3a1bb11, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294632752
-  m_fontColor: {r: 0.18974723, g: 0.9018744, b: 0.9811321, a: 1}
+    rgba: 4294964106
+  m_fontColor: {r: 0.5424528, g: 0.95469826, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1594,7 +1593,7 @@ GameObject:
   - component: {fileID: 554602789}
   - component: {fileID: 554602788}
   m_Layer: 5
-  m_Name: TMP SubMeshUI [Order_Comment Material + LiberationSans SDF Atlas]
+  m_Name: TMP SubMeshUI [Order_Comment_Green + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1642,7 +1641,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 6.9244995
+  m_padding: 8.5625
   m_canvasRenderer: {fileID: 554602789}
   m_TextComponent: {fileID: 920701850}
   m_materialReferenceIndex: 1
@@ -1848,7 +1847,7 @@ GameObject:
   - component: {fileID: 769288629}
   - component: {fileID: 769288628}
   m_Layer: 5
-  m_Name: TMP SubMeshUI [Order_Comment Material + LiberationSans SDF Atlas]
+  m_Name: TMP SubMeshUI [Order_Comment_SampComp + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1896,7 +1895,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 0
+  m_padding: 1.25
   m_canvasRenderer: {fileID: 769288629}
   m_TextComponent: {fileID: 1682517060}
   m_materialReferenceIndex: 1
@@ -2093,18 +2092,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: AINEEE
+  m_text: "\u30B3\u30E1\u30F3\u30C81"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd49988a3b0b20d42a953b04b79e89dd, type: 2}
-  m_sharedMaterial: {fileID: 8845832642314892460, guid: cd49988a3b0b20d42a953b04b79e89dd,
-    type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 40973b9277018ce49a0221698ca4c0b9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4280483584
-  m_fontColor: {r: 0, g: 1, b: 0.13710809, a: 1}
+    rgba: 4281532178
+  m_fontColor: {r: 0.07075471, g: 1, b: 0.19829823, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2163,7 +2161,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 920701850}
-    characterCount: 6
+    characterCount: 5
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -2758,7 +2756,7 @@ GameObject:
   - component: {fileID: 1074961614}
   - component: {fileID: 1074961613}
   m_Layer: 5
-  m_Name: TMP SubMeshUI [Order_Comment + LiberationSans SDF Atlas]
+  m_Name: TMP SubMeshUI [Order_Comment_Yellow + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3577,7 +3575,7 @@ GameObject:
   - component: {fileID: 1509288675}
   - component: {fileID: 1509288674}
   m_Layer: 5
-  m_Name: TMP SubMeshUI [Order_Comment Material + LiberationSans SDF Atlas]
+  m_Name: TMP SubMeshUI [Order_Comment_Red + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3625,7 +3623,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 6.9244995
+  m_padding: 0
   m_canvasRenderer: {fileID: 1509288675}
   m_TextComponent: {fileID: 2002368235}
   m_materialReferenceIndex: 1
@@ -3879,15 +3877,14 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd49988a3b0b20d42a953b04b79e89dd, type: 2}
-  m_sharedMaterial: {fileID: 8845832642314892460, guid: cd49988a3b0b20d42a953b04b79e89dd,
-    type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 746e994eea41f6748a76eb688abedc72, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
     rgba: 4284308829
-  m_fontColor: {r: 0.3679245, g: 0.3679245, b: 0.3679245, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4710,8 +4707,7 @@ MonoBehaviour:
   m_text: Complete Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd49988a3b0b20d42a953b04b79e89dd, type: 2}
-  m_sharedMaterial: {fileID: 8845832642314892460, guid: cd49988a3b0b20d42a953b04b79e89dd,
-    type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: d32d67419e8c0d44386961a501d48349, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4862,7 +4858,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_type: 1
   m_bEffect: 0
-  m_defTime: 20
+  m_defTime: 60
   m_time: 0
   m_cnt: 0
   m_common: {fileID: 0}
@@ -5082,11 +5078,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u30B3\u30E1\u30F3\u30C82"
+  m_text: "\u30B3\u30E1\u30F3\u30C8\uFF12"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd49988a3b0b20d42a953b04b79e89dd, type: 2}
-  m_sharedMaterial: {fileID: 8845832642314892460, guid: cd49988a3b0b20d42a953b04b79e89dd,
-    type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: b5141d81e97bde04bbe7daa8ae0f36b9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5159,7 +5154,7 @@ MonoBehaviour:
     linkCount: 0
     lineCount: 1
     pageCount: 1
-    materialCount: 2
+    materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -5497,7 +5492,7 @@ GameObject:
   - component: {fileID: 2131214986}
   - component: {fileID: 2131214985}
   m_Layer: 5
-  m_Name: TMP SubMeshUI [Order_Comment Material + LiberationSans SDF Atlas]
+  m_Name: TMP SubMeshUI [Order_Comment_Blue + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5545,7 +5540,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 6.9244995
+  m_padding: 8.5625
   m_canvasRenderer: {fileID: 2131214986}
   m_TextComponent: {fileID: 212537081}
   m_materialReferenceIndex: 1

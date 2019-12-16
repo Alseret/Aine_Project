@@ -106,7 +106,7 @@ public class Action_Order : Action_MonoSamp
 		m_delay = false;
 		for (int i = 0; i < 4; i++) m_enterTextB[i] = false;
 		m_circleP.Find("Text").Find("Comp").GetComponent<TextMeshProUGUI>().text =
-					m_data.m_listCopy[m_selectComment].text;
+					"<color=#ffffff>" + m_data.m_listCopy[m_selectComment].text + "</color>";
 		List<Action_Order_Data.Char> work = m_data.m_listCopy[m_selectComment].Moji;
 		work = work.OrderBy(o => Guid.NewGuid()).ToList();
 		for (int i = 0; i < 4; i++)
@@ -227,6 +227,7 @@ public class Action_Order : Action_MonoSamp
 	{
 		yield return new WaitForSeconds(1f);
 		GameObject work = Instantiate(m_newComment, m_cmtCanvas);
+		work.GetComponent<RectTransform>().localPosition = new Vector2(0f, UnityEngine.Random.Range(-3.5f, 6f));
 		work.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = text;
 	}
 	private IEnumerator NextText()

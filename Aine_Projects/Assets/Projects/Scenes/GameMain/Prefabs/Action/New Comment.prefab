@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 4.9, y: 50}
+  m_SizeDelta: {x: 5.32, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4246603847218856197
 CanvasRenderer:
@@ -64,7 +64,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Ai\u30C1\u30E3\u30F3\u30CD\u30EB\u306E\u30D1\u30AF\u30EA?"
+  m_text: "Ai\u30C1\u30E3\u30F3\u30CD\u30EB\u306E\u30D1\u30AF\u30EA?\u3042\u3042\u3042\u3042"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd49988a3b0b20d42a953b04b79e89dd, type: 2}
   m_sharedMaterial: {fileID: 8845832642314892460, guid: cd49988a3b0b20d42a953b04b79e89dd,
@@ -93,15 +93,15 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 0.45
-  m_fontSizeBase: 0.45
+  m_fontSize: 0.4
+  m_fontSizeBase: 0.4
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_textAlignment: 514
-  m_characterSpacing: 0
+  m_characterSpacing: -4
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -134,10 +134,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 4246603847218856198}
-    characterCount: 12
+    characterCount: 16
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -225,7 +225,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 5.739875
+  m_padding: 1.295
   m_canvasRenderer: {fileID: 4246603847237206273}
   m_TextComponent: {fileID: 4246603847218856198}
   m_materialReferenceIndex: 1
@@ -378,14 +378,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4246603848708434278}
-  m_LocalRotation: {x: 0.05817386, y: 0, z: 0, w: 0.9983065}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 250}
   m_LocalScale: {x: 30, y: 30, z: 6}
   m_Children:
   - {fileID: 4246603847794705478}
   m_Father: {fileID: 4246603847296385011}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 6.67, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 22}
