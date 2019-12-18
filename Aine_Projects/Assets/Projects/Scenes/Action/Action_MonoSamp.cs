@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using MyBox;
 using TMPro;
@@ -24,12 +25,12 @@ public class Action_MonoSamp : MonoBehaviour
 	[SerializeField] protected Animator m_cntAnim;
 	[SerializeField] protected Animator m_timeAnim;
 	[SerializeField] protected Animator m_evaAnim;
-	[SerializeField] protected List<Animator> ml_displayAnim;
+	//[SerializeField] protected List<Animator> ml_displayAnim;
 
 	[Separator]     // Text
 	[SerializeField] protected TextMeshProUGUI m_timeText;
 	[SerializeField] protected TextMeshProUGUI m_cntText;
-	[SerializeField] protected TextMeshProUGUI m_evaText;
+	//[SerializeField] protected TextMeshProUGUI m_evaText;
 
 	// CutIn
 	[SerializeField] protected float m_multiply;
@@ -43,6 +44,7 @@ public class Action_MonoSamp : MonoBehaviour
 
 	[Separator]     // 評価
 	[SerializeField] protected GameManager._Evaluation m_ev;
+	[SerializeField] protected Image[] m_evSprite;
 	[SerializeField] protected float m_excellent;
 	[SerializeField] protected float m_good;
 	[SerializeField] protected float m_nice;
@@ -63,14 +65,9 @@ public class Action_MonoSamp : MonoBehaviour
 		m_cntAnim = transform.GetChild(1).GetComponent<Animator>();
 		m_timeAnim = m_common.GetChild(0).GetComponent<Animator>();
 		m_evaAnim = m_common.GetChild(1).GetComponent<Animator>();
-		ml_displayAnim = new List<Animator>();
-		ml_displayAnim.Add(transform.GetChild(1).GetComponent<Animator>());
-		ml_displayAnim.Add(m_common.GetChild(0).GetComponent<Animator>());
 
 		// Text
 		m_timeText = m_common.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
-		m_evaText = m_common.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>();
-		m_cntText = transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>();
 
 		// Cutin
 		m_cutAnim = GameObject.Find("Mob_Unit").GetComponent<Animator_Controller>();
@@ -83,6 +80,13 @@ public class Action_MonoSamp : MonoBehaviour
 		m_manager.ChangeControll();
 
 		m_ghost = m_manager.GetComponent<Ghost_Controller>();
+		
+		// Eva
+		m_evSprite = new Image[3];
+		GameObject evsprite = GameObject.Find("Action/Common/_Evaluation");
+		m_evSprite[0] = evsprite.transform.Find("Nice").GetComponent<Image>();
+		m_evSprite[1] = evsprite.transform.Find("Good").GetComponent<Image>();
+		m_evSprite[2] = evsprite.transform.Find("Excellent").GetComponent<Image>();
 	}
 
 	// Reset
@@ -93,7 +97,6 @@ public class Action_MonoSamp : MonoBehaviour
 		m_timeAnim.SetBool("Start", false);
 		m_evaAnim.SetBool("Start", false);
 		m_cntAnim.SetBool("Start", false);
-		AnimSet(false);
 		m_time = m_defTime;
 		ChangeTime();
 		m_cnt = 0;
@@ -115,7 +118,7 @@ public class Action_MonoSamp : MonoBehaviour
 	private IEnumerator DisplayCnt()
 	{
 		yield return new WaitForSeconds(m_displayWaitTime);
-		AnimSet(true);
+		//AnimSet(true);
 	}
 
 	// 時間チェック
@@ -141,7 +144,6 @@ public class Action_MonoSamp : MonoBehaviour
 		m_startAnim.SetBool("Start", false);
 		m_cutin.PlayAnim(false);
 		yield return new WaitForSeconds(2f);
-		AnimSet(false);
 		m_evaAnim.SetBool("Start", false);
 		yield return new WaitForSeconds(1f);
 		ResetValue();
@@ -149,14 +151,6 @@ public class Action_MonoSamp : MonoBehaviour
 		StartCoroutine(m_scr.imageShot());
 		// アンロード
 		SceneManager.UnloadSceneAsync(name);
-	}
-	// Anim設定
-	protected void AnimSet(bool isBool)
-	{
-		foreach (Animator anim in ml_displayAnim)
-		{
-			anim.SetBool("Start", isBool);
-		}
 	}
 
 	// 判定
@@ -166,24 +160,33 @@ public class Action_MonoSamp : MonoBehaviour
 		if (num >= m_excellent)
 		{
 			m_ev = GameManager._Evaluation.Excellent;
-			m_evaText.text = m_ev.ToString() + "!!";
+			m_evSprite[0].enabled = false;
+			m_evSprite[1].enabled = false;
+			m_evSprite[2].enabled = true;
 		}
 		// Good
 		else if (num >= m_good)
 		{
 			m_ev = GameManager._Evaluation.Good;
-			m_evaText.text = m_ev.ToString() + "!";
+			m_evSprite[0].enabled = false;
+			m_evSprite[1].enabled = true;
+			m_evSprite[2].enabled = false;
 		}
 		else if (num == 0)
 		{
 			m_ev = GameManager._Evaluation.Nice;
-			m_evaText.text = "??(^q^)??";
+			m_evSprite[0].enabled = true;
+			m_evSprite[1].enabled = false;
+			m_evSprite[2].enabled = false;
+			//m_evaText.text = "??(^q^)??";
 		}
 		// Nice
 		else if (num <= m_nice)
 		{
 			m_ev = GameManager._Evaluation.Nice;
-			m_evaText.text = m_ev.ToString();
+			m_evSprite[0].enabled = true;
+			m_evSprite[1].enabled = false;
+			m_evSprite[2].enabled = false;
 		}
 		m_evaAnim.SetBool("Start", true);
 	}

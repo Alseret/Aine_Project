@@ -17,15 +17,14 @@ public class Action_Roll : Action_MonoSamp
 	}
 	[Header("Child...")]
 	[SerializeField] private Action_Effect m_effect;
-	[SerializeField] private RectTransform m_roll;
-	[SerializeField] private RectTransform m_roll_debug;
+	//[SerializeField] private RectTransform m_roll;
+	//[SerializeField] private RectTransform m_roll_debug;
 	[SerializeField] private GamePad_Controller m_pad;
 	[SerializeField] private int m_cntD;
 	[SerializeField] private float m_s;
 	[SerializeField] private VECTOR_ROLL m_vec;
-	[SerializeField] private Animator m_countAnim;
+	//[SerializeField] private Animator m_countAnim;
 	[SerializeField] private Animator m_rollAnim;
-	[SerializeField] private Animator m_rollDAnim;
 
 	// Start is called before the first frame update
 	private void Start()
@@ -44,12 +43,6 @@ public class Action_Roll : Action_MonoSamp
 	// Reset
 	protected override void ResetValue()
 	{
-		//m_startAnim.SetBool("Start", false);
-		//m_cntAnim.SetBool("Start", false);
-		//m_timeAnim.SetBool("Start", false);
-		//m_evaAnim.SetBool("Start", false);
-		//m_cntAnim.SetBool("Start", false);
-		//AnimSet(false);
 		m_time = m_defTime;
 		ChangeTime();
 		m_cnt = 0;
@@ -64,8 +57,8 @@ public class Action_Roll : Action_MonoSamp
 		{
 			CheckVector();
 			TimeDecrement();
-			m_roll_debug.eulerAngles = new Vector3(0f, 0f, m_pad.m_angle);
-			m_roll.Rotate(Vector3.forward, Time.deltaTime * m_cnt);
+			//m_roll_debug.eulerAngles = new Vector3(0f, 0f, m_pad.m_angle);
+			//m_roll.Rotate(Vector3.forward, Time.deltaTime * m_cnt);
 		}
 	}
 	private void CheckVector()
@@ -109,16 +102,18 @@ public class Action_Roll : Action_MonoSamp
 	// 開始演出
 	protected override IEnumerator StartEffect()
 	{
-		//yield return null;
 		m_startAnim.Play("StartText");
 		m_timeAnim.Play("Repeat_Start");
-		m_countAnim.Play("Start");
 		m_rollAnim.Play("Start");
-		m_rollDAnim.Play("Start");
+		StartCoroutine(StickRoll());
 		yield return new WaitForSeconds(m_startWaitTime);
 		m_cutAnim.AnimSpeed(0, m_multiply);
-		m_cutin.PlayAnim(true);
 		m_bEffect = false;
+	}
+	private IEnumerator StickRoll()
+	{
+		yield return new WaitForSeconds(2.3f);
+		m_rollAnim.transform.GetChild(3).GetChild(0).GetComponent<Fixed_Rot>().enabled = true;
 	}
 	// 終了演出
 	protected override IEnumerator EndEffect(string name)
@@ -129,13 +124,10 @@ public class Action_Roll : Action_MonoSamp
 		ChackEvaluation(m_cnt);
 		m_manager.AddMaster(m_type, m_cnt, m_ev);
 		m_startAnim.Play("EndText");
-		m_countAnim.Play("End");
 		m_rollAnim.Play("End");
-		m_rollDAnim.Play("End");
+		m_rollAnim.transform.GetChild(3).GetChild(0).GetComponent<Fixed_Rot>().enabled = false;
 		m_timeAnim.Play("Time_End");
-		m_cutin.PlayAnim(false);
 		yield return new WaitForSeconds(2f);
-		//AnimSet(false);
 		m_evaAnim.SetBool("Start", false);
 		yield return new WaitForSeconds(1f);
 		ResetValue();

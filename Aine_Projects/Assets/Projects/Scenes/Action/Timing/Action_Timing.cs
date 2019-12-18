@@ -33,7 +33,7 @@ public class Action_Timing : Action_MonoSamp
 		Debug.Log("Action_Timing");
 		Setup();
 		m_type = GameManager._ACTION_TYPE.Timing;
-		ml_displayAnim.Add(transform.GetChild(2).GetComponent<Animator>());
+		//ml_displayAnim.Add(transform.GetChild(2).GetComponent<Animator>());
 		m_click = false;
 		m_down = m_up = false;
 		m_lerpTime = 0f;
@@ -113,7 +113,7 @@ public class Action_Timing : Action_MonoSamp
 		m_startAnim.SetBool("Start", false);
 		m_cutin.PlayAnim(false);
 		yield return new WaitForSeconds(1f);
-		AnimSet(false);
+		//AnimSet(false);
 		m_evaAnim.SetBool("Start", false);
 		yield return new WaitForSeconds(1f);
 		ResetValue();
@@ -125,22 +125,22 @@ public class Action_Timing : Action_MonoSamp
 		if (m_lerpTime < m_nice)
 		{
 			m_ev = GameManager._Evaluation.Nice;
-			m_evaText.text = m_ev.ToString();
+			//m_evaText.text = m_ev.ToString();
 		}
 		else if (m_lerpTime < m_good)
 		{
 			m_ev = GameManager._Evaluation.Good;
-			m_evaText.text = m_ev.ToString() + "!";
+			//m_evaText.text = m_ev.ToString() + "!";
 		}
 		else if (m_lerpTime < m_excellent)
 		{
 			m_ev = GameManager._Evaluation.Excellent;
-			m_evaText.text = m_ev.ToString() + "!!";
+			//m_evaText.text = m_ev.ToString() + "!!";
 		}
 		else if(m_lerpTime <= 1f)
 		{
 			m_ev = GameManager._Evaluation.Nice;
-			m_evaText.text = m_ev.ToString();
+			//m_evaText.text = m_ev.ToString();
 		}
 		m_evaAnim.SetBool("Start", true);
 	}

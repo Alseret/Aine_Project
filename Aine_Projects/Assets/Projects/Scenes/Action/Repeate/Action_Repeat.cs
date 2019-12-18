@@ -20,7 +20,7 @@ public class Action_Repeat : Action_MonoSamp
 	{
 		Setup();    // Component
 		m_type = GameManager._ACTION_TYPE.Repeate;
-		ml_displayAnim.Add(transform.GetChild(0).GetComponent<Animator>());
+		m_cntText = transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>();
 		Debug.Log("Action_Repeate");
 		ResetValue();
 		// 演出開始
@@ -34,12 +34,6 @@ public class Action_Repeat : Action_MonoSamp
 	// Reset
 	protected override void ResetValue()
 	{
-		//m_startAnim.SetBool("Start", false);
-		//m_cntAnim.SetBool("Start", false);
-		//m_timeAnim.SetBool("Start", false);
-		//m_evaAnim.SetBool("Start", false);
-		//m_cntAnim.SetBool("Start", false);
-		//AnimSet(false);
 		m_time = m_defTime;
 		ChangeTime();
 		m_cnt = 0;

@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 5.32, y: 50}
+  m_AnchoredPosition: {x: 0.84, y: -0.03}
+  m_SizeDelta: {x: 5.32, y: 0.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4246603847218856197
 CanvasRenderer:
@@ -64,7 +64,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Ai\u30C1\u30E3\u30F3\u30CD\u30EB\u306E\u30D1\u30AF\u30EA?\u3042\u3042\u3042\u3042"
+  m_text: "Ai\u30C1\u30E3\u30F3\u30CD\u30EB\u306E\u30D1\u30AF\u30EA?"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd49988a3b0b20d42a953b04b79e89dd, type: 2}
   m_sharedMaterial: {fileID: 8845832642314892460, guid: cd49988a3b0b20d42a953b04b79e89dd,
@@ -93,14 +93,14 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 0.4
-  m_fontSizeBase: 0.4
+  m_fontSize: 0.32
+  m_fontSizeBase: 0.32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 514
+  m_textAlignment: 513
   m_characterSpacing: -4
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -134,10 +134,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 4246603847218856198}
-    characterCount: 16
+    characterCount: 12
     spriteCount: 0
     spaceCount: 0
-    wordCount: 2
+    wordCount: 1
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -278,8 +278,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74148085dd2464c4c922a549acc5b103, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxSpeed: 15
-  m_minSpeed: 25
+  m_maxSpeed: -15
+  m_minSpeed: -25
 --- !u!1 &4246603847794705479
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,12 +339,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9289566, g: 1, b: 0.4764151, a: 0.76862746}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.9019608}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9c955f6412d03e849bf83fbac40f8ea0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5a6e6c5288e7b274197e591bcb50dd29, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -363,7 +363,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4246603848708434277}
-  - component: {fileID: 4246603848708434276}
   m_Layer: 19
   m_Name: GameObject
   m_TagString: Untagged
@@ -388,20 +387,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 22}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4246603848708434276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4246603848708434278}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74148085dd2464c4c922a549acc5b103, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_maxSpeed: 15
-  m_minSpeed: 25

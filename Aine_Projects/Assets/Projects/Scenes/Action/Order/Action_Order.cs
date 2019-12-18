@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using System.Linq;
 using MyBox;
@@ -33,6 +34,8 @@ public class Action_Order : Action_MonoSamp
 	[SerializeField] private List<PadButton> ml_key;
 
 	private Transform m_circleP;
+	private Transform m_button;
+	private Transform m_comment4;
 	private TextMeshProUGUI m_compSampText;
 	private Transform m_cmtCanvas;
 
@@ -46,6 +49,8 @@ public class Action_Order : Action_MonoSamp
 		Setup();
 		m_type = GameManager._ACTION_TYPE.Order;
 		m_circleP = transform.Find("_Order").Find("Order");
+		m_button = m_circleP.GetChild(0);
+		m_comment4 = m_circleP.GetChild(1);
 		m_compSampText = m_circleP.Find("Text").Find("CompSamp").GetComponent<TextMeshProUGUI>();
 		m_compSampText.text = "";
 		m_cmtCanvas = GameObject.Find("Comment Canvas").GetComponent<Transform>();
@@ -104,6 +109,14 @@ public class Action_Order : Action_MonoSamp
 		m_compSampText.text = "";
 		m_enterText = 0;
 		m_delay = false;
+
+		for (int i = 0; i < 8; i++)
+		{
+			if(i % 2 == 0)
+				m_button.GetChild(i).GetComponent<Image>().enabled = true;
+			if (i % 2 == 1)
+				m_button.GetChild(i).GetComponent<Image>().enabled = false;
+		}
 		for (int i = 0; i < 4; i++) m_enterTextB[i] = false;
 		m_circleP.Find("Text").Find("Comp").GetComponent<TextMeshProUGUI>().text =
 					"<color=#ffffff>" + m_data.m_listCopy[m_selectComment].text + "</color>";
@@ -133,9 +146,12 @@ public class Action_Order : Action_MonoSamp
 			if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[3].num)
 			{
 				m_commnetCnt++;
+				m_cnt++;
 				m_enterText = m_commnetCnt;
 				m_enterTextB[0] = true;
-				//m_compSampText.text += "<color=#000000>" + m_data.m_listCopy[m_selectComment].Moji[3].text + "</color>";
+				m_button.GetChild(2).GetComponent<Image>().enabled = false;
+				m_button.GetChild(3).GetComponent<Image>().enabled = true;
+				m_comment4.GetChild(3).GetComponent<TextMeshProUGUI>().text = "<color=#8A8A8A>" + m_comment4.GetChild(3).GetComponent<TextMeshProUGUI>().text + "</color>";
 				Debug.Log("Succes");
 			}
 			else
@@ -147,9 +163,12 @@ public class Action_Order : Action_MonoSamp
 			if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[2].num)
 			{
 				m_commnetCnt++;
+				m_cnt++;
 				m_enterText = m_commnetCnt;
 				m_enterTextB[1] = true;
-				//m_compSampText.text += "<color=#000000>" + m_data.m_listCopy[m_selectComment].Moji[2].text + "</color>";
+				m_button.GetChild(0).GetComponent<Image>().enabled = false;
+				m_button.GetChild(1).GetComponent<Image>().enabled = true;
+				m_comment4.GetChild(2).GetComponent<TextMeshProUGUI>().text = "<color=#8A8A8A>" + m_comment4.GetChild(2).GetComponent<TextMeshProUGUI>().text + "</color>";
 				Debug.Log("Succes");
 			}
 			else
@@ -161,9 +180,12 @@ public class Action_Order : Action_MonoSamp
 			if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[0].num)
 			{
 				m_commnetCnt++;
+				m_cnt++;
 				m_enterText = m_commnetCnt;
 				m_enterTextB[2] = true;
-				//m_compSampText.text += "<color=#000000>" + m_data.m_listCopy[m_selectComment].Moji[0].text + "</color>";
+				m_button.GetChild(4).GetComponent<Image>().enabled = false;
+				m_button.GetChild(5).GetComponent<Image>().enabled = true;
+				m_comment4.GetChild(0).GetComponent<TextMeshProUGUI>().text = "<color=#8A8A8A>" + m_comment4.GetChild(0).GetComponent<TextMeshProUGUI>().text + "</color>";
 				Debug.Log("Succes");
 			}
 			else
@@ -175,9 +197,12 @@ public class Action_Order : Action_MonoSamp
 			if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[1].num)
 			{
 				m_commnetCnt++;
+				m_cnt++;
 				m_enterText = m_commnetCnt;
 				m_enterTextB[3] = true;
-				//m_compSampText.text += "<color=#000000>" + m_data.m_listCopy[m_selectComment].Moji[1].text + "</color>";
+				m_button.GetChild(6).GetComponent<Image>().enabled = false;
+				m_button.GetChild(7).GetComponent<Image>().enabled = true;
+				m_comment4.GetChild(1).GetComponent<TextMeshProUGUI>().text = "<color=#8A8A8A>" + m_comment4.GetChild(1).GetComponent<TextMeshProUGUI>().text + "</color>";
 				Debug.Log("Succes");
 			}
 			else
