@@ -21,7 +21,7 @@ TagManager:
   - LightObject
   - Unit
   - Aine
-  - Stage
+  - MainStage
   - Wall
   - Comment
   - Mob
@@ -30,7 +30,7 @@ TagManager:
   - Ghost
   - MetalObject
   - Action_Roll
-  - 
+  - SubStage
   - 
   - 
   - 

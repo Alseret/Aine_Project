@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class Action_Repeat : Action_MonoSamp
 {
+	[Header("[Child...]")]
 	[SerializeField] private Action_Effect m_effect;
 	[ReadOnly] [SerializeField] public bool m_action;
 	[SerializeField] private Animator m_buttonAnim;
@@ -61,6 +62,7 @@ public class Action_Repeat : Action_MonoSamp
 			ChangeCount(str);
 			m_cutAnim.AnimSpeed(m_cnt, m_multiply);
 			m_effect.GenerateEffects();
+			m_soundSorce.PlayOneShot(m_sound[0]);
 		}
 		if (!InputButtonUp())
 		{

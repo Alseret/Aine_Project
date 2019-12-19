@@ -53,6 +53,11 @@ public class Action_MonoSamp : MonoBehaviour
 	[SerializeField] protected GameManager._ControllType m_oldCtrl;
 	protected Ghost_Controller m_ghost;
 
+	[Header("Sound")]
+	[Separator]
+	[SerializeField] protected AudioClip[] m_sound;
+	protected AudioSource m_soundSorce;
+
 	// Component
 	protected void Setup()
 	{
@@ -87,6 +92,8 @@ public class Action_MonoSamp : MonoBehaviour
 		m_evSprite[0] = evsprite.transform.Find("Nice").GetComponent<Image>();
 		m_evSprite[1] = evsprite.transform.Find("Good").GetComponent<Image>();
 		m_evSprite[2] = evsprite.transform.Find("Excellent").GetComponent<Image>();
+
+		m_soundSorce = GetComponent<AudioSource>();
 	}
 
 	// Reset
