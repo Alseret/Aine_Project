@@ -141,7 +141,7 @@ public class Action_Order : Action_MonoSamp
 	{
 		if (m_delay) return;
 		//	W
-		if (Input.GetKeyDown(KeyCode.W) && !m_enterTextB[0])
+		if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown("joystick button 3")) && !m_enterTextB[0])
 		{
 			if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[3].num)
 			{
@@ -158,7 +158,7 @@ public class Action_Order : Action_MonoSamp
 				StartCoroutine(Delay());
 		}
 		//	A
-		if (Input.GetKeyDown(KeyCode.A) && !m_enterTextB[1])
+		if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown("joystick button 2")) && !m_enterTextB[1])
 		{
 			if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[2].num)
 			{
@@ -175,7 +175,7 @@ public class Action_Order : Action_MonoSamp
 				StartCoroutine(Delay());
 		}
 		//	S
-		if (Input.GetKeyDown(KeyCode.S) && !m_enterTextB[2])
+		if ((Input.GetKeyDown(KeyCode.S)|| Input.GetKeyDown("joystick button 0")) && !m_enterTextB[2])
 		{
 			if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[0].num)
 			{
@@ -192,7 +192,7 @@ public class Action_Order : Action_MonoSamp
 				StartCoroutine(Delay());
 		}
 		//	D
-		if (Input.GetKeyDown(KeyCode.D) && !m_enterTextB[3])
+		if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown("joystick button 1")) && !m_enterTextB[3])
 		{
 			if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[1].num)
 			{
