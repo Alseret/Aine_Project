@@ -3375,7 +3375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_type: 1
   m_bEffect: 0
-  m_defTime: 20
+  m_defTime: 15
   m_time: 0
   m_cnt: 0
   m_common: {fileID: 0}
@@ -3396,6 +3396,7 @@ MonoBehaviour:
   m_good: 21
   m_nice: 20
   m_oldCtrl: 0
+  m_sound: []
   m_newComment: {fileID: 4246603847296385012, guid: 2d20cd22be5bc90459ed1cd2850ab187,
     type: 3}
   m_effect: {fileID: 338822185}
@@ -3441,13 +3442,13 @@ MonoBehaviour:
   - text: 
     Moji:
     - num: 0
-      text: "\u6700\u8FD1"
+      text: "\u7720\u305F\u3044"
     - num: 1
-      text: "\u8170"
+      text: "\u3067\u3059"
     - num: 2
-      text: "\u304C"
+      text: "\u5BDD\u3066\u3082"
     - num: 3
-      text: "\u75DB\u3044"
+      text: "\u3044\u3044\u304B\u306A\uFF1F"
   m_listCopy: []
 --- !u!1 &1977541837
 GameObject:

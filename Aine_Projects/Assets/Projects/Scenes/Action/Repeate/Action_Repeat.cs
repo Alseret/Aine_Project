@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using MyBox;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class Action_Repeat : Action_MonoSamp
@@ -12,6 +13,7 @@ public class Action_Repeat : Action_MonoSamp
 	[ReadOnly] [SerializeField] public bool m_action;
 	[SerializeField] private Animator m_buttonAnim;
 	[SerializeField] private Animator m_countAnim;
+	private Transform m_actionCamera;
 
 	// Start is called before the first frame update
 	private void Awake()
@@ -21,6 +23,11 @@ public class Action_Repeat : Action_MonoSamp
 	{
 		Setup();    // Component
 		m_type = GameManager._ACTION_TYPE.Repeate;
+		GameObject.Find("Stage Camera").GetComponent<PlayableDirector>().enabled = true;
+		GameObject.Find("Stage Camera").GetComponent<PlayableDirector>().Play();
+		m_actionCamera = GameObject.Find("Action_Camera").GetComponent<Transform>();
+		for (int i = 0; i < 7; i++)
+			m_actionCamera.GetChild(i).gameObject.SetActive(true);
 		m_cntText = transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>();
 		Debug.Log("Action_Repeate");
 		ResetValue();
@@ -125,7 +132,10 @@ public class Action_Repeat : Action_MonoSamp
 		m_evaAnim.SetBool("Start", false);
 		yield return new WaitForSeconds(1f);
 		ResetValue();
-		ResetText();
+		ResetText(); 
+		for (int i = 0; i < 7; i++)
+			m_actionCamera.GetChild(i).gameObject.SetActive(true);
+		GameObject.Find("Stage Camera").GetComponent<PlayableDirector>().enabled = false;
 		StartCoroutine(m_scr.imageShot());
 		m_manager.m_controll = m_oldCtrl;
 		m_manager.ChangeControll();

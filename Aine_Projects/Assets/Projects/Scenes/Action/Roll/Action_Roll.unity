@@ -5453,7 +5453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_type: 3
   m_bEffect: 0
-  m_defTime: 20
+  m_defTime: 7
   m_time: 0
   m_cnt: 0
   m_common: {fileID: 0}
@@ -5474,6 +5474,7 @@ MonoBehaviour:
   m_good: 0
   m_nice: 0
   m_oldCtrl: 0
+  m_sound: []
   m_effect: {fileID: 1016506413}
   m_pad: {fileID: 0}
   m_cntD: 0

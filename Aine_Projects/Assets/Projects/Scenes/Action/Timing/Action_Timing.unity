@@ -754,19 +754,20 @@ MonoBehaviour:
   m_cntAnim: {fileID: 0}
   m_timeAnim: {fileID: 0}
   m_evaAnim: {fileID: 0}
-  ml_displayAnim: []
   m_timeText: {fileID: 0}
   m_cntText: {fileID: 0}
-  m_evaText: {fileID: 0}
   m_multiply: 0
   m_cutAnim: {fileID: 0}
   m_startWaitTime: 3
   m_displayWaitTime: 2
   m_stopTime: 1
   m_ev: 2
+  m_evSprite: []
   m_excellent: 0.95
   m_good: 0.88
   m_nice: 0.7
+  m_oldCtrl: 0
+  m_sound: []
   m_effect: {fileID: 1305277876}
   m_timingOut: {fileID: 2137143947}
   m_maxSize: 600
