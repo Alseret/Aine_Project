@@ -23,7 +23,7 @@ public class Action_Timing_Sample : Action_Mono
 	private void Start()
 	{
 		Setup();
-		m_type = GameManager._ACTION_TYPE.Timing;
+		//m_type = GameManager._ACTION_TYPE.Timing;
 		ml_displayAnim.Add(transform.GetChild(2).GetComponent<Animator>());
 		ResetValue();
 		m_lerpTime = 0f;

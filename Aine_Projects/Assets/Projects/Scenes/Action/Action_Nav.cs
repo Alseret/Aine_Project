@@ -21,6 +21,8 @@ public class Action_Nav : MonoBehaviour
 	[SerializeField] public List<ActionPoint> ml_action;
 	private AudioSource m_audio;
 	[SerializeField] private GameObject m_rectPrefab;
+	private float m_volume;
+	private float m_endTime;
 
 	// Start is called before the first frame update
 	private void Start()
@@ -28,7 +30,7 @@ public class Action_Nav : MonoBehaviour
 		m_manager = GetComponent<GameManager>();
 		m_debug = GameObject.Find("Debug__").GetComponent<Debug_>();
 		m_audio = GetComponent<AudioSource>();
-
+		m_volume = m_audio.volume;
 		Generate_Nav();
 	}
 
@@ -39,11 +41,31 @@ public class Action_Nav : MonoBehaviour
 		Action_SliderNav();
 		if (m_debug.m_action)
 			PlayAction();
+		SoundEnd();
 	}
 
 	private void Action_SliderNav()
 	{
 		m_slider.value = m_manager.m_playTime;
+	}
+	private bool m_endFlag;
+	private void SoundEnd()
+	{
+		if(m_manager.m_SoundTime < m_manager.m_playTime + 3f && !m_manager.m_contObj[2].activeSelf)
+		{
+			m_manager.m_controll = GameManager._ControllType.End;
+			m_manager.ChangeControll();
+		}
+		if ((m_manager.m_SoundTime < m_manager.m_playTime) && m_audio.volume > 0f)
+		{
+			m_audio.volume = m_manager.m_audio.volume - .01f;
+		}
+		if(m_audio.volume <= 0f)
+		{
+			enabled = false;
+			GameObject.Find("Idol").GetComponent<Animator>().enabled = false;
+			m_manager.EndMusic();
+		}
 	}
 
 	private void Generate_Nav()
@@ -75,9 +97,6 @@ public class Action_Nav : MonoBehaviour
 						break;
 					case GameManager._ACTION_TYPE.Order:
 						SceneManager.LoadScene("Action_Order", LoadSceneMode.Additive);
-						break;
-					case GameManager._ACTION_TYPE.Timing:
-						SceneManager.LoadScene("Action_Timing", LoadSceneMode.Additive);
 						break;
 					case GameManager._ACTION_TYPE.Roll:
 						SceneManager.LoadScene("Action_Roll", LoadSceneMode.Additive);

@@ -12,13 +12,13 @@ public class GameManager : MonoBehaviour
 		Mouse,
 		GamePad,
 		Auto,
+		End,
 	}
 	[System.Serializable]
 	public enum _ACTION_TYPE
 	{
 		Repeate,
 		Order,
-		Timing,
 		Roll,
 		MAX__,
 	}
@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 		public _Evaluation eva;
 	}
 	[SerializeField] public _ControllType m_controll;
-	[SerializeField] private GameObject[] m_contObj;
+	[SerializeField] public GameObject[] m_contObj;
 	[SerializeField] public List<_Master> ml_master;
 	[SerializeField] public int m_noteCnt;
 	[Separator]
@@ -72,7 +72,6 @@ public class GameManager : MonoBehaviour
 	{
 		m_playTime = m_audio.time;
 		GameSpeedController();
-		EndMusic();
 		if (Input.GetKeyDown(KeyCode.Return))
 		{
 			enabled = false;
@@ -97,6 +96,12 @@ public class GameManager : MonoBehaviour
 				Debug.Log("Auto");
 				m_contObj[0].SetActive(false);
 				m_contObj[1].SetActive(false);
+				break;
+			case _ControllType.End:
+				Debug.Log("End");
+				m_contObj[0].SetActive(false);
+				m_contObj[1].SetActive(false);
+				m_contObj[2].SetActive(true);
 				break;
 		}
 	}
@@ -142,9 +147,9 @@ public class GameManager : MonoBehaviour
 			return true;
 		return false;
 	}
-	private void EndMusic()
+	public void EndMusic()
 	{
-		if (!(m_audio.time == 0f && !m_audio.isPlaying)) return;
+		//if (!(m_audio.time == 0f && !m_audio.isPlaying)) return;
 		StartCoroutine(GameObject.Find("Cam").GetComponent<ScreenShot>().imageShot());
 		enabled = false;
 		SceneManager.LoadScene("Result", LoadSceneMode.Additive);

@@ -145,6 +145,7 @@ public class Action_Order : Action_MonoSamp
 		{
 			if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[3].num)
 			{
+				m_soundSorce.PlayOneShot(m_sound[0]);
 				m_commnetCnt++;
 				m_cnt++;
 				m_enterText = m_commnetCnt;
@@ -162,6 +163,7 @@ public class Action_Order : Action_MonoSamp
 		{
 			if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[2].num)
 			{
+				m_soundSorce.PlayOneShot(m_sound[0]);
 				m_commnetCnt++;
 				m_cnt++;
 				m_enterText = m_commnetCnt;
@@ -179,6 +181,7 @@ public class Action_Order : Action_MonoSamp
 		{
 			if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[0].num)
 			{
+				m_soundSorce.PlayOneShot(m_sound[0]);
 				m_commnetCnt++;
 				m_cnt++;
 				m_enterText = m_commnetCnt;
@@ -196,6 +199,7 @@ public class Action_Order : Action_MonoSamp
 		{
 			if (m_commnetCnt == m_data.m_listCopy[m_selectComment].Moji[1].num)
 			{
+				m_soundSorce.PlayOneShot(m_sound[0]);
 				m_commnetCnt++;
 				m_cnt++;
 				m_enterText = m_commnetCnt;

@@ -25,7 +25,7 @@ public class Comment_Manager : MonoBehaviour
 		for(int i = 0; i < m_displayCnt; i++)
 		{
 			GameObject work = Instantiate(m_commentPrefab, transform);
-			work.transform.localPosition = new Vector3(0f, Random.Range(1f, 10f), 0f);
+			work.transform.localPosition = new Vector3(0f, Random.Range(1f, 7f), 0f);
 			work.transform.localEulerAngles = new Vector3(0f, Random.Range(0f, 360f), 0f);
 			work.transform.Find("GameObject/Image/Text").GetComponent<TextMeshProUGUI>().text = 
 													m_commentStr[Random.Range(0, m_commentStr.Count)];

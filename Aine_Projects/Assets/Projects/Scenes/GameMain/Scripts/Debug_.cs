@@ -125,8 +125,8 @@ public class Debug_ : MonoBehaviour
 					//m_nav.m_type.order.enabled = true;
 					//m_nav.m_type.order.m_actDir = true;
 					break;
-				case GameManager._ACTION_TYPE.Timing:
-					SceneManager.LoadScene("Action_Timing", LoadSceneMode.Additive);
+				case GameManager._ACTION_TYPE.Roll:
+					SceneManager.LoadScene("Action_Roll", LoadSceneMode.Additive);
 					//m_nav.m_type.timing.enabled = true;
 					//m_nav.m_type.timing.m_actDir = true;
 					break;

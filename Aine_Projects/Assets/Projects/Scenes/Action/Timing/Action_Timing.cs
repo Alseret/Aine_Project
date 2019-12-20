@@ -32,7 +32,7 @@ public class Action_Timing : Action_MonoSamp
 	{
 		Debug.Log("Action_Timing");
 		Setup();
-		m_type = GameManager._ACTION_TYPE.Timing;
+		//m_type = GameManager._ACTION_TYPE.Timing;
 		//ml_displayAnim.Add(transform.GetChild(2).GetComponent<Animator>());
 		m_click = false;
 		m_down = m_up = false;
