@@ -51,6 +51,8 @@ public class Action_Repeat : Action_MonoSamp
 	// Update is called once per frame
 	private void Update()
 	{
+		if (Input.GetKeyDown("joystick button 0"))
+			Debug.Log("AAA");
 		if (m_bEffect) return;
 		if (TimeCheck("Action_Repeat"))
 		{

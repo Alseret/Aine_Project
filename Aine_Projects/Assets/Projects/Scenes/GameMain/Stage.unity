@@ -8240,7 +8240,7 @@ MonoBehaviour:
   m_nav: {fileID: 0}
   m_debugText: []
   isDebug: 0
-  m_action: 0
+  m_action: 1
 --- !u!114 &781900812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16649,7 +16649,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1771903909}
-  m_LocalRotation: {x: 0.11724534, y: -0.010135458, z: 0.0011966508, w: 0.9930506}
+  m_LocalRotation: {x: 0.11724534, y: -0.0101354495, z: 0.0011966497, w: 0.9930506}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -16723,7 +16723,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1786008282}
-  m_LocalRotation: {x: 0.14932385, y: -0.010091454, z: 0.0015241498, w: 0.98873574}
+  m_LocalRotation: {x: 0.14932388, y: -0.010091424, z: 0.0015241455, w: 0.98873574}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -18939,7 +18939,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2042597569}
-  m_LocalRotation: {x: 0.13328524, y: -0.010114763, z: 0.0013603587, w: 0.9910252}
+  m_LocalRotation: {x: 0.13328524, y: -0.010114801, z: 0.0013603638, w: 0.9910252}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -19409,7 +19409,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2063748667}
-  m_LocalRotation: {x: 0.1345697, y: -0.0101129785, z: 0.0013734655, w: 0.9908516}
+  m_LocalRotation: {x: 0.1345697, y: -0.010113044, z: 0.0013734745, w: 0.9908516}
   m_LocalPosition: {x: 0.09321698, y: 2.680725, z: -4.5661263}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -20479,6 +20479,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_sharedMaterial
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 263596343349859461, guid: f33a3a330bc845a4982a208230878571,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 110
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f33a3a330bc845a4982a208230878571, type: 3}

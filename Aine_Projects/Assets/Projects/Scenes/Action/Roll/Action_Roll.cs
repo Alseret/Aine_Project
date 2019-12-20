@@ -48,6 +48,7 @@ public class Action_Roll : Action_MonoSamp
 		m_cnt = 0;
 		m_bEffect = true;
 	}
+
 	// Update is called once per frame
 	private void Update()
 	{
