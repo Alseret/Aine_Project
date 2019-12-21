@@ -1059,6 +1059,36 @@ Transform:
   m_Father: {fileID: 3072388190976829442}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &466727838600082707
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 485668770901739268}
+  m_Layer: 13
+  m_Name: LookAt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &485668770901739268
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466727838600082707}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.18645, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8499012557465560970}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &466985196766265562
 GameObject:
   m_ObjectHideFlags: 0
@@ -2440,8 +2470,9 @@ GameObject:
   - component: {fileID: 8499012557465560970}
   - component: {fileID: 7930485561443507558}
   - component: {fileID: 5318961189746218188}
+  - component: {fileID: 1432342542}
   m_Layer: 13
-  m_Name: Idol
+  m_Name: Idol_Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2463,6 +2494,7 @@ Transform:
   - {fileID: 2008331784223475429}
   - {fileID: 3146963912709607037}
   - {fileID: 5318961189737641714}
+  - {fileID: 485668770901739268}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -2500,6 +2532,27 @@ MonoBehaviour:
   m_anim: {fileID: 0}
   m_animeSpeed: 0
   m_num: 2
+--- !u!114 &1432342542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560057854788619851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d68519a263f76348a37b02b956eddcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ref_Eyelashes: {fileID: 9096396007592646494}
+  ref_Eye_base: {fileID: 3557402318291683991}
+  ratio_Close: 100
+  ratio_HalfClose: 20
+  ratio_Open: 0
+  isActive: 1
+  timeBlink: 0.4
+  threshold: 0.3
+  interval: 1
 --- !u!1 &1563472074600116220
 GameObject:
   m_ObjectHideFlags: 0

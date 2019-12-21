@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[DefaultExecutionOrder(1)]
 public class Ghost_Controller : MonoBehaviour
 {
-	private Animator m_idol;
+	//private Animator m_idol;
 	[SerializeField] private GameObject m_ghostPrefab;
 	[SerializeField] private float m_destroyTime;
 	[SerializeField] float time;
@@ -13,13 +14,13 @@ public class Ghost_Controller : MonoBehaviour
 	// Start is called before the first frame update
 	private void Start()
 	{
-		m_idol = GameObject.Find("Idol").GetComponent<Animator>();
+		//m_idol = GameObject.Find("Idol").GetComponent<Animator>();
 	}
 
 	// Update is called once per frame
 	private void Update()
 	{
-		time = m_idol.GetCurrentAnimatorStateInfo(0).normalizedTime;
+		//time = m_idol.GetCurrentAnimatorStateInfo(0).normalizedTime;
 	}
 	public void GenerateGhost(GameManager._Evaluation eva)
 	{
@@ -38,8 +39,8 @@ public class Ghost_Controller : MonoBehaviour
 		}
 
 		GameObject work;
-		work = Instantiate(m_ghostPrefab, new Vector3(-1.2f, 0f, 1.2f), Quaternion.Euler(Vector3.up * 180f), GameObject.Find("Unit").transform);
-		work.GetComponent<Animator>().Play(name/* , 0, m_idol.GetCurrentAnimatorStateInfo(0).normalizedTime*/);
+		work = Instantiate(m_ghostPrefab, new Vector3(-1.2f, 0f, 1.2f), Quaternion.Euler(Vector3.up * 180f), GameObject.Find("Aine_Unit").transform);
+		work.GetComponent<Animator>().Play(name , 0, GetComponent<GameManager>().m_animTime);
 		Destroy(work, m_destroyTime);
 	}
 }

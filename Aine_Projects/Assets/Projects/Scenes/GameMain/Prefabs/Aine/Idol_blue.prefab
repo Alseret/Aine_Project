@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1439399440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1439399441}
+  m_Layer: 13
+  m_Name: LookAt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1439399441
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439399440}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.1867, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3508646394713977384}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &14470879746788838
 GameObject:
   m_ObjectHideFlags: 0
@@ -19757,8 +19787,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3882438899749089174}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.01797341, y: -0.00086952, z: -0.0000001671968}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.017973412, y: -0.0008695205, z: -0.0000001664157}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1226432861798319934}
@@ -21665,8 +21695,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4918333165176017524}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.017973412, y: 0.0008695222, z: 0.0000006536684}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.017973416, y: 0.0008695227, z: 0.00000065151835}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2706699597197119014}
@@ -23155,8 +23185,9 @@ GameObject:
   - component: {fileID: 3508646394713977384}
   - component: {fileID: 3120158034610112708}
   - component: {fileID: 906075299305324910}
+  - component: {fileID: 1657578067}
   m_Layer: 13
-  m_Name: Idol
+  m_Name: Idol_blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23178,6 +23209,7 @@ Transform:
   - {fileID: 6817533632340841287}
   - {fileID: 7993883476358568927}
   - {fileID: 906075299296748368}
+  - {fileID: 1439399441}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -23215,6 +23247,27 @@ MonoBehaviour:
   m_anim: {fileID: 0}
   m_animeSpeed: 0
   m_num: 2
+--- !u!114 &1657578067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5829287326228667369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d68519a263f76348a37b02b956eddcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ref_Eyelashes: {fileID: 4287244683394368252}
+  ref_Eye_base: {fileID: 8367080239907299125}
+  ratio_Close: 100
+  ratio_HalfClose: 20
+  ratio_Open: 0
+  isActive: 1
+  timeBlink: 0.4
+  threshold: 0.3
+  interval: 1
 --- !u!1 &5832487227178383966
 GameObject:
   m_ObjectHideFlags: 0
@@ -23624,8 +23677,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6094451944500391601}
-  m_LocalRotation: {x: 1.5572112e-33, y: -8.61099e-21, z: 0.000017040615, w: 1}
-  m_LocalPosition: {x: -0.0077203456, y: 1.4980137e-18, z: -1.9932147e-18}
+  m_LocalRotation: {x: -0, y: -0, z: 0.000017046928, w: 1}
+  m_LocalPosition: {x: -0.007720351, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9044145913989593280}
@@ -24625,7 +24678,11 @@ SkinnedMeshRenderer:
   - {fileID: 5864777974458741185}
   - {fileID: 7407305690340232835}
   - {fileID: 2887864940391554607}
-  m_BlendShapeWeights: []
+  m_BlendShapeWeights:
+  - 0
+  - 0
+  - 0
+  - 0
   m_RootBone: {fileID: 4976128294174671612}
   m_AABB:
     m_Center: {x: -0.0013464838, y: 0.012284298, z: 0.00010105502}
@@ -25842,7 +25899,11 @@ SkinnedMeshRenderer:
   - {fileID: 7407305690340232835}
   - {fileID: 2887864940391554607}
   - {fileID: 3723422265134140362}
-  m_BlendShapeWeights: []
+  m_BlendShapeWeights:
+  - 0
+  - 0
+  - 0
+  - 0
   m_RootBone: {fileID: 4976128294174671612}
   m_AABB:
     m_Center: {x: -0.0016273782, y: 0.012307037, z: 0.000101039186}
