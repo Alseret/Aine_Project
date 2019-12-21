@@ -24,9 +24,6 @@ EditorBuildSettings:
     path: Assets/Projects/Scenes/Action/Repeate/Action_Repeat.unity
     guid: 3e21656b0550dfc4aa05c198768e591e
   - enabled: 1
-    path: Assets/Projects/Scenes/Action/Timing/Action_Timing.unity
-    guid: 2a7bc7a85c209ac4f83dd59f846559f1
-  - enabled: 1
     path: Assets/Projects/Scenes/Action/Roll/Action_Roll.unity
     guid: baa8d8a16b4859a41a136db01fda6886
   m_configObjects: {}

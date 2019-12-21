@@ -51,8 +51,7 @@ public class Action_Repeat : Action_MonoSamp
 	// Update is called once per frame
 	private void Update()
 	{
-		if (Input.GetKeyDown("joystick button 0"))
-			Debug.Log("AAA");
+		m_actionCamera.transform.position = GameObject.Find("Idol").transform.position;
 		if (m_bEffect) return;
 		if (TimeCheck("Action_Repeat"))
 		{
@@ -110,7 +109,7 @@ public class Action_Repeat : Action_MonoSamp
 		m_countAnim.Play("StartCount");
 		m_timeAnim.Play("Repeat_Start");
 		yield return new WaitForSeconds(m_startWaitTime);
-		m_cutAnim.AnimSpeed(0, m_multiply);
+		m_cutAnim.AnimSpeed(1, m_multiply);
 		m_cutin.PlayAnim(true);
 		m_bEffect = false;
 	}

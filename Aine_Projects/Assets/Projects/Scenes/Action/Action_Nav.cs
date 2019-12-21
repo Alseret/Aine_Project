@@ -42,6 +42,11 @@ public class Action_Nav : MonoBehaviour
 		if (m_debug.m_action)
 			PlayAction();
 		SoundEnd();
+		if(Input.GetKeyDown(KeyCode.N))
+		{
+			Debug.Log("AnimTime : " + GameObject.Find("Idol").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime);
+			Debug.Log("playTime : " + m_manager.m_playTime);
+		}
 	}
 
 	private void Action_SliderNav()
@@ -51,16 +56,16 @@ public class Action_Nav : MonoBehaviour
 	private bool m_endFlag;
 	private void SoundEnd()
 	{
-		if(m_manager.m_SoundTime < m_manager.m_playTime + 3f && !m_manager.m_contObj[2].activeSelf)
+		if(m_manager.m_SoundTime < m_manager.m_playTime + 5f && !m_manager.m_contObj[2].activeSelf)
 		{
 			m_manager.m_controll = GameManager._ControllType.End;
 			m_manager.ChangeControll();
 		}
 		if ((m_manager.m_SoundTime < m_manager.m_playTime) && m_audio.volume > 0f)
 		{
-			m_audio.volume = m_manager.m_audio.volume - .01f;
+			m_audio.volume = m_manager.m_audio.volume - .003f;
 		}
-		if(m_audio.volume <= 0f)
+		if(m_manager.m_SoundTime + 3f < m_manager.m_playTime)
 		{
 			enabled = false;
 			GameObject.Find("Idol").GetComponent<Animator>().enabled = false;

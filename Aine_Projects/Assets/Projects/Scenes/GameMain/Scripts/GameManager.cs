@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
 		Repeate,
 		Order,
 		Roll,
+		Change,
 		MAX__,
 	}
 	[System.Serializable]
@@ -61,10 +62,10 @@ public class GameManager : MonoBehaviour
 	}
 	private void Start()
 	{
-		GameObject idol = Instantiate(m_aineModel[0], GameObject.Find("Aine_Unit").transform);
-		idol.name = "Idol";
-		idol.GetComponent<Animator>().Play("NOT_Final", 0, .01f);
-		ChangeLookModel(idol);
+		//GameObject idol = Instantiate(m_aineModel[0], GameObject.Find("Aine_Unit").transform);
+		//idol.name = "Idol";
+		//idol.GetComponent<Animator>().Play("NOT_Final", 0, .01f);
+		//ChangeLookModel(idol);
 		ChangeControll();
 		ml_master = new List<_Master>();
 		m_audio.clip = m_clip;
@@ -83,32 +84,32 @@ public class GameManager : MonoBehaviour
 			enabled = false;
 			SceneManager.LoadScene("Result", LoadSceneMode.Additive);
 		}
-		if (Input.GetKeyDown(KeyCode.Alpha1))
-			ChangeModel(0);
-		if (Input.GetKeyDown(KeyCode.Alpha2))
-			ChangeModel(1);
-		if (Input.GetKeyDown(KeyCode.Alpha3))
-			ChangeModel(2);
+		//if (Input.GetKeyDown(KeyCode.Alpha1))
+		//	ChangeModel(0);
+		//if (Input.GetKeyDown(KeyCode.Alpha2))
+		//	ChangeModel(1);
+		//if (Input.GetKeyDown(KeyCode.Alpha3))
+		//	ChangeModel(2);
 
 		
 	}
-	public void ChangeLookModel(GameObject model)
-	{
-		GameObject.Find("GamePad").GetComponent<Cinemachine.CinemachineFreeLook>().Follow = model.transform;
-		GameObject.Find("GamePad").GetComponent<Cinemachine.CinemachineFreeLook>().LookAt = model.transform.Find("LookAt");
-	}
-	public void ChangeModel(int num)
-	{
-		m_animTime = GameObject.Find("Aine_Unit/Idol").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime;
-		Vector3 pos = GameObject.Find("Aine_Unit/Idol").transform.localPosition;
-		Debug.Log(m_animTime);
-		Destroy(GameObject.Find("Aine_Unit/Idol"));
-		GameObject idol = Instantiate(m_aineModel[num], GameObject.Find("Aine_Unit").transform);
-		idol.name = "Idol";
-		idol.transform.localPosition = pos;
-		idol.GetComponent<Animator>().Play("NOT_Final", 0, m_animTime);
-		ChangeLookModel(idol);
-	}
+	//public void ChangeLookModel(GameObject model)
+	//{
+	//	GameObject.Find("GamePad").GetComponent<Cinemachine.CinemachineFreeLook>().Follow = model.transform;
+	//	GameObject.Find("GamePad").GetComponent<Cinemachine.CinemachineFreeLook>().LookAt = model.transform.Find("LookAt");
+	//}
+	//public void ChangeModel(int num)
+	//{
+	//	m_animTime = GameObject.Find("Aine_Unit/Idol").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime;
+	//	Vector3 pos = GameObject.Find("Aine_Unit/Idol").transform.localPosition;
+	//	Debug.Log(m_animTime);
+	//	Destroy(GameObject.Find("Aine_Unit/Idol"));
+	//	GameObject idol = Instantiate(m_aineModel[num], GameObject.Find("Aine_Unit").transform);
+	//	idol.name = "Idol";
+	//	idol.transform.localPosition = pos;
+	//	idol.GetComponent<Animator>().Play("NOT_Final", 0, m_animTime);
+	//	ChangeLookModel(idol);
+	//}
 	public void ChangeControll()
 	{
 		switch (m_controll)

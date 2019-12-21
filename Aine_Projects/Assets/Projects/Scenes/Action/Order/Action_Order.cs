@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Linq;
 using MyBox;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 [DefaultExecutionOrder (1)]
@@ -42,6 +43,7 @@ public class Action_Order : Action_MonoSamp
 	[SerializeField] private int m_commnetCnt;
 	[SerializeField] private int m_selectComment;
 	private Animator m_orderAnim;
+	private Transform m_actionCamera;
 
 	private void Start()
 	{
@@ -57,6 +59,12 @@ public class Action_Order : Action_MonoSamp
 		m_orderAnim = transform.Find("_Order").GetComponent<Animator>();
 		ml_pad = new List<PadButton>();
 
+		GameObject.Find("Stage Camera").GetComponent<PlayableDirector>().enabled = true;
+		GameObject.Find("Stage Camera").GetComponent<PlayableDirector>().Play();
+		m_actionCamera = GameObject.Find("Action_Camera").GetComponent<Transform>();
+		for (int i = 0; i < 7; i++)
+			m_actionCamera.GetChild(i).gameObject.SetActive(true);
+
 		SaveValue(m_data.m_list, ref m_data.m_listCopy);
 
 		RandomText();
@@ -69,6 +77,7 @@ public class Action_Order : Action_MonoSamp
 	// Update is called once per frame
 	private void Update()
 	{
+		m_actionCamera.transform.position = GameObject.Find("Idol").transform.position;
 		if (m_bEffect) return;
 		if (Input.GetKeyDown(KeyCode.R))
 			RandomText();
@@ -256,7 +265,7 @@ public class Action_Order : Action_MonoSamp
 	{
 		yield return new WaitForSeconds(1f);
 		GameObject work = Instantiate(m_newComment, m_cmtCanvas);
-		work.GetComponent<RectTransform>().localPosition = new Vector2(0f, UnityEngine.Random.Range(-3.5f, 6f));
+		work.GetComponent<RectTransform>().localPosition = new Vector2(0f, UnityEngine.Random.Range(.2f, 6f));
 		work.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = text;
 	}
 	private IEnumerator NextText()
@@ -285,8 +294,8 @@ public class Action_Order : Action_MonoSamp
 		m_orderAnim.Play("StartButton");
 		m_timeAnim.Play("Order_Start");
 		yield return new WaitForSeconds(m_startWaitTime);
-		m_cutAnim.AnimSpeed(0, m_multiply);
-		m_cutin.PlayAnim(true);
+		//m_cutAnim.AnimSpeed(0, m_multiply);
+		//m_cutin.PlayAnim(true);
 		m_bEffect = false;
 	}
 
@@ -301,12 +310,15 @@ public class Action_Order : Action_MonoSamp
 		m_startAnim.Play("EndText");
 		m_orderAnim.Play("EndButton");
 		m_timeAnim.Play("Time_End");
-		m_cutin.PlayAnim(false);
+		//m_cutin.PlayAnim(false);
 		yield return new WaitForSeconds(2f);
 		m_evaAnim.SetBool("Start", false);
 		yield return new WaitForSeconds(1f);
 		ResetValue();
 		ResetText();
+		for (int i = 0; i < 7; i++)
+			m_actionCamera.GetChild(i).gameObject.SetActive(true);
+		GameObject.Find("Stage Camera").GetComponent<PlayableDirector>().enabled = false;
 		StartCoroutine(m_scr.imageShot());
 		m_manager.m_controll = m_oldCtrl;
 		m_manager.ChangeControll();

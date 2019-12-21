@@ -18,21 +18,21 @@ public class Animator_Controller : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		//m_anim = GetComponent<Animator>();
-		//m_animeSpeed = m_anim.GetCurrentAnimatorStateInfo(0).speed;
-		//switch (m_num)
-		//{
-		//	case Anim.SAKO01_Final:
-		//		m_anim.Play("SAKO_Final", 0, .01f);
-		//		break;
-		//	case Anim.SIMO01_Final:
-		//		m_anim.Play("SIMO_Final", 0, .01f);
-		//		break;
-		//	case Anim.NOT01_Final:
-		//		m_anim.Play("NOT_Final", 0, .01f);
-		//		//m_anim.CrossFade("NOT_Final", 0, 0, .1f);
-		//		break;
-		//}
+		m_anim = GetComponent<Animator>();
+		m_animeSpeed = m_anim.GetCurrentAnimatorStateInfo(0).speed;
+		switch (m_num)
+		{
+			case Anim.SAKO01_Final:
+				m_anim.Play("SAKO_Final", 0, .01f);
+				break;
+			case Anim.SIMO01_Final:
+				m_anim.Play("SIMO_Final", 0, .01f);
+				break;
+			case Anim.NOT01_Final:
+				m_anim.Play("NOT_Final", 0, .01f);
+				//m_anim.CrossFade("NOT_Final", 0, 0, .1f);
+				break;
+		}
 	}
 
 	// Update is called once per frame

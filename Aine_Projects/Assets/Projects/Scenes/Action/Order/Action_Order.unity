@@ -3393,9 +3393,9 @@ MonoBehaviour:
   m_stopTime: 1
   m_ev: 0
   m_evSprite: []
-  m_excellent: 35
-  m_good: 21
-  m_nice: 20
+  m_excellent: 12
+  m_good: 7
+  m_nice: 4
   m_oldCtrl: 0
   m_sound:
   - {fileID: 8300000, guid: b1cc10b5f21740440bb1e9a25e557875, type: 3}

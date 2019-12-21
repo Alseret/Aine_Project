@@ -37,7 +37,7 @@ public class Action_Effect : MonoBehaviour
 			Destroy(work, 1f);
 			m_popEffe++;
 			m_manager.m_noteCnt++;
-			Debug.Log(m_popEffe);
+			//Debug.Log(m_popEffe);
 		}
 	}
 	public void GenerateEffects(int num)

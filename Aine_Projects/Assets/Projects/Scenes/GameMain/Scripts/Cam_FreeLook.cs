@@ -20,6 +20,7 @@ public class Cam_FreeLook : MonoBehaviour
 	void Start()
 	{
 		m_free = GetComponent<Cinemachine.CinemachineFreeLook>();
+		m_free.m_Lens.FieldOfView = 40f;
 	}
 
 	// Update is called once per frame

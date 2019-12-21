@@ -170,6 +170,7 @@ public class Action_MonoSamp : MonoBehaviour
 			m_evSprite[0].enabled = false;
 			m_evSprite[1].enabled = false;
 			m_evSprite[2].enabled = true;
+			Debug.Log("Excellent!!");
 		}
 		// Good
 		else if (num >= m_good)
@@ -178,14 +179,7 @@ public class Action_MonoSamp : MonoBehaviour
 			m_evSprite[0].enabled = false;
 			m_evSprite[1].enabled = true;
 			m_evSprite[2].enabled = false;
-		}
-		else if (num == 0)
-		{
-			m_ev = GameManager._Evaluation.Nice;
-			m_evSprite[0].enabled = true;
-			m_evSprite[1].enabled = false;
-			m_evSprite[2].enabled = false;
-			//m_evaText.text = "??(^q^)??";
+			Debug.Log("Good!");
 		}
 		// Nice
 		else if (num <= m_nice)
@@ -194,6 +188,7 @@ public class Action_MonoSamp : MonoBehaviour
 			m_evSprite[0].enabled = true;
 			m_evSprite[1].enabled = false;
 			m_evSprite[2].enabled = false;
+			Debug.Log("Nice");
 		}
 		m_evaAnim.SetBool("Start", true);
 	}

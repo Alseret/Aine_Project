@@ -113,27 +113,33 @@ public class Action_Roll : Action_MonoSamp
 	{
 		if ((m_nice < m_cnt) && !m_mobflag[0])
 		{
-			Debug.Log("Nice");
 			if (m_mobs[0].localPosition != Vector3.zero)
 				m_mobs[0].localPosition = Vector3.MoveTowards(m_mobs[0].localPosition, Vector3.zero, m_moveSoeed * Time.deltaTime);
 			else
+			{
+				Debug.Log("Nice");
 				m_mobflag[0] = true;
+			}
 		}
 		if ((m_good < m_cnt) && !m_mobflag[1])
 		{
-			Debug.Log("Good");
 			if (m_mobs[1].localPosition != Vector3.zero)
 				m_mobs[1].localPosition = Vector3.MoveTowards(m_mobs[1].localPosition, Vector3.zero, m_moveSoeed * Time.deltaTime);
 			else
+			{
+				Debug.Log("Good");
 				m_mobflag[1] = true;
+			}
 		}
 		if ((m_excellent < m_cnt) && !m_mobflag[2])
 		{
-			Debug.Log("Excellent");
 			if (m_mobs[2].localPosition != Vector3.zero)
 				m_mobs[2].localPosition = Vector3.MoveTowards(m_mobs[2].localPosition, Vector3.zero, m_moveSoeed * Time.deltaTime);
 			else
+			{
+				Debug.Log("Excellent");
 				m_mobflag[2] = true;
+			}
 		}
 	}
 	private IEnumerator MoveMob(int num)
@@ -166,19 +172,21 @@ public class Action_Roll : Action_MonoSamp
 	}
 	private IEnumerator SoundNum()
 	{
+		DontDestroyOnLoad(GameObject.Find("Roll_Audio").gameObject);
+		Destroy(GameObject.Find("Roll_Audio").gameObject, 10f);
 		switch (m_ev)
 		{
 			case GameManager._Evaluation.Nice:
-				Debug.Log("Nice");
+				Debug.Log("Nice_Audio");
 				m_sndAdio[0].Play();
 				break;
 			case GameManager._Evaluation.Good:
-				Debug.Log("Good");
+				Debug.Log("Good_Audio");
 				m_sndAdio[0].Play();
 				m_sndAdio[1].Play();
 				break;
 			case GameManager._Evaluation.Excellent:
-				Debug.Log("Excellent");
+				Debug.Log("Excellent_Audio");
 				m_sndAdio[0].Play();
 				m_sndAdio[1].Play();
 				m_sndAdio[2].Play();
@@ -189,11 +197,10 @@ public class Action_Roll : Action_MonoSamp
 	// 終了演出
 	protected override IEnumerator EndEffect(string name)
 	{
-		Debug.Log("END");
 		enabled = false;
-		 yield return new WaitForSeconds(m_stopTime);
 		ChackEvaluation(m_cnt);
 		StartCoroutine(SoundNum());
+		yield return new WaitForSeconds(m_stopTime);
 		m_manager.AddMaster(m_type, m_cnt, m_ev);
 		m_startAnim.Play("EndText");
 		m_rollAnim.Play("End");
