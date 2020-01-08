@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField] public AudioSource m_audio;
 	[SerializeField] private GameObject[] m_aineModel;
 	[SerializeField] public float m_animTime;
+	[SerializeField] public int m_eveScore;
 
 	// Start is called before the first frame update
 	private void Awake()
@@ -66,6 +67,7 @@ public class GameManager : MonoBehaviour
 		//idol.name = "Idol";
 		//idol.GetComponent<Animator>().Play("NOT_Final", 0, .01f);
 		//ChangeLookModel(idol);
+		m_eveScore = 0;
 		ChangeControll();
 		ml_master = new List<_Master>();
 		m_audio.clip = m_clip;

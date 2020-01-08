@@ -15,9 +15,6 @@ EditorBuildSettings:
     path: Assets/Projects/Scenes/GameMain/CutIn.unity
     guid: 9cde3071c9e0c754785e3998bac103d6
   - enabled: 1
-    path: Assets/Projects/Scenes/Result/Result.unity
-    guid: e372ab4e61ce3e2428bbe92e40883cac
-  - enabled: 1
     path: Assets/Projects/Scenes/Action/Order/Action_Order.unity
     guid: bda31d3831adfdb4eb08a145814a1b6b
   - enabled: 1
@@ -26,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Projects/Scenes/Action/Roll/Action_Roll.unity
     guid: baa8d8a16b4859a41a136db01fda6886
+  - enabled: 1
+    path: Assets/Projects/Scenes/GameMain/Result.unity
+    guid: df3a9229f78542047a7060ee68679632
   m_configObjects: {}

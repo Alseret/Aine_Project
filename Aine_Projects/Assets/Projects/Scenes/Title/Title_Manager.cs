@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Title_Manager : MonoBehaviour
 {
+	[SerializeField] private GameObject m_fadePrefab;
 	// Start is called before the first frame update
 	private void Start()
 	{
@@ -16,7 +17,9 @@ public class Title_Manager : MonoBehaviour
 	{
 		if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
 		{
-			SceneManager.LoadScene("Stage");
+			GameObject work = Instantiate(m_fadePrefab);
+			work.GetComponent<Fade_IO>().FadeIn("Stage");
+			//SceneManager.LoadScene("Stage");
 		}
 	}
 }

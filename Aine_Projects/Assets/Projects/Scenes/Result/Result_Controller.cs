@@ -28,7 +28,7 @@ public class Result_Controller : MonoBehaviour
 	private void Start()
 	{
 		m_scrShot = GameObject.Find("Cam").GetComponent<ScreenShot>();
-		GameObject.Find("System").SetActive(false);
+		//GameObject.Find("System").SetActive(false);
 		m_cnt = 0;
 		m_picCnt = 0;
 		StartCoroutine(StartPicture());
@@ -42,7 +42,7 @@ public class Result_Controller : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Return) && (m_scrShot.m_sprite.Count > m_picCnt))
 		{
 			Debug.Log("Sprite : " + m_scrShot.m_sprite.Count);
-			Debug.Log("Cnt : " + m_picCnt);
+			//Debug.Log("Cnt : " + m_picCnt);
 			GameObject work;
 			work = Instantiate(m_picPrefab, transform.GetChild(2));
 			work.transform.GetChild(0).GetComponent<Image>().sprite = m_scrShot.m_sprite[m_picCnt];
@@ -84,7 +84,7 @@ public class Result_Controller : MonoBehaviour
 		GameObject work;
 		work = Instantiate(m_picPrefab, transform);//.Find("Pictures"));
 		work.transform.GetChild(0).GetComponent<Image>().sprite = m_scrShot.m_sprite[m_picCnt];
-		work.transform.parent = transform.GetChild(1).Find("Pictures");
+		work.transform.SetParent(transform.Find("Pictures"));
 		if (m_scrShot.m_sprite.Count - 1 == m_picCnt)
 		{
 			work.GetComponent<RectTransform>().localPosition = new Vector2(m_pic[m_pic.Count - 1].pos.x, m_pic[m_pic.Count - 1].pos.y);

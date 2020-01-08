@@ -47,7 +47,7 @@ public class Action_Order : Action_MonoSamp
 
 	private void Start()
 	{
-		Debug.Log("Action_Order");
+		//Debug.Log("Action_Order");
 		Setup();
 		m_type = GameManager._ACTION_TYPE.Order;
 		m_circleP = transform.Find("_Order").Find("Order");
@@ -291,7 +291,7 @@ public class Action_Order : Action_MonoSamp
 	protected override IEnumerator StartEffect()
 	{
 		m_startAnim.Play("StartText");
-		m_orderAnim.Play("StartButton");
+		//m_orderAnim.Play("StartButton");
 		m_timeAnim.Play("Order_Start");
 		yield return new WaitForSeconds(m_startWaitTime);
 		//m_cutAnim.AnimSpeed(0, m_multiply);
@@ -306,6 +306,7 @@ public class Action_Order : Action_MonoSamp
 		enabled = false;
 		yield return new WaitForSeconds(m_stopTime);
 		ChackEvaluation(m_cnt);
+		m_ghost.GenerateGhost(m_ev);
 		m_manager.AddMaster(m_type, m_cnt, m_ev);
 		m_startAnim.Play("EndText");
 		m_orderAnim.Play("EndButton");

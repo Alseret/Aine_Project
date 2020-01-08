@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using MyBox;
 using UnityEngine.SceneManagement;
+using UnityEngine.Playables;
 
 public class Action_Roll : Action_MonoSamp
 {
@@ -29,11 +30,12 @@ public class Action_Roll : Action_MonoSamp
 	[SerializeField] private int m_moveSoeed;
 	[SerializeField] private bool[] m_mobflag;
 	[SerializeField] private AudioSource[] m_sndAdio;
+	private Transform m_actionCamera;
 
 	// Start is called before the first frame update
 	private void Start()
 	{
-		Debug.Log("Action_Roll");
+		//Debug.Log("Action_Roll");
 		Setup();
 		m_pad = GameObject.Find("GameManager").GetComponent<GamePad_Controller>();
 		m_type = GameManager._ACTION_TYPE.Roll;
@@ -41,6 +43,12 @@ public class Action_Roll : Action_MonoSamp
 		m_mobflag = new bool[3];
 		for (int i = 0; i < 3; i++)
 			m_mobflag[i] = false;
+
+		GameObject.Find("Stage Camera").GetComponent<PlayableDirector>().enabled = true;
+		GameObject.Find("Stage Camera").GetComponent<PlayableDirector>().Play();
+		m_actionCamera = GameObject.Find("Action_Camera").GetComponent<Transform>();
+		for (int i = 0; i < 7; i++)
+			m_actionCamera.GetChild(i).gameObject.SetActive(true);
 		ResetValue();
 
 		// 演出開始
@@ -59,6 +67,7 @@ public class Action_Roll : Action_MonoSamp
 	// Update is called once per frame
 	private void Update()
 	{
+		m_actionCamera.transform.position = GameObject.Find("Idol").transform.position;
 		if (m_bEffect) return;
 
 		if (TimeCheck("Action_Roll"))
@@ -107,7 +116,7 @@ public class Action_Roll : Action_MonoSamp
 		{
 			m_mobs[num].localPosition = Vector3.MoveTowards(transform.localPosition, Vector3.zero, m_moveSoeed);
 			MoveToMob(num);
-		}			
+		}
 	}
 	private void CheckCnt()
 	{
@@ -202,6 +211,7 @@ public class Action_Roll : Action_MonoSamp
 		StartCoroutine(SoundNum());
 		yield return new WaitForSeconds(m_stopTime);
 		m_manager.AddMaster(m_type, m_cnt, m_ev);
+		m_ghost.GenerateGhost(m_ev);
 		m_startAnim.Play("EndText");
 		m_rollAnim.Play("End");
 		m_rollAnim.transform.GetChild(3).GetChild(0).GetComponent<Fixed_Rot>().enabled = false;
@@ -211,6 +221,10 @@ public class Action_Roll : Action_MonoSamp
 		yield return new WaitForSeconds(1f);
 		ResetValue();
 		ResetText();
+
+		for (int i = 0; i < 7; i++)
+			m_actionCamera.GetChild(i).gameObject.SetActive(true);
+		GameObject.Find("Stage Camera").GetComponent<PlayableDirector>().enabled = false;
 		StartCoroutine(m_scr.imageShot());
 		m_manager.m_controll = m_oldCtrl;
 		m_manager.ChangeControll();

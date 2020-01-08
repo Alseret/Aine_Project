@@ -100,7 +100,7 @@ public class Action_MonoSamp : MonoBehaviour
 	protected virtual void ResetValue()
 	{
 		m_startAnim.SetBool("Start", false);
-		m_cntAnim.SetBool("Start", false);
+		m_cntAnim.SetBool("StartText", false);
 		m_timeAnim.SetBool("Start", false);
 		m_evaAnim.SetBool("Start", false);
 		m_cntAnim.SetBool("Start", false);
@@ -170,6 +170,7 @@ public class Action_MonoSamp : MonoBehaviour
 			m_evSprite[0].enabled = false;
 			m_evSprite[1].enabled = false;
 			m_evSprite[2].enabled = true;
+			m_manager.m_eveScore += 3;
 			Debug.Log("Excellent!!");
 		}
 		// Good
@@ -179,6 +180,7 @@ public class Action_MonoSamp : MonoBehaviour
 			m_evSprite[0].enabled = false;
 			m_evSprite[1].enabled = true;
 			m_evSprite[2].enabled = false;
+			m_manager.m_eveScore += 2;
 			Debug.Log("Good!");
 		}
 		// Nice
@@ -188,6 +190,7 @@ public class Action_MonoSamp : MonoBehaviour
 			m_evSprite[0].enabled = true;
 			m_evSprite[1].enabled = false;
 			m_evSprite[2].enabled = false;
+			m_manager.m_eveScore += 1;
 			Debug.Log("Nice");
 		}
 		m_evaAnim.SetBool("Start", true);

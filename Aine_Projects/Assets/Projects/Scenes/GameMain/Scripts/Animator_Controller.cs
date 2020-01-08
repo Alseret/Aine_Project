@@ -10,6 +10,7 @@ public class Animator_Controller : MonoBehaviour
 		SAKO01_Final,
 		SIMO01_Final,
 		NOT01_Final,
+		NONE,
 	}
 	[SerializeField] private Animator m_anim;
 	[SerializeField] private float m_animeSpeed;
@@ -30,6 +31,9 @@ public class Animator_Controller : MonoBehaviour
 				break;
 			case Anim.NOT01_Final:
 				m_anim.Play("NOT_Final", 0, .01f);
+				//m_anim.CrossFade("NOT_Final", 0, 0, .1f);
+				break;
+			case Anim.NONE:
 				//m_anim.CrossFade("NOT_Final", 0, 0, .1f);
 				break;
 		}

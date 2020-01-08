@@ -29,7 +29,7 @@ public class Action_Repeat : Action_MonoSamp
 		for (int i = 0; i < 7; i++)
 			m_actionCamera.GetChild(i).gameObject.SetActive(true);
 		m_cntText = transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>();
-		Debug.Log("Action_Repeate");
+		//Debug.Log("Action_Repeate");
 		ResetValue();
 		// 演出開始
 		StartCoroutine(StartEffect());
@@ -134,8 +134,7 @@ public class Action_Repeat : Action_MonoSamp
 		yield return new WaitForSeconds(1f);
 		ResetValue();
 		ResetText(); 
-		for (int i = 0; i < 7; i++)
-			m_actionCamera.GetChild(i).gameObject.SetActive(true);
+		for (int i = 0; i < 7; i++) m_actionCamera.GetChild(i).gameObject.SetActive(true);
 		GameObject.Find("Stage Camera").GetComponent<PlayableDirector>().enabled = false;
 		StartCoroutine(m_scr.imageShot());
 		m_manager.m_controll = m_oldCtrl;

@@ -1824,7 +1824,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_type: 0
   m_bEffect: 0
-  m_defTime: 7
+  m_defTime: 20
   m_time: 0
   m_cnt: 0
   m_common: {fileID: 0}

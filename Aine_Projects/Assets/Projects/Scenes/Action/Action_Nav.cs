@@ -59,7 +59,9 @@ public class Action_Nav : MonoBehaviour
 		if(m_manager.m_SoundTime < m_manager.m_playTime + 5f && !m_manager.m_contObj[2].activeSelf)
 		{
 			m_manager.m_controll = GameManager._ControllType.End;
+
 			m_manager.ChangeControll();
+			GameObject.Find("System").SetActive(false);
 		}
 		if ((m_manager.m_SoundTime < m_manager.m_playTime) && m_audio.volume > 0f)
 		{
@@ -67,7 +69,9 @@ public class Action_Nav : MonoBehaviour
 		}
 		if(m_manager.m_SoundTime + 3f < m_manager.m_playTime)
 		{
+			Debug.Log("END<MUSIIC");
 			enabled = false;
+			m_audio.Stop();
 			GameObject.Find("Idol").GetComponent<Animator>().enabled = false;
 			m_manager.EndMusic();
 		}
@@ -82,7 +86,7 @@ public class Action_Nav : MonoBehaviour
 			rect.GetComponent<Image>().sprite = m_icons[(int)action.m_actionType];
 			rect.GetComponent<RectTransform>().sizeDelta = new Vector2(m_icons[(int)action.m_actionType].texture.width, m_icons[(int)action.m_actionType].texture.height);
 			rect.transform.localScale = Vector3.one * .3f;
-			rect.GetComponent<RectTransform>().anchoredPosition = new Vector3((750f / m_manager.m_SoundTime) * action.time, 15f, 0f);
+			rect.GetComponent<RectTransform>().anchoredPosition = new Vector3((678f / m_manager.m_SoundTime) * action.time, 15f, 0f);
 		}
 	}
 	private void PlayAction()
@@ -105,6 +109,25 @@ public class Action_Nav : MonoBehaviour
 						break;
 					case GameManager._ACTION_TYPE.Roll:
 						SceneManager.LoadScene("Action_Roll", LoadSceneMode.Additive);
+						break;
+					case GameManager._ACTION_TYPE.Change:
+						int num = 0;
+						switch(GameObject.Find("GameManager").GetComponent<GameManager>().m_eveScore)
+						{
+							case 1:
+							case 2:
+								num = 0;
+								break;
+							case 3:
+							case 4:
+								num = 1;
+								break;
+							case 5:
+							case 6:
+								num = 2;
+								break;
+						}
+						StartCoroutine(GameObject.Find("Idol").GetComponent<Model_ChangeEffect>().ChangeEffect(num));
 						break;
 				}
 				break;
