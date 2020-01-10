@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using MyBox;
 using UnityEngine.Playables;
@@ -14,6 +15,11 @@ public class Action_Repeat : Action_MonoSamp
 	[SerializeField] private Animator m_buttonAnim;
 	[SerializeField] private Animator m_countAnim;
 	private Transform m_actionCamera;
+	[SerializeField] public static bool m_diffAct;
+	[SerializeField] private float m_changeButton;
+	[SerializeField] private Sprite[] m_buttonImage;
+	[SerializeField] private Action_Repeat_Button m_arb;
+	private int m_inputButton;
 
 	// Start is called before the first frame update
 	private void Awake()
@@ -45,7 +51,9 @@ public class Action_Repeat : Action_MonoSamp
 		m_time = m_defTime;
 		ChangeTime();
 		m_cnt = 0;
+		m_inputButton = 1;
 		m_bEffect = true;
+		m_changeb = false;
 	}
 
 	// Update is called once per frame
@@ -55,11 +63,25 @@ public class Action_Repeat : Action_MonoSamp
 		if (m_bEffect) return;
 		if (TimeCheck("Action_Repeat"))
 		{
+			if(m_diffAct) ChangeButton();	// Hard
 			InputRepeat();
 			TimeDecrement();
 		}
 	}
+	private bool m_changeb;
+	private void ChangeButton()
+	{
+		if (m_changeb) return;
+		if(m_changeButton > m_time)
+		{
+			m_changeb = true;
+			m_arb.m_imageObj[0].GetComponent<Image>().sprite = m_buttonImage[0];
+			m_arb.m_imageObj[1].GetComponent<Image>().sprite = m_buttonImage[1];
 
+			m_inputButton = 0;
+			Debug.Log("CHANGE ACT...");
+		}
+	}
 	// 連打
 	private void InputRepeat()
 	{
@@ -79,7 +101,7 @@ public class Action_Repeat : Action_MonoSamp
 
 	private bool InputButtonDown()
 	{
-		return (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 1"));
+		return (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button " + m_inputButton));
 	}
 	private bool InputButtonUp()
 	{

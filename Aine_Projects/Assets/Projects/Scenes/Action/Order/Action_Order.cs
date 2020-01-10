@@ -44,6 +44,7 @@ public class Action_Order : Action_MonoSamp
 	[SerializeField] private int m_selectComment;
 	private Animator m_orderAnim;
 	private Transform m_actionCamera;
+	[SerializeField] public static bool m_diffAct;
 
 	private void Start()
 	{
@@ -81,11 +82,20 @@ public class Action_Order : Action_MonoSamp
 		if (m_bEffect) return;
 		if (Input.GetKeyDown(KeyCode.R))
 			RandomText();
-			
+
 		if (TimeCheck("Action_Order"))
 		{
-			if (m_commnetCnt < 4)
-				InputDelayComment();
+			switch (m_diffAct)
+			{
+				case true:  // second
+					Debug.Log("Second");
+					if (m_commnetCnt < 4) InputDelayComment_Second();
+					break;
+				case false: // first
+					Debug.Log("First");
+					if (m_commnetCnt < 4) InputDelayComment_First();
+					break;
+			}
 			TimeDecrement();
 		}
 	}
@@ -130,23 +140,118 @@ public class Action_Order : Action_MonoSamp
 		m_circleP.Find("Text").Find("Comp").GetComponent<TextMeshProUGUI>().text =
 					"<color=#ffffff>" + m_data.m_listCopy[m_selectComment].text + "</color>";
 		List<Action_Order_Data.Char> work = m_data.m_listCopy[m_selectComment].Moji;
-		work = work.OrderBy(o => Guid.NewGuid()).ToList();
-		for (int i = 0; i < 4; i++)
-			m_data.m_listCopy[m_selectComment].Moji[i] = work[i];
-		for (int i = 0; i < 4; i++)
-			m_circleP.Find("Comment4").GetChild(i).GetComponent<TextMeshProUGUI>().text = m_data.m_listCopy[m_selectComment].Moji[i].text;
+		switch (m_diffAct)
+		{
+			case true:
+				work = work.OrderBy(o => Guid.NewGuid()).ToList();
+				for (int i = 0; i < 4; i++)
+					m_data.m_listCopy[m_selectComment].Moji[i] = work[i];
+				for (int i = 0; i < 4; i++)
+					m_circleP.Find("Comment4").GetChild(i).GetComponent<TextMeshProUGUI>().text =
+						m_data.m_listCopy[m_selectComment].Moji[i].text;
+				break;
+			case false:
+				m_newMoji = new List<Action_Order_Data.Char>();
+				Action_Order_Data.Char workMoji1 = new Action_Order_Data.Char();
+				workMoji1.num = 0;
+				workMoji1.text = m_data.m_listCopy[m_selectComment].Moji[0].text + m_data.m_listCopy[m_selectComment].Moji[1].text;
+				m_newMoji.Add(workMoji1);
+				Action_Order_Data.Char workMoji2 = new Action_Order_Data.Char();
+				workMoji2.num = 1;
+				workMoji2.text = m_data.m_listCopy[m_selectComment].Moji[2].text + m_data.m_listCopy[m_selectComment].Moji[3].text;
+				m_newMoji.Add(workMoji2);
+
+				m_newMoji = m_newMoji.OrderBy(o => Guid.NewGuid()).ToList();
+
+				m_circleP.Find("Button").GetChild(2).GetComponent<Image>().color = new Color(.4f, .4f, .4f);
+				m_circleP.Find("Button").GetChild(4).GetComponent<Image>().color = new Color(.4f, .4f, .4f);
+				m_circleP.Find("Comment4").GetChild(0).gameObject.SetActive(false);
+				m_circleP.Find("Comment4").GetChild(3).gameObject.SetActive(false);
+				m_circleP.Find("Comment4").GetChild(2).GetComponent<TextMeshProUGUI>().text = m_newMoji[0].text;
+				m_circleP.Find("Comment4").GetChild(1).GetComponent<TextMeshProUGUI>().text = m_newMoji[1].text;
+				break;
+		}
 	}
 	private int m_enterText;
 	private bool[] m_enterTextB = new bool[4];
 	private bool m_delay;
 	[SerializeField] private float m_delayTime;
+	[SerializeField] private List<Action_Order_Data.Char> m_newMoji;
 	private IEnumerator Delay()
 	{
 		m_delay = true;
 		yield return new WaitForSeconds(m_delayTime);
 		m_delay = false;
 	}
-	private void InputDelayComment()
+	private void InputDelayComment_First()
+	{
+		if (m_delay) return;
+
+		//	A
+		if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown("joystick button 2")) && !m_enterTextB[1])
+		{
+			if (m_commnetCnt == m_newMoji[0].num)
+			{
+				m_soundSorce.PlayOneShot(m_sound[0]);
+				m_commnetCnt++;
+				m_cnt++;
+				m_enterText = m_commnetCnt;
+				m_enterTextB[1] = true;
+				m_button.GetChild(0).GetComponent<Image>().enabled = false;
+				m_button.GetChild(1).GetComponent<Image>().enabled = true;
+				m_comment4.GetChild(2).GetComponent<TextMeshProUGUI>().text = "<color=#8A8A8A>" + m_comment4.GetChild(2).GetComponent<TextMeshProUGUI>().text + "</color>";
+				Debug.Log("Succes");
+			}
+			else
+				StartCoroutine(Delay());
+		}
+		//	D
+		if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown("joystick button 1")) && !m_enterTextB[3])
+		{
+			if (m_commnetCnt == m_newMoji[1].num)
+			{
+				m_soundSorce.PlayOneShot(m_sound[0]);
+				m_commnetCnt++;
+				m_cnt++;
+				m_enterText = m_commnetCnt;
+				m_enterTextB[3] = true;
+				m_button.GetChild(6).GetComponent<Image>().enabled = false;
+				m_button.GetChild(7).GetComponent<Image>().enabled = true;
+				m_comment4.GetChild(1).GetComponent<TextMeshProUGUI>().text = "<color=#8A8A8A>" + m_comment4.GetChild(1).GetComponent<TextMeshProUGUI>().text + "</color>";
+				Debug.Log("Succes");
+			}
+			else
+				StartCoroutine(Delay());
+		}
+		switch (m_enterText)
+		{
+			case 0:
+				m_compSampText.text = m_data.m_list[m_selectComment].Moji[0].text +
+															m_data.m_list[m_selectComment].Moji[1].text +
+															m_data.m_list[m_selectComment].Moji[2].text +
+															m_data.m_list[m_selectComment].Moji[3].text;
+				break;
+			case 1:
+				m_compSampText.text = "<color=#000000>" + m_data.m_list[m_selectComment].Moji[0].text +
+															m_data.m_list[m_selectComment].Moji[1].text + "</color>" +
+															m_data.m_list[m_selectComment].Moji[2].text +
+															m_data.m_list[m_selectComment].Moji[3].text;
+				break;
+			case 2:
+				m_compSampText.text = "<color=#000000>" + m_data.m_list[m_selectComment].Moji[0].text +
+															m_data.m_list[m_selectComment].Moji[1].text+
+															m_data.m_list[m_selectComment].Moji[2].text +
+															m_data.m_list[m_selectComment].Moji[3].text + "</color>";
+				break;
+		}
+		if (m_commnetCnt >= 2)
+		{
+			m_commnetCnt = 0;
+			StartCoroutine(InstanceComment(m_compSampText.text));
+			StartCoroutine(NextText());
+		}
+	}
+	private void InputDelayComment_Second()
 	{
 		if (m_delay) return;
 		//	W
@@ -264,6 +369,8 @@ public class Action_Order : Action_MonoSamp
 	private IEnumerator InstanceComment(string text)
 	{
 		yield return new WaitForSeconds(1f);
+
+		m_data.m_listCopy.RemoveAt(m_selectComment);
 		GameObject work = Instantiate(m_newComment, m_cmtCanvas);
 		work.GetComponent<RectTransform>().localPosition = new Vector2(0f, UnityEngine.Random.Range(.2f, 6f));
 		work.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = text;

@@ -1824,7 +1824,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_type: 0
   m_bEffect: 0
-  m_defTime: 20
+  m_defTime: 8
   m_time: 0
   m_cnt: 0
   m_common: {fileID: 0}
@@ -1856,6 +1856,15 @@ MonoBehaviour:
   m_action: 0
   m_buttonAnim: {fileID: 1733555161}
   m_countAnim: {fileID: 854329881}
+  m_changeButton: 4
+  m_buttonImage:
+  - {fileID: 21300000, guid: bb3ab483e0eca1e49b723c2a4db54e2a, type: 3}
+  - {fileID: 21300000, guid: 770517fc93adf9c43aa8454a7a13764c, type: 3}
+  - {fileID: 21300000, guid: d8dff654f8ecfa141be63265e7e9f236, type: 3}
+  - {fileID: 21300000, guid: 7f3bbd581bee0a846a53774c887f4fae, type: 3}
+  - {fileID: 21300000, guid: 58871812ea30fbf4bb7baa8b1fba8b7a, type: 3}
+  - {fileID: 21300000, guid: f75e037f29ec8aa47b4cb6c1d61e6fec, type: 3}
+  m_arb: {fileID: 1733555162}
 --- !u!82 &1414674765
 AudioSource:
   m_ObjectHideFlags: 0

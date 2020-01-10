@@ -12,6 +12,7 @@ public class Action_Nav : MonoBehaviour
 	{
 		public GameManager._ACTION_TYPE m_actionType;
 		public float time;
+		public bool difficulty;
 		public bool used;
 	}
 	[SerializeField] private Sprite[] m_icons;
@@ -103,9 +104,11 @@ public class Action_Nav : MonoBehaviour
 				{
 					case GameManager._ACTION_TYPE.Repeate:
 						SceneManager.LoadScene("Action_Repeat", LoadSceneMode.Additive);
+						Action_Repeat.m_diffAct = action.difficulty;
 						break;
 					case GameManager._ACTION_TYPE.Order:
 						SceneManager.LoadScene("Action_Order", LoadSceneMode.Additive);
+						Action_Order.m_diffAct = action.difficulty;
 						break;
 					case GameManager._ACTION_TYPE.Roll:
 						SceneManager.LoadScene("Action_Roll", LoadSceneMode.Additive);

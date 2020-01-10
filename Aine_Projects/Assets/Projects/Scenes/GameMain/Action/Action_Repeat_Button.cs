@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Action_Repeat_Button : MonoBehaviour
 {
-	[SerializeField] private GameObject[] m_imageObj;
+	[SerializeField] public GameObject[] m_imageObj;
 	[SerializeField] private Action_Repeat m_master;
 
 	// Start is called before the first frame update
