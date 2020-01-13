@@ -207,10 +207,10 @@ public class Action_Roll : Action_MonoSamp
 	protected override IEnumerator EndEffect(string name)
 	{
 		enabled = false;
-		ChackEvaluation(m_cnt);
+		ChackEvaluation((int)m_cnt);
 		StartCoroutine(SoundNum());
 		yield return new WaitForSeconds(m_stopTime);
-		m_manager.AddMaster(m_type, m_cnt, m_ev);
+		m_manager.AddMaster(m_type, (int)m_cnt, m_ev);
 		m_ghost.GenerateGhost(m_ev);
 		m_startAnim.Play("EndText");
 		m_rollAnim.Play("End");

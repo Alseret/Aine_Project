@@ -20,6 +20,9 @@ public class Action_Repeat : Action_MonoSamp
 	[SerializeField] private Sprite[] m_buttonImage;
 	[SerializeField] private Action_Repeat_Button m_arb;
 	private int m_inputButton;
+	private CutIN_Manager m_cut;
+	[SerializeField] private float m_decCnt;
+	[SerializeField] private float m_incCnt;
 
 	// Start is called before the first frame update
 	private void Awake()
@@ -36,6 +39,7 @@ public class Action_Repeat : Action_MonoSamp
 			m_actionCamera.GetChild(i).gameObject.SetActive(true);
 		m_cntText = transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>();
 		//Debug.Log("Action_Repeate");
+		m_cut = GameObject.Find("CutIn").GetComponent<CutIN_Manager>();
 		ResetValue();
 		// 演出開始
 		StartCoroutine(StartEffect());
@@ -63,9 +67,11 @@ public class Action_Repeat : Action_MonoSamp
 		if (m_bEffect) return;
 		if (TimeCheck("Action_Repeat"))
 		{
-			if(m_diffAct) ChangeButton();	// Hard
+			if(m_diffAct) ChangeButton();   // Hard
 			InputRepeat();
 			TimeDecrement();
+			m_cut.DecrementCnt(m_decCnt);
+			m_cut.ChangeGage();
 		}
 	}
 	private bool m_changeb;
@@ -86,11 +92,14 @@ public class Action_Repeat : Action_MonoSamp
 	private void InputRepeat()
 	{
 		m_action = InputButtonDown();
+		m_cnt = m_cut.m_cnt;
+		m_cutAnim.AnimSpeed(m_cut.m_cnt, m_multiply);
+		string str = "<size=80>" + (m_cnt) + "</size> Combo";
+		ChangeCount(str);
 		if (InputButtonDown() && m_time > 0f)
 		{
-			string str = "<size=80>" + (++m_cnt) + "</size> Combo";
-			ChangeCount(str);
-			m_cutAnim.AnimSpeed(m_cnt, m_multiply);
+			//m_cnt += m_incCnt;
+			m_cut.m_cnt += m_incCnt;
 			m_effect.GenerateEffects();
 			m_soundSorce.PlayOneShot(m_sound[0]);
 		}
@@ -142,9 +151,9 @@ public class Action_Repeat : Action_MonoSamp
 		Debug.Log("END");
 		enabled = false;
 		yield return new WaitForSeconds(m_stopTime);
-		ChackEvaluation(m_cnt);
+		ChackEvaluation((int)m_cnt);
 		m_ghost.GenerateGhost(m_ev);
-		m_manager.AddMaster(m_type, m_cnt, m_ev);
+		m_manager.AddMaster(m_type, (int)m_cnt, m_ev);
 		m_startAnim.Play("EndText");
 		m_buttonAnim.Play("EndButton");
 		m_countAnim.Play("EndCount");
@@ -161,6 +170,7 @@ public class Action_Repeat : Action_MonoSamp
 		StartCoroutine(m_scr.imageShot());
 		m_manager.m_controll = m_oldCtrl;
 		m_manager.ChangeControll();
+		m_cut.ResetGage();
 		// アンロード
 		SceneManager.UnloadSceneAsync(name);
 	}

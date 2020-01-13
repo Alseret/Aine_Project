@@ -17,7 +17,7 @@ public class Action_MonoSamp : MonoBehaviour
 	// Time
 	[SerializeField] protected float m_defTime;             // アクション時間
 	[ReadOnly] [SerializeField] protected float m_time;     // 経過時間
-	[ReadOnly] [SerializeField] protected int m_cnt;
+	[ReadOnly] [SerializeField] protected float m_cnt;
 
 	// Animator
 	[SerializeField] protected Transform m_common;
@@ -146,8 +146,8 @@ public class Action_MonoSamp : MonoBehaviour
 	{
 		enabled = false;
 		yield return new WaitForSeconds(m_stopTime);
-		ChackEvaluation(m_cnt);
-		m_manager.AddMaster(m_type, m_cnt, m_ev);
+		ChackEvaluation((int)m_cnt);
+		m_manager.AddMaster(m_type, (int)m_cnt, m_ev);
 		m_startAnim.SetBool("Start", false);
 		m_cutin.PlayAnim(false);
 		yield return new WaitForSeconds(2f);

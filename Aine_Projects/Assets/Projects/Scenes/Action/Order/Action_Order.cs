@@ -88,11 +88,9 @@ public class Action_Order : Action_MonoSamp
 			switch (m_diffAct)
 			{
 				case true:  // second
-					Debug.Log("Second");
 					if (m_commnetCnt < 4) InputDelayComment_Second();
 					break;
 				case false: // first
-					Debug.Log("First");
 					if (m_commnetCnt < 4) InputDelayComment_First();
 					break;
 			}
@@ -200,7 +198,6 @@ public class Action_Order : Action_MonoSamp
 				m_button.GetChild(0).GetComponent<Image>().enabled = false;
 				m_button.GetChild(1).GetComponent<Image>().enabled = true;
 				m_comment4.GetChild(2).GetComponent<TextMeshProUGUI>().text = "<color=#8A8A8A>" + m_comment4.GetChild(2).GetComponent<TextMeshProUGUI>().text + "</color>";
-				Debug.Log("Succes");
 			}
 			else
 				StartCoroutine(Delay());
@@ -218,7 +215,6 @@ public class Action_Order : Action_MonoSamp
 				m_button.GetChild(6).GetComponent<Image>().enabled = false;
 				m_button.GetChild(7).GetComponent<Image>().enabled = true;
 				m_comment4.GetChild(1).GetComponent<TextMeshProUGUI>().text = "<color=#8A8A8A>" + m_comment4.GetChild(1).GetComponent<TextMeshProUGUI>().text + "</color>";
-				Debug.Log("Succes");
 			}
 			else
 				StartCoroutine(Delay());
@@ -267,7 +263,6 @@ public class Action_Order : Action_MonoSamp
 				m_button.GetChild(2).GetComponent<Image>().enabled = false;
 				m_button.GetChild(3).GetComponent<Image>().enabled = true;
 				m_comment4.GetChild(3).GetComponent<TextMeshProUGUI>().text = "<color=#8A8A8A>" + m_comment4.GetChild(3).GetComponent<TextMeshProUGUI>().text + "</color>";
-				Debug.Log("Succes");
 			}
 			else
 				StartCoroutine(Delay());
@@ -285,7 +280,6 @@ public class Action_Order : Action_MonoSamp
 				m_button.GetChild(0).GetComponent<Image>().enabled = false;
 				m_button.GetChild(1).GetComponent<Image>().enabled = true;
 				m_comment4.GetChild(2).GetComponent<TextMeshProUGUI>().text = "<color=#8A8A8A>" + m_comment4.GetChild(2).GetComponent<TextMeshProUGUI>().text + "</color>";
-				Debug.Log("Succes");
 			}
 			else
 				StartCoroutine(Delay());
@@ -303,7 +297,6 @@ public class Action_Order : Action_MonoSamp
 				m_button.GetChild(4).GetComponent<Image>().enabled = false;
 				m_button.GetChild(5).GetComponent<Image>().enabled = true;
 				m_comment4.GetChild(0).GetComponent<TextMeshProUGUI>().text = "<color=#8A8A8A>" + m_comment4.GetChild(0).GetComponent<TextMeshProUGUI>().text + "</color>";
-				Debug.Log("Succes");
 			}
 			else
 				StartCoroutine(Delay());
@@ -321,7 +314,6 @@ public class Action_Order : Action_MonoSamp
 				m_button.GetChild(6).GetComponent<Image>().enabled = false;
 				m_button.GetChild(7).GetComponent<Image>().enabled = true;
 				m_comment4.GetChild(1).GetComponent<TextMeshProUGUI>().text = "<color=#8A8A8A>" + m_comment4.GetChild(1).GetComponent<TextMeshProUGUI>().text + "</color>";
-				Debug.Log("Succes");
 			}
 			else
 				StartCoroutine(Delay());
@@ -412,9 +404,9 @@ public class Action_Order : Action_MonoSamp
 		Debug.Log("END");
 		enabled = false;
 		yield return new WaitForSeconds(m_stopTime);
-		ChackEvaluation(m_cnt);
+		ChackEvaluation((int)m_cnt);
 		m_ghost.GenerateGhost(m_ev);
-		m_manager.AddMaster(m_type, m_cnt, m_ev);
+		m_manager.AddMaster(m_type, (int)m_cnt, m_ev);
 		m_startAnim.Play("EndText");
 		m_orderAnim.Play("EndButton");
 		m_timeAnim.Play("Time_End");

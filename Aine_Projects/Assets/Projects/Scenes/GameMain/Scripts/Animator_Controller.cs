@@ -45,6 +45,7 @@ public class Animator_Controller : MonoBehaviour
 	}
 	public void AnimSpeed(float speed, float multiply)
 	{
+		if (speed <= 0f) speed = .1f;
 		m_anim.speed = m_animeSpeed * (speed * multiply);
 	}
 }

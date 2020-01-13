@@ -109,7 +109,7 @@ public class Action_Timing : Action_MonoSamp
 	{
 		enabled = false;
 		yield return new WaitForSeconds(m_stopTime);
-		m_manager.AddMaster(m_type, m_cnt, m_ev);
+		m_manager.AddMaster(m_type, (int)m_cnt, m_ev);
 		m_startAnim.SetBool("Start", false);
 		m_cutin.PlayAnim(false);
 		yield return new WaitForSeconds(1f);

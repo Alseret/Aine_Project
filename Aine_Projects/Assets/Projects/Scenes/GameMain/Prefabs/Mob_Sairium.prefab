@@ -1601,6 +1601,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8623153072162865396}
   - component: {fileID: 1810899815723347342}
+  - component: {fileID: 2219010360974864967}
   m_Layer: 13
   m_Name: Mob_Sairium
   m_TagString: Untagged
@@ -1634,7 +1635,7 @@ Animator:
   m_GameObject: {fileID: 4751510710024991463}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: c102395108d8d7146a82ce88294b8fff, type: 3}
-  m_Controller: {fileID: 9100000, guid: 866360bef2e3d5f4c991c36259f30c8c, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1643,6 +1644,25 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2219010360974864967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4751510710024991463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 573f4ca8ba50ece4bb491245306688b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_color: {r: 0, g: 0.9098611, b: 1, a: 1}
+  m_target:
+  - {fileID: 3661757205157857563}
+  - {fileID: 3661757203802378470}
+  m_mat: {fileID: 2100000, guid: f2c1c948de716364dba629e4c18be7b7, type: 2}
+  m_emissive: 30
+  m_slider: []
 --- !u!1 &4803691742689186430
 GameObject:
   m_ObjectHideFlags: 0
