@@ -1661,7 +1661,7 @@ MonoBehaviour:
   - {fileID: 3661757205157857563}
   - {fileID: 3661757203802378470}
   m_mat: {fileID: 2100000, guid: f2c1c948de716364dba629e4c18be7b7, type: 2}
-  m_emissive: 30
+  m_emissive: 20
   m_slider: []
 --- !u!1 &4803691742689186430
 GameObject:

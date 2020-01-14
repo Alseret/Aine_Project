@@ -68,6 +68,7 @@ public class Action_Order : Action_MonoSamp
 
 		SaveValue(m_data.m_list, ref m_data.m_listCopy);
 
+
 		RandomText();
 		ResetValue();
 

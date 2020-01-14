@@ -23,6 +23,7 @@ public class Action_Repeat : Action_MonoSamp
 	private CutIN_Manager m_cut;
 	[SerializeField] private float m_decCnt;
 	[SerializeField] private float m_incCnt;
+	[SerializeField] private GameObject[] m_kyaku;
 
 	// Start is called before the first frame update
 	private void Awake()
@@ -40,6 +41,9 @@ public class Action_Repeat : Action_MonoSamp
 		m_cntText = transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>();
 		//Debug.Log("Action_Repeate");
 		m_cut = GameObject.Find("CutIn").GetComponent<CutIN_Manager>();
+		m_kyaku = new GameObject[2];
+		m_kyaku[0] = GameObject.Find("Units/Repeat").transform.GetChild(0).gameObject;
+		m_kyaku[1] = GameObject.Find("Units/Repeat").transform.GetChild(1).gameObject;
 		ResetValue();
 		// 演出開始
 		StartCoroutine(StartEffect());
@@ -152,6 +156,16 @@ public class Action_Repeat : Action_MonoSamp
 		enabled = false;
 		yield return new WaitForSeconds(m_stopTime);
 		ChackEvaluation((int)m_cnt);
+		switch (m_ev)
+		{
+			case GameManager._Evaluation.Excellent:
+				m_kyaku[0].SetActive(true);
+				m_kyaku[1].SetActive(true);
+				break;
+			case GameManager._Evaluation.Good:
+				m_kyaku[0].SetActive(true);
+				break;
+		}
 		m_ghost.GenerateGhost(m_ev);
 		m_manager.AddMaster(m_type, (int)m_cnt, m_ev);
 		m_startAnim.Play("EndText");

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FocusObj
   - Plane
+  - Effects
   layers:
   - Default
   - TransparentFX
@@ -32,7 +33,7 @@ TagManager:
   - Action_Roll
   - SubStage
   - Main_Mob
-  - 
+  - Result_Effect
   - 
   - 
   - 
