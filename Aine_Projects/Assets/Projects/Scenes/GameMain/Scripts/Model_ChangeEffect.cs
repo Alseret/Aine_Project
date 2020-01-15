@@ -10,6 +10,7 @@ public class Model_ChangeEffect : MonoBehaviour
 		Normal,
 		Red,
 		Blue,
+		Pink,
 	}
 	[System.Serializable]
 	private struct MODEL_PART
@@ -31,6 +32,10 @@ public class Model_ChangeEffect : MonoBehaviour
 	[SerializeField] private MODEL_TYPE m_type;
 	[SerializeField] private MODEL_MAT[] m_mat;
 	[SerializeField] private MODEL_PART[] m_part;
+	[SerializeField] private Material[] m_clothNormalMat;
+	[SerializeField] private Material[] m_clothRedMat;
+	[SerializeField] private Material[] m_clothBlueMat;
+	[SerializeField] private Material[] m_clothPinkMat;
 
 	// Start is called before the first frame update
 	private void Start()
@@ -47,6 +52,8 @@ public class Model_ChangeEffect : MonoBehaviour
 			StartCoroutine(ChangeEffect(1));
 		if (Input.GetKeyDown(KeyCode.Alpha3))
 			StartCoroutine(ChangeEffect(2));
+		if (Input.GetKeyDown(KeyCode.Alpha4))
+			StartCoroutine(ChangeEffect(3));
 	}
 	private void ChangeMaterial(int num)
 	{
@@ -63,6 +70,22 @@ public class Model_ChangeEffect : MonoBehaviour
 			m_part[num].cloth[i].material.SetColor("_Emissive_Color", Color.black);
 		for (int i = 0; i < m_part[num].hair.Length; i++)
 			m_part[num].hair[i].material.SetColor("_Color", Color.black);
+
+		switch (num)
+		{
+			case 0:
+				m_part[3].cloth[9].materials = m_clothNormalMat;
+				break;
+			case 1:
+				m_part[3].cloth[9].materials = m_clothRedMat;
+				break;
+			case 2:
+				m_part[3].cloth[9].materials = m_clothBlueMat;
+				break;
+			case 3:
+				m_part[3].cloth[9].materials = m_clothPinkMat;
+				break;
+		}
 	}
 	[SerializeField] private float m_changeTime;
 	public IEnumerator ChangeEffect(int num)

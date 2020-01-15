@@ -1759,6 +1759,7 @@ MonoBehaviour:
   m_arb: {fileID: 1733555162}
   m_decCnt: 0.04
   m_incCnt: 0.5
+  m_kyaku: []
 --- !u!82 &1414674765
 AudioSource:
   m_ObjectHideFlags: 0

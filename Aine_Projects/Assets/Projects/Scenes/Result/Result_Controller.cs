@@ -23,6 +23,7 @@ public class Result_Controller : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI m_text;
 	[SerializeField] private int m_cnt;
 	[SerializeField] private List<PICTURE_POS> m_pic;
+	[SerializeField] private GameObject m_fadePrefab;
 
 	// Start is called before the first frame update
 	private void Start()
@@ -37,8 +38,12 @@ public class Result_Controller : MonoBehaviour
 	// Update is called once per frame
 	private void Update()
 	{
-		if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 0"))
-			SceneManager.LoadScene("Title");
+		if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 0"))
+		{
+			//SceneManager.LoadScene("Title");
+			GameObject work = Instantiate(m_fadePrefab);
+			work.GetComponent<Fade_IO>().FadeIn("Title");
+		}
 		if (Input.GetKeyDown(KeyCode.Return) && (m_scrShot.m_sprite.Count > m_picCnt))
 		{
 			Debug.Log("Sprite : " + m_scrShot.m_sprite.Count);

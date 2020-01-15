@@ -46,7 +46,7 @@ public class Action_Roll : Action_MonoSamp
 
 		GameObject.Find("Stage Camera").GetComponent<PlayableDirector>().enabled = true;
 		GameObject.Find("Stage Camera").GetComponent<PlayableDirector>().Play();
-		m_actionCamera = GameObject.Find("Action_Camera").GetComponent<Transform>();
+		m_actionCamera = GameObject.Find("Action_Camera/Repeat").GetComponent<Transform>();
 		for (int i = 0; i < 7; i++)
 			m_actionCamera.GetChild(i).gameObject.SetActive(true);
 		ResetValue();

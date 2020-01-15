@@ -114,23 +114,55 @@ public class Action_Nav : MonoBehaviour
 						SceneManager.LoadScene("Action_Roll", LoadSceneMode.Additive);
 						break;
 					case GameManager._ACTION_TYPE.Change:
-						int num = 0;
-						switch(GameObject.Find("GameManager").GetComponent<GameManager>().m_eveScore)
+						switch (action.difficulty)
 						{
-							case 1:
-							case 2:
-								num = 0;
+							case true:  // 1
+								// red
+								if (GameObject.Find("GameManager").GetComponent<GameManager>().m_eveScore < 11)
+								{
+									StartCoroutine(GameObject.Find("Idol").GetComponent<Model_ChangeEffect>().ChangeEffect(2));
+								}
+								// pink
+								else if (GameObject.Find("GameManager").GetComponent<GameManager>().m_eveScore >= 6)
+								{
+									StartCoroutine(GameObject.Find("Idol").GetComponent<Model_ChangeEffect>().ChangeEffect(1));
+								}
+								// blue
+								else if (GameObject.Find("GameManager").GetComponent<GameManager>().m_eveScore >= 11)
+								{
+									StartCoroutine(GameObject.Find("Idol").GetComponent<Model_ChangeEffect>().ChangeEffect(2));
+								}
 								break;
-							case 3:
-							case 4:
-								num = 1;
-								break;
-							case 5:
-							case 6:
-								num = 2;
+							case false: // 0
+								// red
+								if (GameObject.Find("GameManager").GetComponent<GameManager>().m_eveScore >= 5)
+								{
+									StartCoroutine(GameObject.Find("Idol").GetComponent<Model_ChangeEffect>().ChangeEffect(1));
+								}
+								// pink
+								else if (GameObject.Find("GameManager").GetComponent<GameManager>().m_eveScore >= 3)
+								{
+									StartCoroutine(GameObject.Find("Idol").GetComponent<Model_ChangeEffect>().ChangeEffect(2));
+								}
 								break;
 						}
-						StartCoroutine(GameObject.Find("Idol").GetComponent<Model_ChangeEffect>().ChangeEffect(num));
+						//int num = 0;
+						//switch (GameObject.Find("GameManager").GetComponent<GameManager>().m_eveScore)
+						//{
+						//	case 1:
+						//	case 2:
+						//		num = 0;
+						//		break;
+						//	case 3:
+						//	case 4:
+						//		num = 1;
+						//		break;
+						//	case 5:
+						//	case 6:
+						//		num = 2;
+						//		break;
+						//}
+						//StartCoroutine(GameObject.Find("Idol").GetComponent<Model_ChangeEffect>().ChangeEffect(num));
 						break;
 				}
 				break;
